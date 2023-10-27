@@ -1,2 +1,35 @@
-<h1>Categories#index</h1>
-<p>Find me in app/views/categories/index.html.erb</p>
+<div class="container mt-4 d-flex justify-content-center">
+  <div class="row list-categories">
+    <h2>Liste des catégories</h2>
+    <hr>
+    <% @categories.each do |category| %>
+      	<ul class="list-group list-group-horizontal">
+          <li class="list-group-item px-3 py-1 d-flex align-items-center flex-grow-1">
+            <% if category.image.attached? %>
+              <%= cl_image_tag category.image.key, class: "img-category img-category-#{category.nom.parameterize}" %>
+            <% end %>
+            <%= category.nom %>
+            </li>
+            <% if policy(category).edit? %>
+            <li class="list-group-item ps-3 pe-0 py-1">
+              <div class="d-flex flex-row justify-content-end mb-1">
+                <%= link_to edit_category_path(category) do %>
+                  <i class="fa-solid fa-pen-to-square me-3 text-info"></i>
+                <% end %>
+                <%= link_to category_path(category),
+                  data: {turbo_method: :delete, turbo_confirm: "Etes vous sure ?", :method=>'delete'} do %>
+                  <i class="fa-solid fa-trash-can me-3 text-danger"></i>
+                <% end %>
+
+              </div>
+            </li>
+          <% end %>
+        </ul>
+    <% end %>
+    <% if policy(Category).create? %>
+      <%= link_to new_category_path do %>
+        <i class="fa-solid fa-plus mt-3"></i> Ajouter une catégorie
+      <% end %>
+    <% end %>
+  </div>
+</div>

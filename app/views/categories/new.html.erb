@@ -1,2 +1,16 @@
-<h1>Categories#new</h1>
-<p>Find me in app/views/categories/new.html.erb</p>
+<div class="container mt-4">
+  <div class="row">
+    <h2>Ajouter une catégorie</h2>
+    <%= form_with model: @category do |f| %>
+      <%= f.label :nom %>
+      <%= f.text_field :nom %>
+      <%= f.file_field :image %>
+      <%= f.submit "Créer", {class: "btn btn-primary"} %>
+    <% end %>
+    <div>
+      <%= link_to categories_path, class: "btn btn-primary" do %>
+        <i class="fas fa-arrow-left"></i> Retour
+      <% end %>
+    </div>
+  </div>
+</div>
