@@ -1,23 +1,25 @@
 <div class="container mt-4">
   <div class="row">
     <h2>Rédiger un article</h2>
-    <%= form_with model: @article do |f| %>
-      <%= f.label :Titre %>
-      <%= f.text_field :title %>
+
+    <%= simple_form_for(@article) do |f| %>
+      <%= f.error_notification %>
+      <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
+
       <div class="form-inputs">
-        <%= f.label :Contenu %>
-        <%= f.text_field :content %>
+        <%= f.input :title %>
       </div>
       <div class="form-inputs">
-      <%= f.label :categories %>
-      <%= f.collection_select :category_ids, Category.all, :id, :nom, {}, { multiple: true } %>
+        <%= f.rich_text_area :rich_body %>
       </div>
-      <%= f.submit "Enregistrer", {class: "btn btn-primary"} %>
+      <div class="form-inputs">
+        <%= f.label :categories %>
+        <%= f.collection_select :category_ids, Category.all, :id, :nom, {}, { multiple: true } %>
+      </div>
+      <div class="form-actions">
+        <%= f.button :submit, "Enregistrer", class: "btn btn-primary" %>
+      </div>
     <% end %>
-    <div>
-      <%= link_to articles_path, class: "btn btn-primary" do %>
-        <i class="fas fa-arrow-left"></i> Retour
-      <% end %>
-    </div>
+        </div>
   </div>
 </div>

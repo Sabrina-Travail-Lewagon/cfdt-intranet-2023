@@ -1,2 +1,17 @@
-<h1>Articles#show</h1>
-<p>Find me in app/views/articles/show.html.erb</p>
+<div class="container mt-4">
+  <div class="row">
+    <h2><%= @article.title %></h2>
+    <hr>
+    <p>Catégories : <%= @article.categories.map(&:nom).join(', ') %></p>
+    <hr>
+    <p><%= raw @article.rich_body %></p>
+    <div>
+      <%= link_to 'Edit', edit_article_path(@article) %> |
+      <%= link_to 'Back', root_path %>
+      <hr>
+      <%= link_to articles_path, class: "btn btn-primary" do %>
+        <i class="fas fa-arrow-left text-white"></i>
+      <% end %>
+    </div>
+  </div>
+</div>
