@@ -1,10 +1,11 @@
 Rails.application.routes.draw do
-  get 'categories/index'
-  get 'categories/show'
-  get 'categories/new'
-  get 'categories/edit'
+  # get 'categories/index'
+  # get 'categories/show'
+  # get 'categories/new'
+  # get 'categories/edit'
   devise_for :users
   root to: "pages#home"
+  resources :categories
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Defines the root path route ("/")
