@@ -1,14 +1,11 @@
 Rails.application.routes.draw do
-  get 'articles/index'
-  get 'articles/show'
-  get 'articles/edit'
-  get 'articles/destroy'
   # get 'categories/index'
   # get 'categories/show'
   # get 'categories/new'
   # get 'categories/edit'
   devise_for :users
   root to: "pages#home"
+  resources :articles
   resources :categories
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
