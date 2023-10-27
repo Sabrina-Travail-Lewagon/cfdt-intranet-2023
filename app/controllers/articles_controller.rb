@@ -5,10 +5,17 @@ class ArticlesController < ApplicationController
 
   def index
     @user = current_user
-    # Policy_scope  utilisée pour appliquer la politique de portée (policy scoping) aux collections d'enregistrements
-    # policy_scope(Article) applique la politique de portée à la collection d'articles,
-    # en fonction des autorisations définies dans votre politique ArticlePolicy
-    @articles = policy_scope(Article).order('created_at DESC')
+    @categories = policy_scope(Category)
+    if params[:category_id]
+      category = Category.find(params[:category_id]) # Définition de la variable category
+      @categories = policy_scope(Category)
+      @articles = policy_scope(Article).joins(:categories).where(categories: { id: category.id }).order('created_at DESC')
+    else
+      # Policy_scope  utilisée pour appliquer la politique de portée (policy scoping) aux collections d'enregistrements
+       # policy_scope(Article) applique la politique de portée à la collection d'articles,
+      # en fonction des autorisations définies dans votre politique ArticlePolicy
+      @articles = policy_scope(Article).order('created_at DESC')
+    end
     authorize @articles
   end
 
