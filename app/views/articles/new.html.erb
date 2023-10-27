@@ -1,14 +1,17 @@
 <div class="container mt-4">
   <div class="row">
-    <h2>Mettre à jour un article</h2>
+    <h2>Rédiger un article</h2>
     <%= form_with model: @article do |f| %>
       <%= f.label :Titre %>
       <%= f.text_field :title %>
       <div class="form-inputs">
-        <%= f.rich_text_area :rich_body %>
+        <%= f.label :Contenu %>
+        <%= f.text_field :content %>
       </div>
-      <%= f.label :Categories %>
-      <%= f.collection_select :category, Category.all, :id, :nom, {}, { multiple: true } %>
+      <div class="form-inputs">
+      <%= f.label :categories %>
+      <%= f.collection_select :category_ids, Category.all, :id, :nom, {}, { multiple: true } %>
+      </div>
       <%= f.submit "Enregistrer", {class: "btn btn-primary"} %>
     <% end %>
     <div>
