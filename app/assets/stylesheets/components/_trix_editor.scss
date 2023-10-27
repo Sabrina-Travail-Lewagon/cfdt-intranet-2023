@@ -1,8 +1,9 @@
+
 trix-editor .attachment--preview img {
   resize: both;
   overflow: auto;
 }
-
+// Pour supprimer la légende de l'image
 .trix-content .attachment--preview .attachment__caption {
   display: none!important;
 }
