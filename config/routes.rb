@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  get 'articles/index'
+  get 'articles/show'
+  get 'articles/edit'
+  get 'articles/destroy'
   # get 'categories/index'
   # get 'categories/show'
   # get 'categories/new'
