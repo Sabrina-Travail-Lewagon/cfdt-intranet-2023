@@ -58,6 +58,6 @@ categories_data = [
 categories_data.each do |category_data|
   category = Category.create!(nom: category_data[:nom])
   # Utilisation d'ActiveStorage pour attacher l'image à la catégorie
-  category.image.attach(io: category_data[:image], filename: "#{category_data[:name]}.png", content_type: 'image/png')
+  category.image.attach(io: category_data[:image], filename: "#{category_data[:nom]}.png", content_type: 'image/png')
 end
 puts "--- Catégories crées ---"

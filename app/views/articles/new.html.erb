@@ -14,7 +14,7 @@
       </div>
       <div class="form-inputs">
         <%= f.label :categories %>
-        <%= f.collection_select :category_ids, Category.all, :id, :nom, {}, { multiple: true } %>
+        <%= f.collection_select :category_id, Category.all, :id, :nom, {}, { multiple: true } %>
       </div>
       <div class="form-actions">
         <%= f.button :submit, "Enregistrer", class: "btn btn-primary" %>
