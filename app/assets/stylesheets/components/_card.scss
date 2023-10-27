@@ -142,6 +142,7 @@
   .card-publications {
     grid-column: 1 / 2;
     width: calc(100% - 3.125rem);
+    overflow: auto;
   }
   .article h2 {
     font-size: 1.2em;
@@ -159,6 +160,7 @@
   .card-publications {
     grid-column: 1 / 2;
     width: calc(100% - 3.125rem);
+    overflow: auto;
   }
   .article h2 {
     font-size: 1.2em;

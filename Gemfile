@@ -58,6 +58,8 @@ gem 'activestorage-cloudinary-service'
 gem "pundit"
 gem "trix"
 gem "actiontext"
+gem 'rails-i18n' # Pour avoir la langue française, les dates
+
 
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
