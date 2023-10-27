@@ -1,0 +1,197 @@
+input.btn{
+  color: #fff;
+}
+
+.btn-home {
+  width: 254px;
+  height: 222px;
+  border-radius: 20px;
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+  padding: 15px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transition: background-color 0.2s; /* transition de 0.3 secondes pour la couleur d'arrière-plan */
+}
+
+.btn-home-child {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;  /* Centre les éléments enfants horizontalement */
+  justify-content: center;  /* Centre les éléments enfants verticalement */
+}
+
+.btn-home-child img.img-category {
+  object-fit: cover;
+  background-position: center;
+  width: 55%;
+  max-height: min-content;
+}
+
+.category-name {
+  margin-top: 10px;  /* Espace au-dessus du texte */
+  text-align: center;  /* Centre le texte */
+  color: #fff;
+  font-family: Inter;
+  font-size: 25px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+}
+
+.la-federation{
+  border-radius: 20px;
+  background: var(--bs-orange);
+  // margin-right: 10px;
+  // padding: 15px 20px;
+}
+
+.les-services{
+  border-radius: 20px;
+  background: var(--bs-blue);
+  // margin-right: 10px;
+  // padding: 15px 20px;
+}
+
+.infos-cse{
+  border-radius: 20px;
+  background: var(--bs-yellow);
+  // margin-right: 10px;
+  // padding: 15px 20px;
+}
+
+.infos-rh{
+  border-radius: 20px;
+  background: var(--bs-purple);
+  // margin-right: 10px;
+  // padding: 15px 20px;
+}
+
+.la-commission-executive-ce{
+  border-radius: 20px;
+  background: var(--bs-green);
+  // margin-right: 10px;
+  // padding: 15px 20px;
+}
+
+.cap-artois{
+  border-radius: 20px;
+  background: var(--bs-blue);
+  // margin-right: 10px;
+  // padding: 15px 20px;
+}
+
+.nos-rdv-internes{
+  border-radius: 20px;
+  background: var(--bs-gris);
+  // margin-right: 10px;
+  // padding: 15px 20px;
+}
+
+.faq{
+  border-radius: 20px;
+  background: var(--bs-mauve);
+  // margin-right: 10px;
+  // padding: 15px 20px;
+}
+
+.kelio{
+  border-radius: 20px;
+  background: #ffed00;
+  // margin-right: 10px;
+  // padding: 15px 20px;
+}
+
+.workflow{
+  border-radius: 20px;
+  background: var(--bs-orange);
+  // margin-right: 10px;
+  // padding: 15px 20px;
+}
+
+// Survol des boutons Accueil
+.infos-rh:hover {
+  background: #ab68c1;
+}
+
+.faq:hover {
+  background: #ab68c1;
+}
+
+
+.infos-cse:hover {
+  background: #f4c84e;
+}
+
+.la-federation:hover{
+  background: #dd7854;
+}
+
+// Bouton dans le dashboard : sidebar
+.btn-sidebar {
+  // width: 254px;
+  // height: 222px;
+  width: 175px;
+  height: 160px;
+  border-radius: 20px;
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+  padding: 15px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.btn-sidebar-child {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;  /* Centre les éléments enfants horizontalement */
+  justify-content: center;  /* Centre les éléments enfants verticalement */
+}
+
+.btn-sidebar-child {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;  /* Centre les éléments enfants horizontalement */
+  justify-content: center;  /* Centre les éléments enfants verticalement */
+}
+
+// Partie Dashboard contenu
+.main-content .btn {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 100px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.btn-primary {
+  background-color: var(--bs-orange);
+  color: #FFF;
+}
+
+.btn-primary:hover {
+  background-color: var(--bs-jaune);
+  color: #FFF;
+}
+
+.btn-secondary {
+  background-color: #6c757d;
+  color: #FFF;
+}
+
+.btn-secondary:hover {
+  background-color: #555;
+  color: #FFF;
+}
