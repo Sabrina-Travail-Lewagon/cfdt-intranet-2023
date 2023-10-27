@@ -5,7 +5,7 @@
       <%= f.label :Titre %>
       <%= f.text_field :title %>
       <div class="form-inputs">
-        <%= f.rich_text_area :rich_body %>
+        <%= f.text_field :content %>
       </div>
       <%= f.label :Categories %>
       <%= f.collection_select :category, Category.all, :id, :nom, {}, { multiple: true } %>
