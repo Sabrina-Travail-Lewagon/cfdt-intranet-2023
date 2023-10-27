@@ -15,14 +15,20 @@ class ArticlePolicy < ApplicationPolicy
   end
 
   def create?
-    user.admin? || user.rh? # Autorise admin ou rh à créer une catégorie
+    allowed_roles?
   end
 
   def update?
-    user.admin? || user.rh? # Autorise admin ou rh à mettre à jour une catégorie
+    allowed_roles?
   end
 
   def destroy?
-    user.admin? || user.rh? # Autorise admin ou rh à supprimer une catégorie
+    allowed_roles?
+  end
+
+  private
+  def allowed_roles?
+    # user && permet de vérifier que l'user est connecté, et Autorise admin ou rh à voir les catégorie
+    user && (user.admin? || user.rh?)
   end
 end
