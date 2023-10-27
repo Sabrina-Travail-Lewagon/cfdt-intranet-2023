@@ -64,7 +64,7 @@ class Admin::ArticlesController < ApplicationController
   end
 
   def params_article
-    params.require(:article).permit(:title, :rich_body, images: [], category_id:)
+    params.require(:article).permit(:title, :rich_body, :category_id, images: [])
   end
 
   def authenticate_admin!

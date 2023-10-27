@@ -38,7 +38,7 @@
               <div class="col-details">
                 <h2><%= link_to article.title, article_path(article) %></h2>
                 <p><%= l(article.created_at, format: "%A, %d %B, %H:%M") %></p>
-                <span class="article-category">Catégorie : <%= article.categories.first&.nom || "Non catégorisé" %></span>
+                <span class="article-category">Catégorie : <%= article.category&.nom || "Non catégorisé" %></span>
               </div>
             </div>
           <% end %>
