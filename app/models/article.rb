@@ -10,4 +10,5 @@ class Article < ApplicationRecord
   # toutes les entrées correspondantes dans article_categories seront également supprimées
   has_many :article_categories, dependent: :destroy
   has_many :categories, through: :article_categories
+  has_rich_text :rich_body
 end
