@@ -1,6 +1,6 @@
 class Article < ApplicationRecord
   belongs_to :user
-  belongs_to :categories
+  belongs_to :category
 
   # un article doit toujours être associé à un utilisateur lors de sa création ou de sa mise à jour:
   validates :user, presence: true

@@ -9,7 +9,7 @@ class ArticlesController < ApplicationController
     if params[:category_id]
       category = Category.find(params[:category_id]) # Définition de la variable category
       @categories = policy_scope(Category)
-      @articles = policy_scope(Article).joins(:categories).where(categories: { id: category.id }).order('created_at DESC')
+      @articles = policy_scope(Article).where(category_id: category.id).order('created_at DESC')
     else
       # Policy_scope  utilisée pour appliquer la politique de portée (policy scoping) aux collections d'enregistrements
        # policy_scope(Article) applique la politique de portée à la collection d'articles,
