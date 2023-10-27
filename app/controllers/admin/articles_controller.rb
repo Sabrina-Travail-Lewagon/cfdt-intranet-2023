@@ -1,6 +1,7 @@
 class Admin::ArticlesController < ApplicationController
   before_action :set_article, only: [:show, :edit, :destroy, :update]
   before_action :authenticate_admin!
+  layout "admin-bar"
 
   def index
     @user = current_user

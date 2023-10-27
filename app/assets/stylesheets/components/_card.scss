@@ -52,7 +52,7 @@
   max-width: 100%;    /* Vous pouvez également utiliser une valeur fixe */
   // overflow: auto;     /* Affiche une barre de défilement si le contenu dépasse */
   display: flex; /* utilise le modèle de boîte Flexbox */
-  align-items: start; /* aligne les éléments au début du conteneur flex */
+  align-items: flex-start; /* aligne les éléments au début du conteneur flex */
   gap: 14px;
   padding-bottom: 14px;
 }

@@ -1,0 +1,9 @@
+<div class="row">
+  <div class="card-articles">
+    <h1>Articles#index</h1>
+    <% @articles.each do |article| %>
+      <h2><%= article.title %> </h2>
+      <p><%= article.rich_body %> </p>
+    <% end %>
+  </div>
+</div>

@@ -1,0 +1,92 @@
+.dashboard-wrapper {
+  display: flex;
+  align-items: flex-start; /* aligne les éléments au début de leur cellule de grille */
+  margin: 0;
+}
+
+.dashboard-sidebar {
+  flex: 0.2; /* 20% de la largeur */
+  display: grid;
+  grid-template-columns: repeat(2, 1fr); /* 2 colonnes de taille égale */
+  gap: 30px; /* espace entre les éléments de grille */
+  margin: 40px;
+}
+
+.dashboard-sidebar img {
+  height: 100%; /* force la hauteur de l'image à remplir entièrement sa cellule */
+  object-fit: cover; /* s'assure que l'image couvre entièrement la cellule sans être étirée */
+}
+
+
+.dashboard-sidebar img.img-category-la-federation{
+  width: 11rem;
+  height: auto;
+}
+
+.dashboard-sidebar a{
+  text-decoration: none;
+}
+
+.main-content {
+  flex: 0.8; /* 80% de la largeur */
+  // flex: 2; /* prend 2/3 de l'espace */
+  /* autres styles pour le contenu principal */
+  padding: 12px;
+  display: flex;
+  margin: 0 5rem;
+}
+
+.dashboard-bar {
+  width: 250px;
+  height: 100vh; /* Pour que la barre prenne toute la hauteur de la fenêtre */
+  padding: 15px 0;
+  background-color: #FFFDFD; /* Couleur de fond gris clair */
+  border-right: 1px solid #E0E0E0; /* Bordure droite pour délimiter la barre */
+  padding-top: 50px; /* Espace en haut pour décaler le contenu vers le bas */
+  box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1); /* Ombre subtile à droite de la barre */
+}
+
+.btn-dashboard-bar {
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+  margin-bottom: 30px; /* Espacement entre les éléments */
+}
+
+.dashboard-item {
+  display: flex;
+  align-items: center;
+  padding: 10px 20px;
+  // border-radius: 10px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.dashboard-item:hover {
+  background-color: #EAECEF;
+}
+
+.dashboard-icon {
+  margin-right: 10px;
+}
+
+.btn-dashboard-bar-child ul {
+  list-style-type: none; /* Supprime les puces */
+  padding-left: 0; /* Supprime le padding par défaut des listes */
+}
+
+.btn-dashboard-bar-child ul li {
+  padding: 15px 20px; /* Espacement interne pour chaque élément de liste */
+  font-size: 18px; /* Taille de la police */
+  cursor: pointer; /* Change le curseur au survol */
+  transition: background-color 0.3s; /* Transition douce pour le changement de couleur de fond */
+}
+
+.btn-dashboard-bar-child ul li:hover {
+  background-color: #FF6B00; /* Couleur de fond au survol */
+}
+
+.btn-dashboard-bar-child ul li.active {
+  background-color: #FF6B00; /* Couleur de fond pour l'élément actif (vous pouvez l'ajouter dynamiquement via Rails) */
+  color: white; /* Couleur du texte pour l'élément actif */
+}
