@@ -3,15 +3,7 @@
     <div class="card-articles">
       <% @articles.each do |article| %>
         <h1><%= article.title %> </h1>
-        <p>
-          <% if article.rich_body.body.attachments.any? %>
-            <% article.rich_body.body.attachments.each do |attachment| %>
-              <%= image_tag attachment.variant(resize: "500x500") if attachment.image? %>
-            <% end %>
-          <% end %>
-
-
-        </p>
+        <p><%= article.rich_body %> </p>
       <% end %>
     </div>
   </div>
