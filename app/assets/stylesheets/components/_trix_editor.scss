@@ -2,3 +2,7 @@ trix-editor .attachment--preview img {
   resize: both;
   overflow: auto;
 }
+
+.trix-content .attachment--preview .attachment__caption {
+  display: none!important;
+}
