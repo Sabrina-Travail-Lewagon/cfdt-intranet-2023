@@ -3,4 +3,20 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
+  has_one_attached :photo
+  validates :first_name, presence: true
+  validates :last_name, presence: true
+
+  # before_validation définira automatiquement le rôle par défaut sur user avant de valider l'utilisateur.
+  before_validation :set_default_role
+
+  # On stocke les rôles possibles
+  enum role: [:user, :cse, :rh, :redacteur, :admin]
+
+  private
+
+  # On va mettre le role user par défaut
+  def set_default_role
+    self.role ||= :user
+  end
 end
