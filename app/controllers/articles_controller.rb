@@ -65,6 +65,7 @@ class ArticlesController < ApplicationController
     @article = Article.find(params[:id])
     @user = current_user # Pour que le header puisse s'afficher avec le login
     authorize @article
+    @categories = policy_scope(Category)
   end
 
   def params_article

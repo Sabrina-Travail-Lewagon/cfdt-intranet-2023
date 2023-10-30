@@ -8,10 +8,10 @@
           </svg>
           Dashboard
         </li>
-        <li class="dashboard-item <%= 'active' if current_page?(edit_user_registration_path) || current_page?(admin_root_path) %>">
+        <li class="dashboard-item <%= 'active' if current_page?(edit_user_registration_path) %>">
           <%= link_to "Mon compte", edit_user_registration_path %>
         </li>
-        <li class="dashboard-item <%= 'active' if current_page?(new_admin_article_path) || current_page?(admin_root_path) %>">
+        <li class="dashboard-item <%= 'active' if current_page?(new_admin_article_path) %>">
           <%= link_to "Ecrire un article", new_admin_article_path %>
         </li>
         <li class="dashboard-item <%= 'active' if current_page?(admin_mes_articles_path) %>">

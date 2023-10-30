@@ -134,6 +134,69 @@
   height: auto;
 }
 
+.card-articles {
+  border: 1px solid #e1e1e1;
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.card-articles > span h2{
+  width: fit-content;
+  padding-bottom: 4px;
+  border-bottom: solid 2px #e75C21;
+}
+
+.article-card {
+  border-bottom: 1px solid #e1e1e1;
+  margin-bottom: 20px;
+  padding-bottom: 20px;
+}
+
+.article-card:last-child {
+  border-bottom: none;
+}
+
+.article-actions {
+  float: right; /* aligne les boutons à droite */
+}
+
+.article-actions a {
+  text-decoration: none;
+}
+
+.article-actions i {
+  margin-left: 10px;
+  font-size: 20px;
+  color: #555;
+  cursor: pointer;
+}
+
+i.fa-solid.fa-pen-to-square {
+  color: #007bff; /* Couleur bleue pour le bouton Éditer */
+}
+
+i.fa-solid.fa-eye {
+  color: #6c757d; /* Couleur grise pour le bouton Vue */
+}
+
+i.fa-sharp.fa-solid.fa-trash {
+  color: #dc3545; /* Couleur rouge pour le bouton Supprimer */
+}
+
+.article-card h1 {
+  font-size: 24px;
+  margin-top: 0;
+  color: #444;
+}
+
+.article-card p {
+  font-size: 16px;
+  color: #777;
+  line-height: 1.5;
+}
+
+
 // Smallest device
 @media (max-width: 575px) {
   .cards {
