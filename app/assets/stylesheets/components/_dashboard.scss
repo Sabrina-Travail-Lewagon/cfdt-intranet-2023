@@ -62,8 +62,14 @@
   transition: background-color 0.2s;
 }
 
+.dashboard-item.active {
+  background-color: #E75C21; /* ou toute autre couleur de votre choix */
+  font-weight: bold;
+}
+
+
 .dashboard-item:hover {
-  background-color: #EAECEF;
+  background-color: #E75C21;
 }
 
 .dashboard-icon {

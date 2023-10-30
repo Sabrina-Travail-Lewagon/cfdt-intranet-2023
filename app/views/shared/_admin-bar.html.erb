@@ -9,7 +9,9 @@
           Dashboard
         </li>
         <li class="dashboard-item">Mon compte</li>
-        <li>Ecrire un article</li>
+        <li class="dashboard-item <%= 'active' if current_page?(new_admin_article_path) || current_page?(admin_root_path) %>">
+          Ecrire un article
+        </li>
         <li class="dashboard-item">Mes articles</li>
       </ul>
     </div>

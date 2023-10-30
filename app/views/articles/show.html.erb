@@ -2,7 +2,7 @@
   <div class="row">
     <h2><%= @article.title %></h2>
     <hr>
-    <p>Catégories : <%= @article.categories.map(&:nom).join(', ') %></p>
+    <p>Catégories : <%= @article.category.nom %></p>
     <hr>
     <p><%= raw @article.rich_body %></p>
     <div>

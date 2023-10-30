@@ -1,7 +1,7 @@
 class Admin::HomeController < ApplicationController
   before_action :authenticate_user!
   after_action :verify_policy_scoped, only: [:index]
-  layout "admin"
+  layout "admin-bar"
 
   def index
     @articles = policy_scope(Article).order('created_at DESC').limit(5)
