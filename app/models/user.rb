@@ -16,6 +16,7 @@ class User < ApplicationRecord
   # after_initialize :set_default_role, if: :new_record?
   # Ajout photo a l'utilisateur
   has_one_attached :photo
+  has_many :articles
 
   private
   # On va mettre le role user par défaut

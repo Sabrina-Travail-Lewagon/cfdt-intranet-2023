@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   end
   # Partie dashboard
   namespace :admin do
+    get 'articles/mes_articles', to: 'articles#mes_articles', as: 'mes_articles'
     resources :articles
     resources :categories
     resources :users

@@ -10,9 +10,11 @@
         </li>
         <li class="dashboard-item">Mon compte</li>
         <li class="dashboard-item <%= 'active' if current_page?(new_admin_article_path) || current_page?(admin_root_path) %>">
-          Ecrire un article
+          <%= link_to "Ecrire un article", new_admin_article_path %>
         </li>
-        <li class="dashboard-item">Mes articles</li>
+        <li class="dashboard-item <%= 'active' if current_page?(admin_mes_articles_path) %>">
+          <%= link_to 'Mes articles', admin_mes_articles_path %>
+        </li>
       </ul>
     </div>
   </div>

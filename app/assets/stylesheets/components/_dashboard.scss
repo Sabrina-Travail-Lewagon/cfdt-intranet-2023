@@ -53,6 +53,13 @@
   margin-bottom: 30px; /* Espacement entre les éléments */
 }
 
+.btn-dashboard-bar .dashboard-item a{
+  text-decoration: none;
+  color: $gray;
+  font-style: normal;
+  font-weight: normal;
+}
+
 .dashboard-item {
   display: flex;
   align-items: center;

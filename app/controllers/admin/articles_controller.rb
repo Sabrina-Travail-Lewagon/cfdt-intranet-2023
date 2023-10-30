@@ -13,6 +13,10 @@ class Admin::ArticlesController < ApplicationController
     authorize @articles
   end
 
+  def mes_articles
+    @articles = current_user.articles
+  end
+
   def new
     @user = current_user
     @article = Article.new
