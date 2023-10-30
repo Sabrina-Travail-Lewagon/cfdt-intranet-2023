@@ -1,9 +1,11 @@
-<h2>Mes articles</h2>
-
-<ul>
-  <% @articles.each do |article| %>
-    <li>
-      <%= link_to article.title, article_path(article) %>
-    </li>
-  <% end %>
-</ul>
+<div class="container mt-4">
+  <div class="row">
+    <div class="card-articles">
+      <h2>Mes articles</h2>
+      <% @articles.each do |article| %>
+        <h1><%= article.title %> </h1>
+        <p><%= article.rich_body %> </p>
+      <% end %>
+    </div>
+  </div>
+</div>

@@ -14,7 +14,7 @@ class Admin::ArticlesController < ApplicationController
   end
 
   def mes_articles
-    @articles = current_user.articles
+    @articles = current_user.articles.order('created_at DESC')
   end
 
   def new

@@ -6,3 +6,10 @@ fr:
         signed_out: "Vous avez été déconnecté avec succès."
       signed_in: "Bienvenue, vous êtes connecté."
       signed_out: "Vous avez été déconnecté."
+    registrations:
+      hints:
+        password: "Laissez vide si vous ne souhaitez pas changer de mot de passe"
+        current_password: "Nous avons besoin de votre mot de passe actuel pour confirmer vos modifications"
+      edit:
+        leave_blank_if_you_dont_want_to_change_it: "Laissez vide si vous ne souhaitez pas le changer"
+        we_need_your_current_password_to_confirm_your_changes: "Nous avons besoin de votre mot de passe actuel pour confirmer vos modifications"
