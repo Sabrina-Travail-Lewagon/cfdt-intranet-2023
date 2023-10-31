@@ -1,6 +1,8 @@
 class Admin::UsersController < ApplicationController
   before_action :authenticate_user!  # Devise helper pour s'assurer que l'utilisateur est connecté
   before_action :set_user, only: [:show, :edit, :update, :destroy]
+  before_action :authorize_user, except: [:new, :create, :index]  # autoriser uniquement pour les actions spécifiées
+
   layout "admin-bar"
 
   def index
@@ -16,6 +18,11 @@ class Admin::UsersController < ApplicationController
 
 
   def update
+    # S'assure que l'utilisateur ne met à jour que son propre compte
+    unless current_user == @user
+      redirect_to admin_user_path(current_user), alert: 'Vous ne pouvez mettre à jour que votre propre compte.'
+      return
+    end
     # Avant de mettre à jour l'utilisateur, vérification si le mot de passe et la confirmation du mot de passe sont vides
     if params[:user][:password].blank? && params[:user][:password_confirmation].blank?
       params[:user].delete(:password)
@@ -57,6 +64,10 @@ class Admin::UsersController < ApplicationController
 
   def set_user
     @user = User.find(params[:id])
+    authorize @user
+  end
+  # Séparer l'autorisation pour éviter des répétitions
+  def authorize_user
     authorize @user
   end
 

@@ -75,7 +75,7 @@ class Admin::ArticlesController < ApplicationController
     authenticate_user!
 
     # Vérifie si l'utilisateur connecté est un administrateur ou un RH
-    unless current_user.admin? || current_user.rh?
+    unless current_user.admin? || current_user.rh? || current_user.cse? || current_user.user?
       # Si l'utilisateur n'est pas un admin ou un RH, redirigez-le avec un message d'erreur
       redirect_to root_path, alert: "Vous n'avez pas les autorisations nécessaires pour accéder à cette page."
     end

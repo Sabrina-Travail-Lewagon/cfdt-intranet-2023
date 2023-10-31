@@ -8,4 +8,8 @@ class Admin::HomeController < ApplicationController
     @categories = policy_scope(Category)
     authorize @articles
   end
+
+  def accueil
+
+  end
 end

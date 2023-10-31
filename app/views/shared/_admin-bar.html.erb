@@ -23,12 +23,16 @@
 
         </li>
         <% end %>
+        <% if policy(current_user).write_article? %>
         <li class="dashboard-item <%= 'active' if current_page?(new_admin_article_path) %>">
           <%= link_to "Ecrire un article", new_admin_article_path %>
         </li>
+        <% end %>
+        <% if policy(current_user).view_articles? %>
         <li class="dashboard-item <%= 'active' if current_page?(admin_mes_articles_path) %>">
           <%= link_to 'Mes articles', admin_mes_articles_path %>
         </li>
+        <% end %>
       </ul>
     </div>
   </div>

@@ -5,7 +5,10 @@ class Admin::ApplicationController < ApplicationController
 
   private
   def authorize_admin!
-    # Votre logique pour autoriser uniquement les admins et rh
-    redirect_to root_path, alert: "Vous n'avez pas accès à cette section." unless current_user.admin? || current_user.rh?
+    puts "Current user role: #{current_user.role}" # Affiche le rôle de l'utilisateur actuel
+    unless current_user.admin? || current_user.rh? || current_user.cse? || current_user.user?
+      redirect_to root_path, alert: "Vous n'avez pas accès à cette section."
+    end
   end
+
 end

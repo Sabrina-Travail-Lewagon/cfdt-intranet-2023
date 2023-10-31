@@ -29,6 +29,6 @@ class ArticlePolicy < ApplicationPolicy
   private
   def allowed_roles?
     # user && permet de vérifier que l'user est connecté, et Autorise admin ou rh à voir les catégorie
-    user && (user.admin? || user.rh?)
+    user && (user.admin? || user.rh? || user.cse?)
   end
 end
