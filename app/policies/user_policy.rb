@@ -3,6 +3,10 @@ class UserPolicy < ApplicationPolicy
     user.admin? || user.rh? || user.cse?
   end
 
+  def index?
+    admin_or_rh?
+  end
+
   def create?
     admin_or_rh?
   end

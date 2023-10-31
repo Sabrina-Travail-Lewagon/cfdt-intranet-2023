@@ -11,12 +11,18 @@
         <li class="dashboard-item <%= 'active' if current_page?(edit_user_registration_path(current_user)) %>">
           <%= link_to "Mon compte", edit_user_registration_path(current_user) %>
         </li>
-
-        <li class="dashboard-item <%= 'active' if current_page?(new_admin_user_path) %>">
-          <% if policy(User.new).create? %>
-            <%= link_to 'Créer un nouvel utilisateur', new_admin_user_path %>
-          <% end %>
+        <% if policy(User.new).create? %>
+        <li class="dashboard-item <%= 'active' if current_page?(admin_users_path) %>">
+          <%= link_to "Liste des Utilisateurs", admin_users_path %>
         </li>
+        <% end %>
+        <% if policy(User.new).create? %>
+        <li class="dashboard-item <%= 'active' if current_page?(new_admin_user_path) %>">
+
+            <%= link_to 'Créer un nouvel utilisateur', new_admin_user_path %>
+
+        </li>
+        <% end %>
         <li class="dashboard-item <%= 'active' if current_page?(new_admin_article_path) %>">
           <%= link_to "Ecrire un article", new_admin_article_path %>
         </li>
