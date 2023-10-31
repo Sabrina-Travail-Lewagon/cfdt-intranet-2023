@@ -24,9 +24,9 @@ class Admin::UsersController < ApplicationController
 
   def destroy
     if @user.destroy
-      redirect_to users_url, notice: 'L\'utilisateur a été supprimé'
+      redirect_to admin_users_url, notice: 'L\'utilisateur a été supprimé'
     else
-      redirect_to users_url, alert: 'Erreur lors de la suppression de l\'utilisateur'
+      redirect_to admin_users_url, alert: 'Erreur lors de la suppression de l\'utilisateur'
     end
   end
 
@@ -38,7 +38,6 @@ class Admin::UsersController < ApplicationController
   def create
     @user = User.new(user_params)
     authorize @user  # Utilise Pundit pour vérifier que l'utilisateur actuel peut créer un utilisateur
-
     if @user.save
       redirect_to admin_user_path(@user), notice: 'L\'utilisateur a été créé!'
     else
