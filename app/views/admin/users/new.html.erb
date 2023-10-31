@@ -1,0 +1,38 @@
+<div class="container mt-4">
+	<div class="row">
+    <h2>Créer un utilisateur</h2>
+    <%= simple_form_for([:admin, @user]) do |f| %>
+      <%= f.error_notification %>
+      <div class="form-inputs">
+        <%= f.input :first_name,
+                    required: true,
+                    autofocus: true,
+                    label: "Prénom",
+                    input_html: { autocomplete: "prénom" }%>
+        <%= f.input :last_name,
+                    required: true,
+                    autofocus: true,
+                    label: "Nom",
+                    input_html: { autocomplete: "nom" }%>
+        <%= f.input :email,
+                    required: true,
+                    autofocus: true,
+                    label: "Email",
+                    input_html: { autocomplete: "email" }%>
+        <%= f.input :password,
+                    required: true,
+                    hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length),
+                    input_html: { autocomplete: "new-password" } %>
+        <%= f.input :password_confirmation,
+                    required: true,
+                    input_html: { autocomplete: "new-password" } %>
+        <%= f.input :role, collection: User.roles.keys, label: "Rôle", prompt: "Sélectionnez un rôle" %>
+        <%= f.input :photo, as: :file %>
+      </div>
+      <div class="form-actions my-2">
+        <%= f.button :submit, "Créer", class: "btn btn-primary" %>
+      </div>
+    <% end %>
+    <%= link_to 'Retour', admin_users_path %>
+  </div>
+</div>

@@ -1,5 +1,11 @@
 Rails.application.routes.draw do
-  devise_for :users
+  devise_for :users, skip: [:registrations]
+  as :user do
+    get 'users/edit', to: 'devise/registrations#edit', as: 'edit_user_registration'
+    put 'users', to: 'devise/registrations#update', as: 'user_registration'
+  end
+
+
   root to: "pages#home"
   resources :articles
   resources :categories do
@@ -10,7 +16,7 @@ Rails.application.routes.draw do
     get 'articles/mes_articles', to: 'articles#mes_articles', as: 'mes_articles'
     resources :articles
     resources :categories
-    resources :users
+    resources :users, only: [:new, :create, :update, :index, :show, :edit, :destroy]
     root to: 'articles#new'
   end
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html

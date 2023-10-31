@@ -16,9 +16,10 @@
     <div class="dashboard-wrapper">
       <%= render 'admin/sidebar' %>
       <div class="main-content">
+        <%= render "shared/flashes" %>
         <%= yield %>
       </div>
     </div>
-    <%= render "shared/flashes" %>
+
   </body>
 </html>

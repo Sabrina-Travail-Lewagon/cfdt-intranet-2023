@@ -8,8 +8,14 @@
           </svg>
           Dashboard
         </li>
-        <li class="dashboard-item <%= 'active' if current_page?(edit_user_registration_path) %>">
-          <%= link_to "Mon compte", edit_user_registration_path %>
+        <li class="dashboard-item <%= 'active' if current_page?(edit_user_registration_path(current_user)) %>">
+          <%= link_to "Mon compte", edit_user_registration_path(current_user) %>
+        </li>
+
+        <li class="dashboard-item <%= 'active' if current_page?(new_admin_user_path) %>">
+          <% if policy(User.new).create? %>
+            <%= link_to 'Créer un nouvel utilisateur', new_admin_user_path %>
+          <% end %>
         </li>
         <li class="dashboard-item <%= 'active' if current_page?(new_admin_article_path) %>">
           <%= link_to "Ecrire un article", new_admin_article_path %>

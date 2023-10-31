@@ -7,7 +7,7 @@
       <h2>Modifier mon compte</h2>
 <%= t('devise.sessions.signed_in') %>
 
-    <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+    <%= simple_form_for(resource, as: resource_name, url: user_registration_path, html: { method: :put }) do |f| %>
       <%= f.error_notification %>
 
       <div class="form-inputs">
