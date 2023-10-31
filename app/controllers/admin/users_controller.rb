@@ -14,13 +14,21 @@ class Admin::UsersController < ApplicationController
 
   end
 
+
   def update
+    # Avant de mettre à jour l'utilisateur, vérification si le mot de passe et la confirmation du mot de passe sont vides
+    if params[:user][:password].blank? && params[:user][:password_confirmation].blank?
+      params[:user].delete(:password)
+      params[:user].delete(:password_confirmation)
+    end
+
     if @user.update(user_params)
-      redirect_to @user, notice: 'L\'utilisateur a bien été modifié!'
+      redirect_to admin_user_path(@user), notice: 'L\'utilisateur a bien été modifié!'
     else
       render :edit
     end
   end
+
 
   def destroy
     if @user.destroy
