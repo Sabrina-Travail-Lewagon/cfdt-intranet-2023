@@ -1,0 +1,34 @@
+nav.breadcrumb{
+  background-color: #ECEAEA;
+  margin: 0 auto;
+  display: flex; /* Ajout de flexbox */
+  align-items: center; /* Centrer les éléments verticalement */
+}
+
+nav a{
+  text-decoration: none;
+  color: #E75C21;
+  font-family: Inter;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  margin: 0;
+}
+
+nav ol{
+ margin-bottom: 0!important;
+ margin-left: 60px;
+ padding: 0; /* Suppression du padding par défaut */
+}
+
+nav li{
+  padding: 10px 10px; /* Ajustez le padding pour obtenir l'espacement souhaité */
+}
+
+.breadcrumb-item + .breadcrumb-item::before {
+  text-align: left;
+  padding-right: 10px!important;
+  color: #e75c21!important;
+  content: var(--bs-breadcrumb-divider, "/")
+}

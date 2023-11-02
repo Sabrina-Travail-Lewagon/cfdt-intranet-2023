@@ -1,7 +1,7 @@
 class ApplicationController < ActionController::Base
   before_action :authenticate_user!
   before_action :configure_permitted_parameters, if: :devise_controller?
-
+  before_action :set_breadcrumbs
   include Pundit::Authorization
 
   # Pundit: allow-list approach
@@ -38,4 +38,13 @@ class ApplicationController < ActionController::Base
     redirect_to categories_path
   end
 
+  def set_breadcrumbs
+    @breadcrumbs = [
+      { name: 'Accueil', path: root_path }
+    ]
+  end
+
+  def add_breadcrumb(name, path)
+    @breadcrumbs << { name: name, path: path }
+  end
 end

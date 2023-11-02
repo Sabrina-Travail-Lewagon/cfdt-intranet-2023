@@ -11,13 +11,18 @@ class Admin::ArticlesController < ApplicationController
     @articles = policy_scope(Article).order('created_at DESC')
     @categories = policy_scope(Category)
     authorize @articles
+    add_breadcrumb('Tous les Articles', admin_articles_path)
   end
 
   def mes_articles
     @articles = current_user.articles.order('created_at DESC')
+    add_breadcrumb('Dashboard', admin_root_path)
+    add_breadcrumb('Mes articles', admin_mes_articles_path)
   end
 
   def new
+    add_breadcrumb('Dashboard', admin_root_path)
+    add_breadcrumb('Ecrire un article', new_admin_article_path)
     @user = current_user
     @article = Article.new
     @categories = policy_scope(Category)
@@ -40,9 +45,13 @@ class Admin::ArticlesController < ApplicationController
   def show
     @article = Article.find(params[:id])
     authorize @article
+    add_breadcrumb('Dashboard', admin_root_path)
+    add_breadcrumb(@article.title, admin_article_path(@article))
   end
 
   def edit
+    add_breadcrumb('Dashboard', admin_root_path)
+    add_breadcrumb(@article.title, edit_admin_article_path(@article))
   end
 
   def update
