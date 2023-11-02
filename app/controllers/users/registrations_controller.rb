@@ -68,6 +68,5 @@ class Users::RegistrationsController < Devise::RegistrationsController
       {name: 'Dashboard', path: admin_root_path},
       {name: 'Mon compte', path: edit_user_registration_path}
     ]
-
   end
 end
