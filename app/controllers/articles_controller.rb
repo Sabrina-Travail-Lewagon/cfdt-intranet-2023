@@ -2,13 +2,16 @@ class ArticlesController < ApplicationController
   before_action :set_article, only: [:show, :edit, :destroy, :update]
   before_action :authenticate_user!
   after_action :verify_authorized
-  layout "admin"
+  layout "standard"
 
   def index
+    add_breadcrumb('Articles', articles_path)
+
     @user = current_user
     @categories = policy_scope(Category)
     if params[:category_id]
       category = Category.find(params[:category_id]) # Définition de la variable category
+      add_breadcrumb(category.nom, articles_path(category_id: category.id)) # Ajout du breadcrumb pour la catégorie
       @categories = policy_scope(Category)
       @articles = policy_scope(Article).where(category_id: category.id).order('created_at DESC')
     else
@@ -18,6 +21,8 @@ class ArticlesController < ApplicationController
       @articles = policy_scope(Article).order('created_at DESC')
     end
     authorize @articles
+    add_breadcrumb "Accueil", root_path
+    add_breadcrumb "Articles", articles_path
   end
 
   def new
@@ -41,9 +46,11 @@ class ArticlesController < ApplicationController
   end
 
   def show
+    add_breadcrumb(@article.title, article_path(@article))
   end
 
   def edit
+    add_breadcrumb('Articles', edit_article_path(@article))
   end
 
   def update
