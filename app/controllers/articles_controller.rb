@@ -2,7 +2,7 @@ class ArticlesController < ApplicationController
   before_action :set_article, only: [:show, :edit, :destroy, :update]
   before_action :authenticate_user!
   after_action :verify_authorized
-  layout "admin"
+  layout "standard"
 
   def index
     @user = current_user
@@ -18,6 +18,8 @@ class ArticlesController < ApplicationController
       @articles = policy_scope(Article).order('created_at DESC')
     end
     authorize @articles
+    add_breadcrumb "Accueil", root_path
+    add_breadcrumb "Articles", articles_path
   end
 
   def new
