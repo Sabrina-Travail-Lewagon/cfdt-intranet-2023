@@ -13,7 +13,8 @@ Rails.application.routes.draw do
   end
   # Partie dashboard
   namespace :admin do
-    root to: 'home#accueil'
+    root to: redirect('/users/edit') # Redirige vers edit_user_registration_path
+    # root to: 'home#accueil'
     get 'articles/mes_articles', to: 'articles#mes_articles', as: 'mes_articles'
     resources :articles
     resources :categories
