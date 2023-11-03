@@ -2,7 +2,6 @@ class Admin::UsersController < ApplicationController
   before_action :authenticate_user!  # Devise helper pour s'assurer que l'utilisateur est connecté
   before_action :set_user, only: [:show, :edit, :update, :destroy]
   before_action :authorize_user, except: [:new, :create, :index]  # autoriser uniquement pour les actions spécifiées
-  before_action :set_breadcrumbs
   layout "admin-bar"
 
   def index
@@ -13,9 +12,6 @@ class Admin::UsersController < ApplicationController
   end
 
   def edit
-    add_breadcrumb('Accueil', root_path)
-    add_breadcrumb('Dashboard', admin_root_path)
-    add_breadcrumb('Mon compte', admin_user_path)
   end
 
 
@@ -75,10 +71,6 @@ class Admin::UsersController < ApplicationController
 
   def user_params
     params.require(:user).permit(:first_name, :last_name, :email, :password, :password_confirmation, :role, :photo)
-  end
-
-  def set_breadcrumbs
-    @breadcrumbs = [['Dashboard', admin_root_path]]
   end
 
 end

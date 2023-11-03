@@ -1,7 +1,7 @@
 <div class="container mt-4">
   <div class="row">
     <h2>Mettre à jour un article</h2>
-    <%= form_with model: @article do |f| %>
+    <%= form_with model: [:admin, @article] do |f| %>
       <div class="form-group">
         <%= f.label :Titre %>
         <%= f.text_field :title %>

@@ -4,7 +4,6 @@ class CategoriesController < ApplicationController
   def index
     @user = current_user
     @categories = policy_scope(Category).order('created_at DESC')
-    add_breadcrumb('Catégories', categories_path)
   end
 
   # pour afficher la liste des articles dans une catégorie donnée
@@ -13,7 +12,6 @@ class CategoriesController < ApplicationController
     @category = Category.find(params[:id])
     authorize @category
     @articles = @category.articles
-    add_breadcrumb('Articles', category_articles_path)
   end
 
   def show
