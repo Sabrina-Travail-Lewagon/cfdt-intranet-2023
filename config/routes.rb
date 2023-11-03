@@ -5,7 +5,6 @@ Rails.application.routes.draw do
     put 'users', to: 'users/registrations#update', as: 'user_registration'
   end
 
-
   root to: "pages#home"
   resources :articles
   resources :categories do
