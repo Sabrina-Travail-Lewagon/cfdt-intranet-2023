@@ -1,0 +1,21 @@
+// Style pour les pièces jointes
+.attachment {
+  padding: 10px;
+  margin-bottom: 20px;
+}
+.attachment h3{
+  font-family: Inter;
+font-size: 18px;
+font-style: normal;
+font-weight: 700;
+line-height: normal;
+}
+
+.attachment li{
+ list-style: none;
+}
+
+.attachment a{
+  font-size: 1rem;
+  color: #e75c21;
+}

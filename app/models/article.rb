@@ -11,5 +11,6 @@ class Article < ApplicationRecord
   # L'option dependent: :destroy garantit que si un article est supprimé,
   # toutes les entrées correspondantes dans article_categories seront également supprimées
   has_rich_text :rich_body
-  #
+  # Ajout de pièces jointes aux article
+  has_many_attached :documents, dependent: :purge_later
 end

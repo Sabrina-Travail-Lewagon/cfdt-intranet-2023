@@ -13,6 +13,16 @@
   text-decoration: none;
 }
 
+.card-articles h1{
+  color: #E75C21;
+  /* Title Niv1 */
+  font-family: Inter;
+  font-size: 26px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+}
+
 .card-publications {
   grid-column: 3 / 5; /* Définit sa position dans la grille */
   grid-row: span 2; /* ou un autre nombre selon vos besoins */

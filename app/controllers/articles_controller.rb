@@ -24,6 +24,7 @@ class ArticlesController < ApplicationController
 
   def new
     @user = current_user
+    @categories = policy_scope(Category)
     @article = Article.new
     authorize @article
     add_breadcrumb('Ecrire un article', new_article_path)
@@ -74,7 +75,7 @@ class ArticlesController < ApplicationController
   end
 
   def params_article
-    params.require(:article).permit(:title, :rich_body, :category_id, images: [])
+    params.require(:article).permit(:title, :rich_body, :category_id, images: [], documents: [])
   end
 
 end

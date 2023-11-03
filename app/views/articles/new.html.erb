@@ -9,13 +9,19 @@
       <div class="form-inputs">
         <%= f.input :title %>
       </div>
-      <div class="form-inputs">
-        <%= f.rich_text_area :rich_body %>
-      </div>
       <div class="form-inputs  mb-4">
         <%= f.label :categories %>
         <%= f.collection_select :category_id, Category.all, :id, :nom %>
       </div>
+      <div class="form-inputs">
+        <%= f.label :documents, "Pièces jointes" %>
+        <%= f.file_field :documents, multiple: true, direct_upload: true, accept: 'application/pdf,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document' %>
+      </div>
+
+      <div class="form-inputs">
+        <%= f.rich_text_area :rich_body %>
+      </div>
+
       <div class="form-actions">
         <%= f.button :submit, "Enregistrer", class: "btn btn-primary" %>
       </div>

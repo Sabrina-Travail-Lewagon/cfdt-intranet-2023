@@ -7,6 +7,16 @@
         <% @articles.each do |article| %>
           <h1><%= article.title %> </h1>
           <p><%= article.rich_body %> </p>
+          <div class="attachment">
+            <% if article.documents.attached? %>
+              <h3>Pièces jointes :</h3>
+              <% article.documents.each do |document| %>
+                <li>
+                  <%= link_to document.filename, url_for(document), target: '_blank' %>
+                </li>
+              <% end %>
+            <% end %>
+          </div>
         <% end %>
       <% end %>
     </div>

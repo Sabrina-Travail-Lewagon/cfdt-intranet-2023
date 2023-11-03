@@ -5,6 +5,20 @@
     <p>Catégories : <%= @article.category.nom %></p>
     <hr>
     <p><%= raw @article.rich_body %></p>
+
+    <% if @article.documents.attached? %>
+      <div>
+        <h3>Pièces jointes :</h3>
+        <ul>
+          <% @article.documents.each do |document| %>
+            <li>
+              <%= link_to document.filename, url_for(document), target: '_blank', rel: 'noopener noreferrer' %>
+            </li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+
     <div>
       <%= link_to 'Edit', edit_article_path(@article) %> |
       <%= link_to 'Back', root_path %>
