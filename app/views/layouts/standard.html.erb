@@ -13,13 +13,14 @@
 
   <body>
     <%= render "shared/navbar" %>
-    <%= render "shared/breadcrumb" %>
     <div class="dashboard-wrapper">
-      <%= render 'shared/admin-bar' %>
+      <%= render "shared/breadcrumb" %>
+      <%= render 'admin/sidebar' %>
       <div class="main-content">
+        <%= render "shared/flashes" %>
         <%= yield %>
       </div>
     </div>
-    <%= render "shared/flashes" %>
+
   </body>
 </html>

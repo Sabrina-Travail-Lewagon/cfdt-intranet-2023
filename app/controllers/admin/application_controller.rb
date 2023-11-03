@@ -2,6 +2,7 @@ class Admin::ApplicationController < ApplicationController
   before_action :authenticate_user!
   include Pundit::Authorization
   before_action :authorize_admin!
+  before_action :set_dashboard_breadcrumbs
 
   private
   def authorize_admin!
@@ -10,5 +11,9 @@ class Admin::ApplicationController < ApplicationController
       redirect_to root_path, alert: "Vous n'avez pas accès à cette section."
     end
   end
-
+  def set_dashboard_breadcrumbs
+    @breadcrumbs = [
+      { name: 'Dashboard', path: admin_root_path }
+    ]
+  end
 end
