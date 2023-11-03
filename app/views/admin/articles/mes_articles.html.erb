@@ -32,6 +32,14 @@
             </div>
             <h1><%= article.title %> </h1>
             <p><%= article.rich_body %> </p>
+            <div class="attachment">
+              <% if article.documents.attached? %>
+                <% article.documents.each do |document| %>
+                  <%= link_to document.filename.to_s, rails_blob_path(document, disposition: "inline"), target: "_blank", class: "btn btn-secondary" %>
+                <% end %>
+                <p><%= pluralize(article.documents.count, 'pièce jointe') %></p>
+              <% end %>
+          </div>
           </div>
         <% end %>
       <% end %>

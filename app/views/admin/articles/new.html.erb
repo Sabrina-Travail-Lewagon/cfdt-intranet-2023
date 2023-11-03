@@ -11,8 +11,8 @@
 	        <%= f.collection_select :category_id, Category.all, :id, :nom, {}, {class: 'form-select' } %>
 	      </div>
         <div class="form-group">
-	        <%= f.label :documents, "Pièces jointes" %>
-	            <%= f.file_field :documents, multiple: true, direct_upload: true, accept: 'application/pdf,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document' %>
+	        <%= f.label :documents, "Pièces jointes", class: 'form-label' %>
+	            <%= f.file_field :documents, multiple: true, direct_upload: true, accept: 'application/pdf,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document', class: 'form-control' %>
 	      </div>
 	      <div class="form-group">
 	        <%= f.label :Contenu %>

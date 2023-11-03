@@ -9,13 +9,12 @@
           <p><%= article.rich_body %> </p>
           <div class="attachment">
             <% if article.documents.attached? %>
-              <h3>Pièces jointes :</h3>
               <% article.documents.each do |document| %>
-                <li>
-                  <%= link_to document.filename, url_for(document), target: '_blank' %>
-                </li>
+                <%= link_to document.filename.to_s, rails_blob_path(document, disposition: "inline"), target: "_blank", class: "btn btn-secondary" %>
               <% end %>
+              <p><%= pluralize(article.documents.count, 'pièce jointe') %></p>
             <% end %>
+
           </div>
         <% end %>
       <% end %>

@@ -17,5 +17,10 @@ line-height: normal;
 
 .attachment a{
   font-size: 1rem;
-  color: #e75c21;
+  color: #fff;
+}
+
+.attachment a.btn-secondary{
+  color: #fff;
+  background-color: #e75c21;
 }

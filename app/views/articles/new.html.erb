@@ -13,9 +13,9 @@
         <%= f.label :categories %>
         <%= f.collection_select :category_id, Category.all, :id, :nom %>
       </div>
-      <div class="form-inputs">
-        <%= f.label :documents, "Pièces jointes" %>
-        <%= f.file_field :documents, multiple: true, direct_upload: true, accept: 'application/pdf,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document' %>
+      <div class="form-inputs mb-4">
+        <%= f.label :documents, "Pièces jointes", class: 'form-label' %>
+        <%= f.file_field :documents, multiple: true, direct_upload: true, accept: 'application/pdf,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document', class: 'form-control' %>
       </div>
 
       <div class="form-inputs">

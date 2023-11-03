@@ -6,18 +6,14 @@
     <hr>
     <p><%= raw @article.rich_body %></p>
 
-    <% if @article.documents.attached? %>
-      <div>
-        <h3>Pièces jointes :</h3>
-        <ul>
-          <% @article.documents.each do |document| %>
-            <li>
-              <%= link_to document.filename, url_for(document), target: '_blank', rel: 'noopener noreferrer' %>
-            </li>
-          <% end %>
-        </ul>
-      </div>
-    <% end %>
+    <div class="attachment">
+      <% if @article.documents.attached? %>
+        <% @article.documents.each do |document| %>
+          <%= link_to document.filename.to_s, rails_blob_path(document, disposition: "inline"), target: "_blank", class: "btn btn-secondary" %>
+        <% end %>
+        <p><%= pluralize(@article.documents.count, 'pièce jointe') %></p>
+      <% end %>
+    </div>
 
     <div>
       <%= link_to 'Edit', edit_article_path(@article) %> |

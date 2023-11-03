@@ -5,6 +5,14 @@
     <p>Catégories : <%= @article.category.nom %></p>
     <hr>
     <p><%= raw @article.rich_body %></p>
+    <div class="attachment">
+      <% if @article.documents.attached? %>
+        <% @article.documents.each do |document| %>
+          <%= link_to document.filename.to_s, rails_blob_path(document, disposition: "inline"), target: "_blank", class: "btn btn-secondary" %>
+        <% end %>
+        <p><%= pluralize(@article.documents.count, 'pièce jointe') %></p>
+      <% end %>
+    </div>
     <div>
       <%= link_to 'Edit', edit_admin_article_path(@article) %> |
       <%= link_to 'Back', admin_mes_articles_path %>
