@@ -2,7 +2,7 @@ class ArticlesController < ApplicationController
   before_action :set_article, only: [:show, :edit, :destroy, :update]
   before_action :authenticate_user!
   after_action :verify_authorized
-  layout "admin"
+  layout "standard"
 
   def index
     @user = current_user
