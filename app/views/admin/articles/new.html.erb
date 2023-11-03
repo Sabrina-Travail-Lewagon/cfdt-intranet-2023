@@ -1,7 +1,7 @@
 	<div class="container mt-4">
 	  <div class="row">
 	    <h2>Rédiger un article</h2>
-	    <%= form_with model: @article, class: 'my-4' do |f| %>
+	    <%= form_with model: [:admin, @article], class: 'my-4' do |f| %>
 	      <div class="form-group">
 	        <%= f.label :Titre %>
 	        <%= f.text_field :title, class: 'form-control' %>

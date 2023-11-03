@@ -30,7 +30,9 @@ class Admin::ArticlesController < ApplicationController
     @article.user = current_user # Pour éviter l'erreur l'user n'existe pas
     authorize @article # Vérifie l'autorisation via Pundit
     if @article.save
-      redirect_to admin_articles_path(@article), notice: 'Article créé!'
+      # redirect_to admin_article_path(@article), notice: 'Article créé!'
+      Rails.logger.info "Article sauvegardé avec l'ID: #{@article.id}"
+      redirect_to url_for([:admin, @article]), notice: 'Article créé!'
     else
       flash.now[:alert] = "Impossible de créer l'article."
       render :new, status: :unprocessable_entity
@@ -47,7 +49,7 @@ class Admin::ArticlesController < ApplicationController
 
   def update
     if @article.update(params_article)
-      redirect_to admin_article_path(@article), notice: 'Article mis à jour.'
+      redirect_to  admin_mes_articles_path(@article), notice: 'Article mis à jour.'
     else
       redirect_to admin_path, :alert => "Impossible de mettre à jour l'article."
     end
@@ -55,7 +57,7 @@ class Admin::ArticlesController < ApplicationController
 
   def destroy
     @article.destroy
-    redirect_to admin_articles_path, notice: 'Article a bien été supprimé.'
+    redirect_to  admin_mes_articles_path, notice: 'Article a bien été supprimé.'
   end
 
   private
