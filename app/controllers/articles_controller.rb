@@ -12,12 +12,12 @@ class ArticlesController < ApplicationController
       category = Category.find(params[:category_id]) # Définition de la variable category
       @categories = policy_scope(Category)
       add_breadcrumb(category.nom, articles_path(category_id: category.id)) # Ajout du breadcrumb pour la catégorie
-      @articles = policy_scope(Article).where(category_id: category.id).order('created_at DESC')
+      @pagy, @articles = pagy(policy_scope(Article).where(category_id: category.id).order('created_at DESC'))
     else
       # Policy_scope  utilisée pour appliquer la politique de portée (policy scoping) aux collections d'enregistrements
        # policy_scope(Article) applique la politique de portée à la collection d'articles,
       # en fonction des autorisations définies dans votre politique ArticlePolicy
-      @articles = policy_scope(Article).order('created_at DESC')
+      @pagy, @articles = pagy(policy_scope(Article).order('created_at DESC'))
     end
     authorize @articles
   end

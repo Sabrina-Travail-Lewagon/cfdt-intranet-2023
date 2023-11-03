@@ -16,7 +16,8 @@ class Admin::ArticlesController < ApplicationController
   end
 
   def mes_articles
-    @articles = current_user.articles.order('created_at DESC')
+    # @articles = current_user.articles.order('created_at DESC')
+    @pagy, @articles = pagy(current_user.articles.order('created_at DESC'))
     add_breadcrumb('Dashboard', admin_root_path)
     add_breadcrumb('Mes articles', admin_mes_articles_path)
   end
