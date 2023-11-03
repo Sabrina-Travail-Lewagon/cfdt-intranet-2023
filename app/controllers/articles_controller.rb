@@ -7,9 +7,11 @@ class ArticlesController < ApplicationController
   def index
     @user = current_user
     @categories = policy_scope(Category)
+    add_breadcrumb('Articles', articles_path)
     if params[:category_id]
       category = Category.find(params[:category_id]) # Définition de la variable category
       @categories = policy_scope(Category)
+      add_breadcrumb(category.nom, articles_path(category_id: category.id)) # Ajout du breadcrumb pour la catégorie
       @articles = policy_scope(Article).where(category_id: category.id).order('created_at DESC')
     else
       # Policy_scope  utilisée pour appliquer la politique de portée (policy scoping) aux collections d'enregistrements
@@ -24,6 +26,7 @@ class ArticlesController < ApplicationController
     @user = current_user
     @article = Article.new
     authorize @article
+    add_breadcrumb('Ecrire un article', new_article_path)
   end
 
   def create
@@ -41,9 +44,11 @@ class ArticlesController < ApplicationController
   end
 
   def show
+    add_breadcrumb(@article.title, article_path(@article))
   end
 
   def edit
+    add_breadcrumb(@article.title, edit_article_path(@article))
   end
 
   def update
