@@ -66,7 +66,7 @@ class Admin::ArticlesController < ApplicationController
 
   def destroy
     @article.destroy
-    redirect_to  admin_mes_articles_path, notice: 'Article a bien été supprimé.'
+    redirect_to  admin_mes_articles_path, notice: 'L\'article a bien été supprimé.'
   end
 
   private

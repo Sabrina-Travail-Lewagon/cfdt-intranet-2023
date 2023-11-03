@@ -1,9 +1,13 @@
 <div class="container mt-4">
   <div class="row">
     <div class="card-articles">
-      <% @articles.each do |article| %>
-        <h1><%= article.title %> </h1>
-        <p><%= article.rich_body %> </p>
+      <% if @articles.empty? %>
+        <p>Il n'y a pas encore d'articles.</p>
+      <% else %>
+        <% @articles.each do |article| %>
+          <h1><%= article.title %> </h1>
+          <p><%= article.rich_body %> </p>
+        <% end %>
       <% end %>
     </div>
   </div>
