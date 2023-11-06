@@ -6,7 +6,9 @@ Rails.application.routes.draw do
   end
 
   root to: "pages#home"
-  resources :articles
+  resources :articles do
+    resources :comments, only: [:create, :destroy]
+  end
   resources :categories do
     resources :articles
   end
