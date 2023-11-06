@@ -15,7 +15,60 @@
       <% end %>
     </div>
 
-    <div>
+    <!-- Formulaire pour un nouveau commentaire -->
+    <div class="cards-commentaire">
+      <div class="card-body">
+        <h5 class="card-title">Écrivez votre commentaire</h5>
+        <%= simple_form_for([@article, @comment], html: { class: "form-comment"}) do |form| %>
+          <div class="form-group">
+            <%= form.text_area :content, label: false, placeholder: 'Commentaire', class: "form-control", rows: 4 %>
+          </div>
+          <div class="form-group text-right">
+            <%= form.button :submit, "ENVOYER", class: 'btn btn-warning' %>
+          </div>
+        <% end %>
+      </div>
+    </div>
+
+        <!-- Affichage des commentaires existants -->
+    <% if @comment&.errors&.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(@comment.errors.count, "erreur") %> a empêché ce commentaire d'être sauvegardé :</h2>
+        <ul>
+          <% @comment.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    <div class="commentaire-section mt-4">
+      <% @comments.each do |comment| %>
+        <div class="commentaire-card">
+          <div class="card-body">
+            <div class="commentaire-header">
+              <% if current_user.photo.attached? %>
+              	<%= cl_image_tag comment.user.photo.key, transformation: { width: 100, height: 100, crop: "fill" }, class: "avatar" %>
+              <% else %>
+	              <%= image_tag "default-avatar-user-.jpg", class: "avatar" %>
+              <% end %>
+              <h6 class="commentaire-author"><%= comment.user.first_name %></h6>
+            </div>
+            <p class="commentaire-content"><%= comment.content %></p>
+            <div class="commentaire-footer">
+              <% if policy(comment).destroy? %>
+                <%= link_to 'Supprimer', [comment.article, comment], data: {turbo_method: :delete, turbo_confirm: "Etes vous sure ?", :method=>'delete'}, class: "delete-commentaire" %>
+              <% end %>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    </div>
+
+
+
+    <!-- Navigation -->
+    <div class="mt-4">
       <%= link_to 'Edit', edit_article_path(@article) %> |
       <%= link_to 'Back', root_path %>
       <hr>

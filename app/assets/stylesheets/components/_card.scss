@@ -206,6 +206,87 @@ i.fa-sharp.fa-solid.fa-trash {
   line-height: 1.5;
 }
 
+// Partie commentaire
+
+.cards-commentaire{
+  border-radius: 12px;
+  border: 1px solid #EAEAEA!important;
+  background: #FFF;
+  box-shadow: 0px 0px 24px 0px rgba(0, 0, 0, 0.03);
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 28px 30px;
+}
+
+.commentaire-section {
+  display: flex;
+  flex-wrap: wrap; /* Permet aux éléments de passer à la ligne suivante */
+  gap: 16px; /* Espacement entre les cartes de commentaires */
+}
+.commentaire-card {
+  border: 1px solid #EAEAEA;
+  padding: 16px;
+  border-radius: 20px;
+  background: #FFF;
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+  margin-bottom: 16px; /* Espacement entre les cartes de commentaires, si nécessaire */
+  padding: 38px 52px;
+  gap: 30px 14px;
+  flex-wrap: wrap;
+  display: flex;
+  flex: 1 1 calc(50% - 20px); /* Prend la moitié de l'espace disponible, soustrait la valeur de l'espacement */
+}
+
+.card-title{
+  margin-bottom: 17px;
+  color: #576074;
+  font-family: Roboto;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 34px; /* 188.889% */
+}
+
+.commentaire-header {
+  display: flex;
+  align-items: center;
+  gap: 8px; /* Espacement entre l'avatar et le nom */
+}
+
+.commentaire-avatar {
+  width: 40px; /* Taille de l'avatar */
+  height: 40px; /* Taille de l'avatar */
+  border-radius: 50%; /* Cercle parfait pour l'avatar */
+}
+
+.commentaire-author {
+  font-size: 1rem;
+  font-weight: bold;
+  margin-bottom: 0; /* Enlève la marge sous le nom de l'auteur */
+}
+
+.comment-content {
+  font-size: 0.9rem;
+  margin-top: 8px; /* Espacement entre le titre et le contenu */
+}
+
+.commentaire-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 12px; /* Espacement entre le contenu et le pied de page */
+}
+
+.commentaire-count {
+  font-size: 0.8rem;
+  color: #666;
+}
+
+.delete-commentaire {
+  color: #F00;
+  font-size: 0.8rem;
+}
 
 // Smallest device
 @media (max-width: 575px) {

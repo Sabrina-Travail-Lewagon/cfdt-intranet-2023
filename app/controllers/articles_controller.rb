@@ -46,6 +46,8 @@ class ArticlesController < ApplicationController
 
   def show
     add_breadcrumb(@article.title, article_path(@article))
+    @comments = @article.comments.order('created_at DESC')
+    @comment = Comment.new  # Initialisation d'une nouvelle instance de commentaire pour le formulaire
   end
 
   def edit
