@@ -5,7 +5,8 @@
         <p>Il n'y a pas encore d'articles.</p>
       <% else %>
         <% @articles.each do |article| %>
-          <h1><%= article.title %> </h1>
+          <!-- Ici on ajoute le lien sur le titre -->
+          <%= link_to article.title, article_path(article), class: "article-title" %>
           <p><%= article.rich_body %> </p>
           <div class="attachment">
             <% if article.documents.attached? %>
