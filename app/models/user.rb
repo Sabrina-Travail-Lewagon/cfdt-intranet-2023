@@ -16,6 +16,7 @@ class User < ApplicationRecord
   # Ajout photo a l'utilisateur
   has_one_attached :photo
   has_many :articles
+  has_many :comments
 
   private
   # On va mettre le role user par défaut
