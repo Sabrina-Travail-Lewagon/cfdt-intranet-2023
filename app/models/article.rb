@@ -13,4 +13,5 @@ class Article < ApplicationRecord
   has_rich_text :rich_body
   # Ajout de pièces jointes aux article
   has_many_attached :documents, service: :local, dependent: :purge_later
+  has_many :comments, dependent: :destroy
 end
