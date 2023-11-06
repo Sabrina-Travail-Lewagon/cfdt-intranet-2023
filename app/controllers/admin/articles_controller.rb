@@ -58,12 +58,35 @@ class Admin::ArticlesController < ApplicationController
   end
 
   def update
-    if @article.update(params_article)
-      redirect_to  admin_mes_articles_path(@article), notice: 'Article mis à jour.'
-    else
-      redirect_to admin_path, :alert => "Impossible de mettre à jour l'article."
+    # Début d'une transaction pour s'assurer que toutes les opérations sont atomiques
+    ActiveRecord::Base.transaction do
+      # Mise à jour de l'article avec les nouveaux attributs à l'exception des pièces jointes
+      if @article.update(params_article.except(:documents, :existing_document_ids))
+        # Gestion des documents existants pour la suppression
+        if params[:article][:existing_document_ids].present?
+          params[:article][:existing_document_ids].reject(&:blank?).each do |attachment_id|
+            @article.documents.find(attachment_id).purge_later
+          end
+        end
+
+        # Ajout des nouveaux documents si présents
+        if params[:article][:documents].present?
+          @article.documents.attach(params[:article][:documents])
+        end
+
+        redirect_to admin_mes_articles_path, notice: 'Article mis à jour avec succès.'
+        # Si la transaction est réussie, elle sera automatiquement commitée à ce stade.
+      else
+        raise ActiveRecord::Rollback, "Article n'a pas pu être mis à jour"
+      end
     end
+  rescue ActiveRecord::Rollback => exception
+    # Si une exception ActiveRecord::Rollback est levée, affiche les erreurs
+    render :edit, alert: "Impossible de mettre à jour l'article: #{exception.message}"
   end
+
+
+
 
   def destroy
     @article.destroy
@@ -92,4 +115,5 @@ class Admin::ArticlesController < ApplicationController
       redirect_to root_path, alert: "Vous n'avez pas les autorisations nécessaires pour accéder à cette page."
     end
   end
+
 end

@@ -12,9 +12,8 @@
               <% article.documents.each do |document| %>
                 <%= link_to document.filename.to_s, rails_blob_path(document, disposition: "inline"), target: "_blank", class: "btn btn-secondary" %>
               <% end %>
-              <p><%= pluralize(article.documents.count, 'pièce jointe') %></p>
+              <p><%= pluralize(article.documents.count, 'pièce.s jointe.s') %></p>
             <% end %>
-
           </div>
         <% end %>
       <% end %>
