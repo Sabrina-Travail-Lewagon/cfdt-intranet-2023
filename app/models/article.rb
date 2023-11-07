@@ -1,7 +1,16 @@
 class Article < ApplicationRecord
   belongs_to :user
   belongs_to :category
+  include PgSearch::Model
 
+  pg_search_scope :search_by_title_and_content,
+    against: [:title],
+    associated_against: {
+      rich_text_rich_body: [:body]  # Utilisez :rich_text ici pour correspondre à la configuration par défaut d'Action Text
+    },
+    using: {
+      tsearch: { prefix: true }
+    }
   # un article doit toujours être associé à un utilisateur lors de sa création ou de sa mise à jour:
   validates :user, presence: true
   # Ajout activeStorage aux articles pour pouvoir faciliter
