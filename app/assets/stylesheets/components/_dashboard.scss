@@ -12,6 +12,12 @@
   margin: 40px;
 }
 
+.btn-sidebar .img-category {
+  width: 100%; /* ensures the image takes up the full container width */
+  height: auto; /* maintains the aspect ratio */
+  display: block; /* prevents default inline behavior which can cause spacing issues */
+}
+
 .dashboard-sidebar img {
   height: 100%; /* force la hauteur de l'image à remplir entièrement sa cellule */
   object-fit: cover; /* s'assure que l'image couvre entièrement la cellule sans être étirée */
