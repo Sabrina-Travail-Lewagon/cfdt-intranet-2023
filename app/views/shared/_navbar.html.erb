@@ -9,6 +9,14 @@
     </button>
 
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <div class="container-fluid">
+        <%= form_with(url: articles_path, method: :get, local: true, class: 'd-flex') do |form| %>
+          <%= form.text_field :search, value: params[:search], placeholder: "Rechercher des articles", class: 'form-input' %>
+          <%= button_tag(type: 'submit', class: 'btn btn-success') do %>
+            <i class="fa fa-search"></i>
+          <% end %>
+        <% end %>
+      </div>
       <ul class="navbar-nav me-auto">
         <% if user_signed_in? %>
           <li class="nav-item active">
