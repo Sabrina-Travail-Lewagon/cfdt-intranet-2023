@@ -95,3 +95,43 @@ label {
   margin-bottom: 8px;
   display: block;
 }
+
+/* Formulaire de recherche */
+.search-form {
+  max-width: 500px; /* or your preferred width */
+}
+
+.input-group .form-control {
+  border-right: 0; /* remove right border from input field */
+}
+
+.input-group .btn-outline-secondary {
+  background-color: #FFFFFF; /* match background color with your input field */
+  border-left: 0; /* remove left border from button */
+
+}
+
+/* Style the icon inside the button */
+.input-group .btn i {
+  color: #333333; /* color of the search icon */
+
+}
+
+/* Adjustments for no border and rounded corners */
+.input-group .form-control, .input-group .btn {
+  border-color: #CCCCCC; /* color of the border */
+  border-radius: 55.056px;
+  border: 1.059px solid #DADADA;
+  background: #FFF;
+}
+
+/* Style focus and hover states */
+.input-group .form-control:focus, .input-group .btn:focus {
+  box-shadow: none; /* Remove default focus shadow */
+  border-color: #666666; /* color of the border on focus */
+}
+
+/* Ensure the input group addons maintain the same height as the form-control */
+.input-group .btn {
+  padding: 0 12px;
+}
