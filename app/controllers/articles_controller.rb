@@ -8,16 +8,16 @@ class ArticlesController < ApplicationController
     @user = current_user
     @categories = policy_scope(Category)
     add_breadcrumb('Articles', articles_path)
+    scope = policy_scope(Article) # On définit une base de scope pour tous les cas.
     if params[:category_id]
       category = Category.find(params[:category_id]) # Définition de la variable category
-      @categories = policy_scope(Category)
       add_breadcrumb(category.nom, articles_path(category_id: category.id)) # Ajout du breadcrumb pour la catégorie
-      @pagy, @articles = pagy(policy_scope(Article).where(category_id: category.id).order('created_at DESC'))
+      @pagy, @articles = pagy(scope.where(category_id: category.id).order('created_at DESC'))
+      #Ajout de la recherche
+    elsif params[:search].present?
+      @pagy, @articles = pagy(scope.search_by_title_and_content(params[:search])) # Recherche filtrée
     else
-      # Policy_scope  utilisée pour appliquer la politique de portée (policy scoping) aux collections d'enregistrements
-       # policy_scope(Article) applique la politique de portée à la collection d'articles,
-      # en fonction des autorisations définies dans votre politique ArticlePolicy
-      @pagy, @articles = pagy(policy_scope(Article).order('created_at DESC'))
+      @pagy, @articles = pagy(scope.order('created_at DESC')) # Liste de tous les articles
     end
     authorize @articles
   end
@@ -70,7 +70,7 @@ class ArticlesController < ApplicationController
   private
 
   def set_article
-    @article = Article.find(params[:id])
+    @article = Article.includes(:images, :documents).find(params[:id])
     @user = current_user # Pour que le header puisse s'afficher avec le login
     authorize @article
     @categories = policy_scope(Category)
