@@ -23,4 +23,23 @@ class Article < ApplicationRecord
   # Ajout de pièces jointes aux article
   has_many_attached :documents, service: :local, dependent: :purge_later
   has_many :comments, dependent: :destroy
+
+  # Méthode de recherche qui inclut le surlignage
+  def self.search_with_highlight(query)
+    # Utilisez find_by_sql pour exécuter une requête SQL personnalisée
+    find_by_sql([<<-SQL, query: "%#{sanitize_sql_like(query)}%"])
+      SELECT
+        articles.*,
+        ts_headline('english', articles.title, plainto_tsquery(:query)) AS title_highlight,
+        ts_headline('english', action_text_rich_texts.body, plainto_tsquery(:query)) AS content_highlight
+      FROM
+        articles
+      INNER JOIN
+        action_text_rich_texts ON action_text_rich_texts.record_id = articles.id
+      WHERE
+        action_text_rich_texts.record_type = 'Article' AND
+        articles.title @@ plainto_tsquery(:query) OR
+        action_text_rich_texts.body @@ plainto_tsquery(:query)
+    SQL
+  end
 end
