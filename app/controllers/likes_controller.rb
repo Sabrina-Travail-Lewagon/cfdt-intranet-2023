@@ -1,24 +1,31 @@
 class LikesController < ApplicationController
   before_action :authenticate_user!
+  before_action :set_article
 
   def create
-    @article = Article.find(params[:article_id])
-    @rating = @article.ratings.new(rating_params)
-    @rating.user = current_user
-
-    if @rating.save
-      redirect_to @article, notice: 'J\'aime créé avec succés.'
+    like = @article.likes.new(user: current_user)
+    if like.save
+      flash[:notice] = 'Vous avez liké cet article.'
     else
-      redirect_to @article, alert: 'Il y a eu une erreur.'
+      flash[:alert] = 'Vous ne pouvez pas dé-liker cet article.'
     end
+    redirect_to @article
   end
 
   def destroy
+    like = @article.likes.find_by(user_id: current_user.id)
+    if like
+      like.destroy
+      flash[:notice] = 'Vous avez unliké cet article.'
+    else
+      flash[:alert] = 'Vous ne pouvez pas déliké un article que vous n\'avez pas liké'
+    end
+    redirect_to @article
   end
 
   private
 
-  def rating_params
-    params.require(:rating).permit(:score)
+  def set_article
+    @article = Article.find(params[:article_id])
   end
 end

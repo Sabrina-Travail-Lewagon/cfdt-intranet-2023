@@ -26,4 +26,8 @@ class Article < ApplicationRecord
 
   has_many :likes
   has_many :liking_users, through: :likes, source: :user
+  # Comptabilisation des likes
+  def like_count
+    likes.count
+  end
 end

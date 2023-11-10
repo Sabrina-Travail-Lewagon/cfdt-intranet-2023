@@ -10,6 +10,7 @@ Rails.application.routes.draw do
   root to: "pages#home"
   resources :articles do
     resources :comments, only: [:create, :destroy]
+    resources :likes, only: [:create, :destroy]
   end
   resources :categories do
     resources :articles
