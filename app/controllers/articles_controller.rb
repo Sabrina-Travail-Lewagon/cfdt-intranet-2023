@@ -8,14 +8,17 @@ class ArticlesController < ApplicationController
     @user = current_user
     @categories = policy_scope(Category)
     add_breadcrumb('Articles', articles_path)
+     # Initialisez @search_performed à false
+     @search_performed = false
     scope = policy_scope(Article) # On définit une base de scope pour tous les cas.
     if params[:category_id]
       category = Category.find(params[:category_id]) # Définition de la variable category
       add_breadcrumb(category.nom, articles_path(category_id: category.id)) # Ajout du breadcrumb pour la catégorie
       @pagy, @articles = pagy(scope.where(category_id: category.id).order('created_at DESC'))
-      #Ajout de la recherche
+      # Ajout de la recherche
     elsif params[:search].present?
-      @pagy, @articles = pagy(scope.search_by_title_and_content(params[:search])) # Recherche filtrée
+       # Recherche et surlignage
+       @pagy, @articles = pagy(Article.search_and_highlight(params[:search]))
     else
       @pagy, @articles = pagy(scope.order('created_at DESC')) # Liste de tous les articles
     end
