@@ -288,6 +288,20 @@ i.fa-sharp.fa-solid.fa-trash {
   font-size: 0.8rem;
 }
 
+// Partie Like
+.card-like-section {
+  flex-shrink: 0; /* empêche la section des likes de se réduire */
+  flex-direction: column;
+  justify-content: center;
+}
+
+.article-header {
+  display: flex;
+  justify-content: space-between; /* aligne le titre et la section like sur les côtés opposés */
+  align-items: center; /* centre-les verticalement */
+  width: 100%; /* assurez-vous que le conteneur prend toute la largeur */
+}
+
 // Smallest device
 @media (max-width: 575px) {
   .cards {

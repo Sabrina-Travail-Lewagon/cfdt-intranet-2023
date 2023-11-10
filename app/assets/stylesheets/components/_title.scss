@@ -11,3 +11,8 @@
 .article-title:hover{
   color:$jaune;
 }
+
+.article-title {
+  flex-grow: 1; /* permet au titre de remplir l'espace disponible */
+  margin-right: 10px; /* optionnel: ajoute un peu d'espace entre le titre et les likes */
+}

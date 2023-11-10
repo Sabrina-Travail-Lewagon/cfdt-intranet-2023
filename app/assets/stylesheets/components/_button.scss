@@ -198,3 +198,23 @@ input.btn{
   background-color: #555;
   color: #FFF;
 }
+
+
+// Partie Like
+.like-button {
+  background: none;
+  border: none;
+  color: inherit; /* ou toute autre couleur selon le thème de votre site */
+  cursor: pointer;
+  padding: 0; /* retire les espacements internes */
+  margin: 0; /* retire les marges */
+}
+
+.like-button i {
+  color: #E75C21; /* couleur du cœur pour indiquer un "like" */
+}
+
+.button_to {
+  display: flex;
+  justify-content: center;
+}

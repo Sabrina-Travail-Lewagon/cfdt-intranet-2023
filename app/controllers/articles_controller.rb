@@ -70,7 +70,7 @@ class ArticlesController < ApplicationController
   private
 
   def set_article
-    @article = Article.includes(:images, :documents).find(params[:id])
+    @article = Article.find(params[:id])
     @user = current_user # Pour que le header puisse s'afficher avec le login
     authorize @article
     @categories = policy_scope(Category)
