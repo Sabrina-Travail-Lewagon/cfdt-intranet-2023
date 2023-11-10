@@ -8,6 +8,22 @@
           <!-- Ici on ajoute le lien sur le titre -->
           <%= link_to article.title, article_path(article), class: "article-title" %>
           <p><%= article.rich_body %> </p>
+          <!-- Affichez le compteur de likes ici -->
+          <div class="d-flex justify-content-between align-items-center">
+            <span><%= pluralize(article.likes.count, 'Like') %></span>
+            <!-- Bouton like/unlike -->
+            <% if user_signed_in? %>
+              <% like = current_user.likes.find_by(article: article) %>
+              <% if like %>
+                <%= button_to article_like_path(article, like), method: :delete, class: 'btn btn-link p-0', remote: true do %>
+                  <i class="fa-solid fa-heart"></i>
+                <% end %>
+              <% else %>
+                <%= button_to article_likes_path(article), method: :post, class: 'btn btn-link p-0', remote: true do %>
+                  <i class="fa-regular fa-heart"></i>
+                <% end %>
+              <% end %>
+            <% end %>
           <div class="attachment">
             <% if article.documents.attached? %>
               <% article.documents.each do |document| %>
@@ -15,6 +31,7 @@
               <% end %>
               <p><%= pluralize(article.documents.count, 'pièce.s jointe.s') %></p>
             <% end %>
+          </div>
           </div>
         <% end %>
       <% end %>
