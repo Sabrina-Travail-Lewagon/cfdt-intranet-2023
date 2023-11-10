@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'likes/create'
+  get 'likes/destroy'
   devise_for :users, skip: [:registrations]
   as :user do
     get 'users/edit', to: 'users/registrations#edit', as: 'edit_user_registration'
