@@ -11,6 +11,18 @@ class Article < ApplicationRecord
     using: {
       tsearch: { prefix: true }
     }
+  # Méthode pour surligner les mots de la recherche dans les résultats
+  def self.search_and_highlight(query)
+    # Effectuer la recherche
+    results = search_by_title_and_content(query)
+
+    # Surligner les mots dans les résultats
+    results.each do |result|
+      result.title = ApplicationController.helpers.highlight(result.title, query)
+      result.rich_body = ApplicationController.helpers.highlight(result.rich_body.to_plain_text, query)
+    end
+    results
+  end
   # un article doit toujours être associé à un utilisateur lors de sa création ou de sa mise à jour:
   validates :user, presence: true
   # Ajout activeStorage aux articles pour pouvoir faciliter
@@ -23,23 +35,4 @@ class Article < ApplicationRecord
   # Ajout de pièces jointes aux article
   has_many_attached :documents, service: :local, dependent: :purge_later
   has_many :comments, dependent: :destroy
-
-  # Méthode de recherche qui inclut le surlignage
-  def self.search_with_highlight(query)
-    # Utilisez find_by_sql pour exécuter une requête SQL personnalisée
-    find_by_sql([<<-SQL, query: "%#{sanitize_sql_like(query)}%"])
-      SELECT
-        articles.*,
-        ts_headline('english', articles.title, plainto_tsquery(:query)) AS title_highlight,
-        ts_headline('english', action_text_rich_texts.body, plainto_tsquery(:query)) AS content_highlight
-      FROM
-        articles
-      INNER JOIN
-        action_text_rich_texts ON action_text_rich_texts.record_id = articles.id
-      WHERE
-        action_text_rich_texts.record_type = 'Article' AND
-        articles.title @@ plainto_tsquery(:query) OR
-        action_text_rich_texts.body @@ plainto_tsquery(:query)
-    SQL
-  end
 end
