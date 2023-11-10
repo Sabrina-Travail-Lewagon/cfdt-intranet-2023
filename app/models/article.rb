@@ -23,4 +23,7 @@ class Article < ApplicationRecord
   # Ajout de pièces jointes aux article
   has_many_attached :documents, service: :local, dependent: :purge_later
   has_many :comments, dependent: :destroy
+
+  has_many :likes
+  has_many :liking_users, through: :likes, source: :user
 end

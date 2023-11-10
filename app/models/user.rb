@@ -17,6 +17,9 @@ class User < ApplicationRecord
   has_one_attached :photo
   has_many :articles
   has_many :comments
+  # Partie J'aime
+  has_many :likes
+  has_many :liked_articles, through: :likes, source: :article
 
   private
   # On va mettre le role user par défaut
