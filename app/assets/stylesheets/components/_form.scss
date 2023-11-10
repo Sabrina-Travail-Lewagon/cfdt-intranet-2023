@@ -135,3 +135,22 @@ label {
 .input-group .btn {
   padding: 0 12px;
 }
+
+/* Style pour le champ de texte lorsqu'il est sélectionné (focus) */
+.search-input:focus {
+  border-color: #F4B400!important; /* Change the border color */
+  box-shadow: 0 0 0 0.2rem rgba(231, 92, 33, 0.25)!important; /* Optional: adds a glow effect */
+  background-color: #F4B400;
+}
+
+/* Style pour le bouton lorsqu'il est sélectionné (focus) */
+.btn-outline-secondary:focus {
+  border-color: #F4B400!important;
+  box-shadow: 0 0 0 0.2rem rgba(231, 92, 33, 0.25);
+}
+
+/* Changement de la couleur de fond lors du survol */
+.search-input:hover,
+.btn-outline-secondary:hover {
+  background-color: #F4B400!important;
+}
