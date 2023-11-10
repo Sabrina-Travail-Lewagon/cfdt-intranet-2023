@@ -11,13 +11,13 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <div class="container-fluid">
         <%= form_with(url: articles_path, method: :get, local: true, class: 'd-flex search-form') do |form| %>
-  <div class="input-group">
-    <%= form.text_field :search, value: params[:search], placeholder: "Rechercher des articles", class: 'form-control search-input' %>
-    <button class="btn btn-outline-secondary" type="submit">
-      <i class="fa fa-search"></i>
-    </button>
-  </div>
-<% end %>
+          <div class="input-group">
+            <%= form.text_field :search, value: params[:search], placeholder: "Rechercher des articles", class: 'form-control search-input' %>
+            <button class="btn btn-outline-secondary" type="submit">
+              <i class="fa fa-search"></i>
+            </button>
+          </div>
+        <% end %>
 
       </div>
       <ul class="navbar-nav me-auto">
