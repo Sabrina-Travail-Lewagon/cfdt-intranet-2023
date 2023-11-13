@@ -11,7 +11,6 @@
             <!-- Affichez le compteur de likes ici -->
               <!-- Section like en haut -->
               <div class="card-like-section">
-                <span class="like-count"><%= pluralize(article.likes.count, 'Like.s') %></span>
                 <% if user_signed_in? %>
                   <% like = current_user.likes.find_by(article: article) %>
                   <% if like %>
@@ -23,6 +22,7 @@
                       <i class="fa-regular fa-heart"></i>
                     <% end %>
                   <% end %>
+                  <span class="like-count"><%= article.likes.count %></span>
                 <% end %>
               </div>
           </div>

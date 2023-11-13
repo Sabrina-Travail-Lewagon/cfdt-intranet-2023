@@ -291,8 +291,21 @@ i.fa-sharp.fa-solid.fa-trash {
 // Partie Like
 .card-like-section {
   flex-shrink: 0; /* empêche la section des likes de se réduire */
-  flex-direction: column;
+  display: flex;
+  flex-direction: row;
   justify-content: center;
+  align-content: center !important;
+}
+// Partie compteur
+.like-count{
+  margin-left: 0.5rem;
+  font-size: 1.2rem;
+  color: #e75C21;
+}
+
+.button_to i{
+  font-size: 1.2rem;
+  color: #e75C21;
 }
 
 .article-header {
