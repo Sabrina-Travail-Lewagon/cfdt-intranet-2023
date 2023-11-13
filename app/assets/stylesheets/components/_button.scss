@@ -217,4 +217,19 @@ input.btn{
 .button_to {
   display: flex;
   justify-content: center;
+  align-items: center;
+}
+
+/* Partie commentaire sur index */
+.comment-button {
+  background: none;
+  border: none;
+  color: inherit; /* ou toute autre couleur selon le thème de votre site */
+  cursor: pointer;
+  padding: 0; /* retire les espacements internes */
+  margin: 0; /* retire les marges */
+}
+
+.comment-button i {
+  color: #E75C21; /* couleur du cœur pour indiquer un "like" */
 }

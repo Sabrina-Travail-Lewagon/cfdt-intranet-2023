@@ -24,6 +24,22 @@
                   <% end %>
                   <span class="like-count"><%= article.likes.count %></span>
                 <% end %>
+                </div>
+                <div class="card-comment-section">
+                <% if user_signed_in? %>
+                  <% comment = current_user.comments.find_by(article: article) %>
+                  <% if comment %>
+                    <%= button_to article_path(article), method: :get, class: 'comment-button' do %>
+                      <i class="fa-solid fa-comment"></i>
+                    <% end %>
+                  <% else %>
+                    <div class="button_to">
+                      <i class="fa-regular fa-comment"></i>
+                    </div>
+
+                  <% end %>
+                  <span class="comment-count"><%= article.comments.count %></span>
+                <% end %>
               </div>
           </div>
           <p><%= article.rich_body %> </p>
