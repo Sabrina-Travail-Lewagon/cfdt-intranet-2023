@@ -233,3 +233,17 @@ input.btn{
 .comment-button i {
   color: #E75C21; /* couleur du cœur pour indiquer un "like" */
 }
+
+/* Partie Compteur de vues sur index */
+.countviews-button {
+  background: none;
+  border: none;
+  color: inherit; /* ou toute autre couleur selon le thème de votre site */
+  cursor: pointer;
+  padding: 0; /* retire les espacements internes */
+  margin: 0; /* retire les marges */
+}
+
+.countviews-button i {
+  color: #E75C21; /* couleur du cœur pour indiquer un "like" */
+}

@@ -334,6 +334,37 @@ i.fa-sharp.fa-solid.fa-trash {
 .button_to .fa-comment{
   color: #C0D113;
 }
+/* Partie compteur de vue sur index */
+.countviews-count {
+  margin-left: 0.2rem;
+  font-size: 1.2rem;
+  color: $bleu;
+}
+
+.card-countviews-section{
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-content: center !important;
+  margin-right: 1rem;
+}
+
+.countviews-count{
+  margin-left: 0.2rem;
+  font-size: 1.2rem;
+  color: $bleu;
+}
+
+.button_to .fa-eye{
+  color: $bleu;
+}
+
+i.fa-solid.fa-eye {
+  color: $bleu;
+  /* Couleur bleue pour le bouton Vue */
+}
+
 
 // Smallest device
 @media (max-width: 575px) {

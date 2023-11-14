@@ -8,6 +8,21 @@
           <div class="article-header">
               <!-- Ici on ajoute le lien sur le titre -->
             <%= link_to article.title, article_path(article), class: "article-title" %>
+            <!-- Compteur de vues -->
+              <div class="card-countviews-section">
+                  <% if user_signed_in? %>
+                    <% if (article.views_count || 0) > 0 %>
+                      <%= button_to article_path(article), method: :get, class: 'countviews-button' do %>
+                        <i class="fa-solid fa-eye"></i>
+                      <% end %>
+                    <% else %>
+                      <div class="button_to">
+                        <i class="fa-regular fa-eye"></i>
+                      </div>
+                    <% end %>
+                    <span class="countviews-count"><%= article.views_count || 0 %></span>
+                  <% end %>
+              </div>
             <!-- Affichez le compteur de likes ici -->
               <!-- Section like en haut -->
               <div class="card-like-section">
@@ -38,22 +53,6 @@
                       </div>
                     <% end %>
                     <span class="comment-count"><%= article.comments.count %></span>
-                  <% end %>
-              </div>
-              <!-- Compteur de vues -->
-              <div class="card-countviews-section">
-                  <% if user_signed_in? %>
-                    <% comment = current_user.comments.find_by(article: article) %>
-                    <% if article.views_count > 0 %>
-                      <%= button_to article_path(article), method: :get, class: 'countviews-button' do %>
-                        <i class="fa-thin fa-eye"></i>
-                      <% end %>
-                    <% else %>
-                      <div class="button_to">
-                        <i class="fa-solid fa-eye"></i>
-                      </div>
-                    <% end %>
-                    <span class="countviews-count"><%= article.views_count %></span>
                   <% end %>
               </div>
           </div>
