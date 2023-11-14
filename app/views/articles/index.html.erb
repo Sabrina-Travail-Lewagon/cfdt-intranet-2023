@@ -42,7 +42,12 @@
                 <% end %>
               </div>
           </div>
-          <p><%= article.rich_body %> </p>
+          <p>
+            <%= truncate_html(article.rich_body.to_s, length: 250, omission: '...') %>
+          </p>
+          <p>
+            <%= link_to 'Lire la suite', article_path(article), class: 'btn btn-primary readmore' if article.rich_body.to_s.length > 250 %>
+          </p>
           <div class="attachment">
             <% if article.documents.attached? %>
               <% article.documents.each do |document| %>

@@ -267,6 +267,7 @@ GEM
     timeout (0.4.0)
     trix (0.10.1)
       rails
+    truncate_html (0.9.3)
     turbo-rails (1.5.0)
       actionpack (>= 6.0.0)
       activejob (>= 6.0.0)
@@ -323,6 +324,7 @@ DEPENDENCIES
   sprockets-rails
   stimulus-rails
   trix
+  truncate_html
   turbo-rails
   tzinfo-data
   web-console
