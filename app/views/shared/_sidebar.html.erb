@@ -4,8 +4,7 @@
       <div class="btn-sidebar <%= category.nom.parameterize %>">
         <div class="btn-sidebar-child <%= category.nom.parameterize %>">
           <% if category.image.attached? %>
-            <%= cl_image_tag category.image.key,
-                 width: 100, height: 100, crop: :fill, class: "img-category" %>
+            <%= cl_image_tag category.image.key, class: "img-category" %>
           <% end %>
           <div class="category-name">
             <b class="category-name"><%= category.nom %></b>
