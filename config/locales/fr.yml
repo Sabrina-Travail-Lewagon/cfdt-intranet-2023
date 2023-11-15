@@ -13,3 +13,8 @@ fr:
       edit:
         leave_blank_if_you_dont_want_to_change_it: "Laissez vide si vous ne souhaitez pas le changer"
         we_need_your_current_password_to_confirm_your_changes: "Nous avons besoin de votre mot de passe actuel pour confirmer vos modifications"
+  errors:
+    format: "%{message}"
+    messages:
+      empty: "Le commentaire ne peut pas être vide."
+      too_short: "Le commentaire doit contenir au moins %{count} caractères."
