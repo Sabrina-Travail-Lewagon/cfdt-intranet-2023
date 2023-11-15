@@ -49,13 +49,7 @@ class ArticlesController < ApplicationController
     add_breadcrumb(@article.title, article_path(@article))
     @article.increment!(:views_count)
     @comments = @article.comments.order('created_at DESC')
-<<<<<<< HEAD
-    # @comment = Comment.new  # Initialisation d'une nouvelle instance de commentaire pour le formulaire
-    # Initialisation d'une nouvelle instance de commentaire pour le formulaire
-    @comment = Comment.new unless flash[:comment_errors] # Prise en charge des erreurs
-=======
     @comment = Comment.new # Initialisation d'une nouvelle instance de commentaire pour le formulaire
->>>>>>> pry-bybug
   end
 
   def edit

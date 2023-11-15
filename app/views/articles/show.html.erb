@@ -30,14 +30,8 @@
 
     <!-- Affichage des erreurs commentaires -->
     <% if @comment&.errors&.any? %>
-<<<<<<< HEAD
-      <p>Erreurs présentes</p>
-      <div id="error_explanation">
-        <h2><%= pluralize(@comment.errors.count, "erreur") %> a empêché ce commentaire d'être sauvegardé :</h2>
-=======
       <div class="alert alert-info error_explanation">
         <h2><%= pluralize(@comment.errors.count, "erreur.s") %> empêche.nt ce commentaire d'être sauvegardé :</h2>
->>>>>>> pry-bybug
         <ul>
           <% @comment.errors.full_messages.each do |message| %>
             <li><%= message %></li>
@@ -60,10 +54,6 @@
         <% end %>
       </div>
     </div>
-<<<<<<< HEAD
-
-=======
->>>>>>> pry-bybug
     <!-- Affichage des commentaires existants -->
     <div class="commentaire-section mt-4">
       <% @comments.each do |comment| %>

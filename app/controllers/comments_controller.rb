@@ -13,13 +13,8 @@ class CommentsController < ApplicationController
       redirect_to @article, notice: 'Commentaire ajouté avec succés.'
     else
       @comments = @article.comments.reload
-<<<<<<< HEAD
-      flash.now[:comment_errors] = @comment.errors.full_messages
-      render 'articles/show'
-=======
       @categories = policy_scope(Category)
       render 'articles/show', status: :unprocessable_entity
->>>>>>> pry-bybug
     end
   end
 
