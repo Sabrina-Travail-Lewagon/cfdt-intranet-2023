@@ -9,6 +9,7 @@
     </button>
 
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
+
       <% if user_signed_in? %>
       <div class="container-fluid search">
         <%= form_with(url: articles_path, method: :get, local: true, class: 'd-flex search-form') do |form| %>

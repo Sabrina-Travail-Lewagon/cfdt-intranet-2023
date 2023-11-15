@@ -12,6 +12,7 @@ class CommentsController < ApplicationController
       redirect_to @article, notice: 'Commentaire ajouté avec succés.'
     else
       @comments = @article.comments.reload
+      flash.now[:comment_errors] = @comment.errors.full_messages
       render 'articles/show'
     end
   end
