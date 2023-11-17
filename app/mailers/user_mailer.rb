@@ -9,7 +9,12 @@ class UserMailer < ApplicationMailer
 
     @user = params[:user]
 
-    mail to: @user.email, subject: "Bonjour #{@user.first_name}"
-
+    # mail to: @user.email, subject: "Bonjour #{@user.first_name}"
+    mail(
+      subject: "Bonjour #{@user.first_name}",
+      to: @user.email,
+      from: 'mouedines@cfdt-services.fr',
+      track_opens: 'true',
+      message_stream: 'rails')
   end
 end
