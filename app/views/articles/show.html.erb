@@ -60,7 +60,7 @@
         <div class="commentaire-card">
           <div class="card-body">
             <div class="commentaire-header">
-              <% if current_user.photo.attached? %>
+              <% if comment.user.photo.attached? %>
               	<%= cl_image_tag comment.user.photo.key, transformation: { width: 100, height: 100, crop: "fill" }, class: "avatar" %>
               <% else %>
 	              <%= image_tag "default-avatar-user-.jpg", class: "avatar" %>
