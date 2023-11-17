@@ -31,6 +31,10 @@ Rails.application.configure do
   # Do not fallback to assets pipeline if a precompiled asset is missed.
   config.assets.compile = false
 
+  # Envoi email
+  config.action_mailer.delivery_method = :postmark
+  config.action_mailer.postmark_settings = { api_token: ENV['POSTMARK_API_TOKEN'] }
+
   # Enable serving of images, stylesheets, and JavaScripts from an asset server.
   # config.asset_host = "http://assets.example.com"
 
