@@ -7,7 +7,7 @@ class User < ApplicationRecord
   validates :last_name, presence: true
   # validation inclusion, garantit que le role spécifié est une des valeurs autorisés
   # validates :role, inclusion: { in: ROLES }
-
+  after_create :send_welcome_email
   # before_validation définira automatiquement le rôle par défaut sur user avant de valider l'utilisateur.
   before_validation :set_default_role
 
@@ -25,5 +25,9 @@ class User < ApplicationRecord
   # On va mettre le role user par défaut
   def set_default_role
     self.role ||= :user
+  end
+
+  def send_welcome_email
+    UserMailer.with(user: self).welcome.deliver_now
   end
 end
