@@ -1,11 +1,17 @@
 class Admin::UsersController < ApplicationController
   before_action :authenticate_user!  # Devise helper pour s'assurer que l'utilisateur est connecté
   before_action :set_user, only: [:show, :edit, :update, :destroy]
+  before_action :set_breadcrumbs, only: [:show, :edit]
   before_action :authorize_user, except: [:new, :create, :index]  # autoriser uniquement pour les actions spécifiées
   layout "admin-bar"
 
   def index
     @users = policy_scope(User)  # Utilise Pundit pour filtrer les utilisateurs que l'on peut voir
+    @breadcrumbs = [
+      {name: 'Accueil', path: root_path},
+      {name: 'Dashboard', path: admin_root_path},
+      {name: 'Liste des utilisateurs', path: admin_users_path}
+    ]
   end
 
   def show
@@ -46,6 +52,11 @@ class Admin::UsersController < ApplicationController
   def new
     @user = User.new
     authorize @user  # Vérifie si l'utilisateur actuel peut créer un nouvel utilisateur
+    @breadcrumbs = [
+      {name: 'Accueil', path: root_path},
+      {name: 'Dashboard', path: admin_root_path},
+      {name: 'Créer un utilisateur', path: new_admin_user_path}
+    ]
   end
 
   def create
@@ -64,6 +75,15 @@ class Admin::UsersController < ApplicationController
     @user = User.find(params[:id])
     authorize @user
   end
+
+  def set_breadcrumbs
+    @breadcrumbs = [
+      {name: 'Accueil', path: root_path},
+      {name: 'Dashboard', path: admin_root_path},
+      {name: 'Mon compte', path: edit_user_registration_path}
+    ]
+  end
+
   # Séparer l'autorisation pour éviter des répétitions
   def authorize_user
     authorize @user

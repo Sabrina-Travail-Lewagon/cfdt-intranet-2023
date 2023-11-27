@@ -52,6 +52,9 @@
           %>
         </div>
         <div class="form-inputs">
+          <%= f.input :photo, as: :file %>
+        </div>
+        <div class="form-inputs">
           <%= form.label :role %>
           <%= form.select :role, User.roles.keys, { prompt: "Modifier le rôle" }, class: "form-select" %>
         </div>

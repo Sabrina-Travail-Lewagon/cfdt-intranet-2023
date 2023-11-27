@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class Users::RegistrationsController < Devise::RegistrationsController
-  before_action :set_breadcrumbs, only: [:edit]
+  before_action :set_breadcrumbs, only: [:edit, :update]
   # before_action :configure_sign_up_params, only: [:create]
   # before_action :configure_account_update_params, only: [:update]
 
@@ -61,11 +61,11 @@ class Users::RegistrationsController < Devise::RegistrationsController
   #   super(resource)
   # end
   private
-	  def set_breadcrumbs
-	    @breadcrumbs = [
-	      {name: 'Accueil', path: root_path},
-	      {name: 'Dashboard', path: admin_root_path},
-	      {name: 'Mon compte', path: edit_user_registration_path}
-	    ]
+	def set_breadcrumbs
+	  @breadcrumbs = [
+	    {name: 'Accueil', path: root_path},
+	    {name: 'Dashboard', path: admin_root_path},
+	    {name: 'Mon compte', path: edit_user_registration_path}
+	  ]
   end
 end
