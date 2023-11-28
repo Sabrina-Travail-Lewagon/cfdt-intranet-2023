@@ -9,7 +9,6 @@
     </button>
 
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
-
       <% if user_signed_in? %>
       <div class="container-fluid search">
         <%= form_with(url: articles_path, method: :get, local: true, class: 'd-flex search-form') do |form| %>
@@ -22,35 +21,44 @@
           <% end %>
       </div>
       <% end %>
-      <ul class="navbar-nav me-auto">
-        <% if user_signed_in? %>
-          <li class="nav-item active">
+      <% if user_signed_in? %>
+        <!-- Liens pour les utilisateurs connectés -->
+        <ul class="navbar-nav me-auto">
+          <!-- Lien Accueil toujours visible -->
+          <li class="nav-item">
             <%= link_to "Accueil", root_path, class: "nav-link" %>
           </li>
-          <li class="nav-item dropdown">
-          <a href="#" class="avatar" id="navbarDropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            <% if current_user.photo.attached? %>
-	              <%= cl_image_tag current_user.photo.key, transformation: { width: 100, height: 100, crop: "fill" }, class: "avatar", alt: "dropdown menu" %>
-
-	            <% else %>
-	              <%= image_tag "default-avatar-user-.jpg", class: "avatar", alt: "dropdown menu" %>
-            <% end %>
-          </a>
-            <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-              <%# link_to "Action", "#", class: "dropdown-item" %>
-              <%= link_to "Accueil", root_path, class: "dropdown-item" %>
+          <!-- Dropdown pour tablette et écran d'ordinateur -->
+          <li class="nav-item dropdown d-none d-md-block">
+              <a href="#" class="avatar" id="navbarDropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <% if current_user.photo.attached? %>
+                    <%= cl_image_tag current_user.photo.key, transformation: { width: 100, height: 100, crop: "fill" }, class: "avatar", alt: "dropdown menu" %>
+                  <% else %>
+                    <%= image_tag "default-avatar-user-.jpg", class: "avatar", alt: "dropdown menu" %>
+                <% end %>
+              </a>
+            </a>
+            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
               <% if policy(current_user).access_dashboard? %>
-                <%= link_to "Tableau de bord", admin_root_path, class: "dropdown-item" %>
+                <li><%= link_to "Tableau de bord", admin_root_path, class: "dropdown-item" %></li>
               <% end %>
-              <%= link_to "Se déconnecter", destroy_user_session_path, data: {turbo_method: :delete}, class: "dropdown-item" %>
-            </div>
+              <li><%= link_to "Se déconnecter", destroy_user_session_path, method: :delete, class: "dropdown-item" %></li>
+            </ul>
           </li>
-        <% else %>
-          <li class="nav-item">
-            <%= link_to "Connexion", new_user_session_path, class: "nav-link" %>
+
+          <!-- Liens pour mobile -->
+          <% if policy(current_user).access_dashboard? %>
+            <li class="nav-item d-block d-md-none">
+              <%= link_to "Tableau de bord", admin_root_path, class: "nav-link" %>
+            </li>
+          <% end %>
+          <li class="nav-item d-block d-md-none">
+            <%= link_to "Se déconnecter", destroy_user_session_path, method: :delete, class: "nav-link" %>
           </li>
-        <% end %>
-      </ul>
+        </ul>
+      <% else %>
+        <!-- Liens pour les utilisateurs non connectés -->
+      <% end %>
     </div>
   </div>
 </div>

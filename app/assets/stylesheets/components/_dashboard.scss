@@ -5,12 +5,27 @@
 }
 
 .dashboard-sidebar {
-  flex: 0.2; /* 20% de la largeur */
+  width: 30%; /* ou la largeur que vous préférez pour la sidebar */
   display: grid;
   grid-template-columns: repeat(2, 1fr); /* 2 colonnes de taille égale */
   gap: 30px; /* espace entre les éléments de grille */
   margin: 40px;
 }
+
+.main-content {
+  width: 70%; /* ou la largeur restante pour le contenu principal */
+  padding: 12px;
+  display: flex;
+  margin: 0 5rem;
+}
+
+// .dashboard-sidebar {
+//   flex: 0.2; /* 20% de la largeur */
+//   display: grid;
+//   grid-template-columns: repeat(2, 1fr); /* 2 colonnes de taille égale */
+//   gap: 30px; /* espace entre les éléments de grille */
+//   margin: 40px;
+// }
 
 .btn-sidebar .img-category {
   width: 80%; /* ensures the image takes up the full container width */
@@ -33,14 +48,14 @@
   text-decoration: none;
 }
 
-.main-content {
-  flex: 0.8; /* 80% de la largeur */
-  // flex: 2; /* prend 2/3 de l'espace */
-  /* autres styles pour le contenu principal */
-  padding: 12px;
-  display: flex;
-  margin: 0 5rem;
-}
+// .main-content {
+//   flex: 0.8; /* 80% de la largeur */
+//   // flex: 2; /* prend 2/3 de l'espace */
+//   /* autres styles pour le contenu principal */
+//   padding: 12px;
+//   display: flex;
+//   margin: 0 5rem;
+//}
 
 .dashboard-bar {
   width: 250px;
