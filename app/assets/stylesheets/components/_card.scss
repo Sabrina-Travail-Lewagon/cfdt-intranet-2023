@@ -410,6 +410,7 @@ i.fa-solid.fa-eye {
   .card-publications {
     grid-column: 1 / 3;
     width: calc(100% - 3.125rem);
+    overflow: auto;
   }
   .article h2 {
     font-size: 1.4em;
