@@ -68,8 +68,17 @@ ul .list-group-item img{
 }
 
 // Liste des catégories dans le dashboard
-.liste-categories img.img-category{
-  height: 100px; /* fixe la hauteur à 100px */
-  width: auto; /* ajuste automatiquement la largeur */
-  object-fit: cover; /* assure que l'image couvre entièrement la zone sans perdre ses proportions */
+// .liste-categories img.img-category{
+//   height: 100px; /* fixe la hauteur à 100px */
+//   width: auto; /* ajuste automatiquement la largeur */
+//   object-fit: cover; /* assure que l'image couvre entièrement la zone sans perdre ses proportions */
+// }
+.liste-categories img.img-category {
+  height: 100px;
+  width: auto;
+  -o-object-fit: cover;
+  object-fit: cover;
+  border-radius: 20px;
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+  padding: 0;
 }

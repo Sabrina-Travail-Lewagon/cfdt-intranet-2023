@@ -3,10 +3,11 @@
     <div class="d-flex justify-content-between align-items-center mb-4">
       <h2 class="justify-content-center mb-0">Liste des catégories</h2>
       <%= link_to new_admin_category_path, class: "add-cat" do %>
-        <i class="fas fa-plus-circle justify-content-center"></i>
+          <i class="fas fa-plus-circle justify-content-center"></i>
+          <span class="d-flex align-content-center text-add-cat">Ajouter
+        </span>
       <% end %>
     </div>
-
     <table class="table liste-categories table-striped table-bordered">
       <thead>
         <th scope="col">Titre</th>
@@ -19,7 +20,10 @@
           <td><% if category.image.attached? %>
                 <%= cl_image_tag category.image.key, class: "img-category img-category-#{category.nom.parameterize}" %>
               <% end %>
-              <%= category.nom %>
+              <span class="admin-text-cat">
+                <%= category.nom %>
+              </span>
+
           </td>
           <td class="text-center">
             <% if policy(category).edit? %>

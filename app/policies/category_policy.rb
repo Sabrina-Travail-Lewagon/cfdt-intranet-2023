@@ -9,21 +9,24 @@ class CategoryPolicy < ApplicationPolicy
     allowed_roles?
   end
   def show?
-    true
+    allowed_roles?
   end
   def create?
-    allowed_roles?
+    admin_or_rh?
   end
   def update?
-    allowed_roles?
+    admin_or_rh?
   end
   def destroy?
-    allowed_roles?
+    admin_or_rh?
   end
 
-  private
   def allowed_roles?
     # user && permet de vérifier que l'user est connecté, et Autorise admin ou rh à voir les catégorie
     user && (user.admin? || user.rh?)
+  end
+  def admin_or_rh?
+    # Vérification que user existe avant avec user :
+    user.admin? || user.rh?
   end
 end

@@ -7,7 +7,7 @@
         <%= f.input :nom %>
         <%= f.file_field :image %>
         <p>
-        <%= link_to categories_path, class: "btn btn-primary" do %>
+        <%= link_to admin_categories_path, class: "btn btn-primary" do %>
           <i class="fas fa-arrow-left text-white"></i>
         <% end %>
         <%= f.submit "Modifier", {class: "btn btn-primary"} %>
