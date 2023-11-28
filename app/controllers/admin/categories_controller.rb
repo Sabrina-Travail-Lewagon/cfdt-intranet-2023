@@ -4,7 +4,8 @@ class Admin::CategoriesController < ApplicationController
 
   def index
     @user = current_user
-    @categories = policy_scope(Category).order('created_at DESC')
+    # @categories = policy_scope(Category).order('created_at DESC')
+    @pagy, @categories = pagy(policy_scope(Category).order('created_at DESC'), items: 5)
   end
 
   def authenticate_admin!

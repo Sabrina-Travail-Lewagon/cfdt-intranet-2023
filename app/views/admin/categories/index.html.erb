@@ -1,35 +1,45 @@
-<div class="container mt-4 d-flex justify-content-center">
-  <div class="row list-categories">
-    <h2>Liste des catégories</h2>
-    <hr>
-    <% @categories.each do |category| %>
-      	<ul class="list-group list-group-horizontal">
-          <li class="list-group-item px-3 py-1 d-flex align-items-center flex-grow-1">
-            <% if category.image.attached? %>
-              <%= cl_image_tag category.image.key, class: "img-category img-category-#{category.nom.parameterize}" %>
-            <% end %>
-            <%= category.nom %>
-            </li>
-            <% if policy(category).edit? %>
-            <li class="list-group-item ps-3 pe-0 py-1">
-              <div class="d-flex flex-row justify-content-end mb-1">
-                <%= link_to edit_admin_category_path(category) do %>
-                  <i class="fa-solid fa-pen-to-square me-3 text-info"></i>
-                <% end %>
-                <%= link_to admin_category_path(category),
-                  data: {turbo_method: :delete, turbo_confirm: "Etes vous sure ?", :method=>'delete'} do %>
-                  <i class="fa-solid fa-trash-can me-3 text-danger"></i>
-                <% end %>
-
-              </div>
-            </li>
-          <% end %>
-        </ul>
-    <% end %>
-    <% if policy(Category).create? %>
-      <%= link_to new_admin_category_path do %>
-        <i class="fa-solid fa-plus mt-3"></i> Ajouter une catégorie
+<div class="container mt-4 d-flex">
+  <div class="row">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+      <h2 class="justify-content-center mb-0">Liste des catégories</h2>
+      <%= link_to new_admin_category_path, class: "add-cat" do %>
+        <i class="fas fa-plus-circle justify-content-center"></i>
       <% end %>
-    <% end %>
+    </div>
+
+    <table class="table liste-categories table-striped table-bordered">
+      <thead>
+        <th scope="col">Titre</th>
+        <th scope="col" colspan="2" class="text-center">Actions</th>
+        </th>
+      </thead>
+      <tbody>
+        <% @categories.each do |category| %>
+        <tr>
+          <td><% if category.image.attached? %>
+                <%= cl_image_tag category.image.key, class: "img-category img-category-#{category.nom.parameterize}" %>
+              <% end %>
+              <%= category.nom %>
+          </td>
+          <td class="text-center">
+            <% if policy(category).edit? %>
+              <%= link_to edit_admin_category_path(category) do %>
+                <i class="fas fa-file-edit me-3 text-info"></i>
+              <% end %>
+          </td>
+          <td class="text-center">
+              <%= link_to admin_category_path(category),
+                    data: {turbo_method: :delete, turbo_confirm: "Etes vous sure ?", :method=>'delete'} do %>
+                    <i class="fa-solid fa-trash-can me-3 text-danger"></i>
+              <% end %>
+            <% end %>
+          </td>
+        </tr>
+        <% end %>
+      </tbody>
+    </table>
+    <div class="pagination mt-4">
+      <%== pagy_bootstrap_nav(@pagy) %>
+    </div>
   </div>
 </div>

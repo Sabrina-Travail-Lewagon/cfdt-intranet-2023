@@ -66,3 +66,10 @@ ul .list-group-item img{
   width: 5rem;
   height: auto;
 }
+
+// Liste des catégories dans le dashboard
+.liste-categories img.img-category{
+  height: 100px; /* fixe la hauteur à 100px */
+  width: auto; /* ajuste automatiquement la largeur */
+  object-fit: cover; /* assure que l'image couvre entièrement la zone sans perdre ses proportions */
+}
