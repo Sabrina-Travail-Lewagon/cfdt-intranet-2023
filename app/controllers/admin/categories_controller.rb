@@ -49,7 +49,7 @@ class Admin::CategoriesController < ApplicationController
   private
 
   def category_params
-    params.require(:category).permit(:nom, :image)
+    params.require(:category).permit(:nom, :image, :background_color)
   end
   def authenticate_admin!
     # Vérifie si un utilisateur est connecté

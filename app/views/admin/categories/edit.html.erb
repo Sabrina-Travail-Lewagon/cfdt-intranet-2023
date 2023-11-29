@@ -7,6 +7,11 @@
         <%= f.input :nom %>
         <%= f.file_field :image %>
         <p>
+          <!-- Ajout d'un sélecteur de couleur -->
+          <%= f.label :background_color, "Couleur de fond" %>
+          <%= f.color_field :background_color %>
+        </p>
+        <p>
         <%= link_to admin_categories_path, class: "btn btn-primary" do %>
           <i class="fas fa-arrow-left text-white"></i>
         <% end %>

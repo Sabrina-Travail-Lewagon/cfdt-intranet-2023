@@ -15,7 +15,7 @@
         <%# Ou ceci aussi est bon, ce sera la route qui sera différente %>
         <%# link_to category_articles_path(category) do %>
         <%= link_to articles_path(category_id: category.id) do %>
-          <div class="btn-home <%= category.nom.parameterize %>">
+          <div class="btn-home <%= category.nom.parameterize %>" style="background-color: <%= category.background_color %>;">
             <div class="btn-home-child <%= category.nom.parameterize %>">
               <%= cl_image_tag category.image.key, class: "img-category" %>
               <div class="category-name">
