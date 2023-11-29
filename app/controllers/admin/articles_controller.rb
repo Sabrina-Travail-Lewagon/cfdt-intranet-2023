@@ -1,5 +1,5 @@
 class Admin::ArticlesController < ApplicationController
-  before_action :set_article, only: [:show, :edit, :destroy, :update]
+  before_action :set_article, only: [:edit, :destroy, :update]
   before_action :authenticate_admin!
   layout "admin-bar"
 
@@ -25,7 +25,16 @@ class Admin::ArticlesController < ApplicationController
   def new
     @user = current_user
     @article = Article.new
-    @categories = policy_scope(Category)
+    if current_user.cse?
+      @categories = policy_scope(Category).where(nom: 'infos CSE') # Assurez-vous que 'CSE' est le nom correct de votre catégorie
+    elsif current_user.rh?
+      @categories = policy_scope(Category).where.not(nom: 'infos CSE') # Assurez-vous que 'CSE' est le nom correct de votre catégorie
+    else
+      @categories = policy_scope(Category)
+    end
+
+
+    # @categories = policy_scope(Category)
     authorize @article
     add_breadcrumb('Dashboard', admin_root_path)
     add_breadcrumb('Ecrire un article', new_admin_article_path)
@@ -85,9 +94,6 @@ class Admin::ArticlesController < ApplicationController
     render :edit, alert: "Impossible de mettre à jour l'article: #{exception.message}"
   end
 
-
-
-
   def destroy
     @article.destroy
     redirect_to  admin_mes_articles_path, notice: 'L\'article a bien été supprimé.'
@@ -98,7 +104,13 @@ class Admin::ArticlesController < ApplicationController
   def set_article
     @article = Article.find(params[:id])
     authorize @article
-    @categories = policy_scope(Category)
+    if current_user.cse?
+      @categories = policy_scope(Category).where(nom: 'infos CSE')
+    elsif current_user.rh?
+      @categories = policy_scope(Category).where.not(nom: 'infos CSE')
+    else
+      @categories = policy_scope(Category)
+    end
   end
 
   def params_article
