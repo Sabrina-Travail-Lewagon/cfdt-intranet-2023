@@ -1,6 +1,4 @@
 Rails.application.routes.draw do
-  get 'likes/create'
-  get 'likes/destroy'
   devise_for :users, skip: [:registrations]
   as :user do
     get 'users/edit', to: 'users/registrations#edit', as: 'edit_user_registration'
@@ -18,6 +16,8 @@ Rails.application.routes.draw do
   # Partie dashboard
   namespace :admin do
     root to: redirect('/users/edit') # Redirige vers edit_user_registration_path
+    # Route pour admin pour modif/supp n'importe quel article
+    get 'articles/tous_les_articles', to: 'articles#tous_les_articles', as: 'tous_les_articles'
     # root to: 'home#accueil'
     get 'articles/mes_articles', to: 'articles#mes_articles', as: 'mes_articles'
     resources :articles
