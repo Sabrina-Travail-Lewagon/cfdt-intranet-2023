@@ -16,22 +16,22 @@
           </div>
         <% end %>
 
-        <div class="form-inputs">
+        <div class="form-inputs mb-3">
           <%= form.label :Prénom %>
           <%= form.text_field :first_name, class: "form-control" %>
         </div>
 
-        <div class="form-inputs">
+        <div class="form-inputs mb-3">
           <%= form.label :Nom %>
           <%= form.text_field :last_name, class: "form-control" %>
         </div>
 
-        <div class="form-inputs">
+        <div class="form-inputs mb-3">
           <%= form.label :email %>
           <%= form.email_field :email, class: "form-control" %>
         </div>
 
-        <div class="form-inputs">
+        <div class="form-inputs mb-3">
           <%= form.label :password %>
           <%= form.password_field :password,
             hint: t('devise.registrations.edit.leave_blank_if_you_dont_want_to_change_it'),
@@ -41,7 +41,7 @@
             class: "form-control"
           %>
         </div>
-        <div class="form-inputs">
+        <div class="form-inputs mb-3">
           <%= form.label :password_confirmation %>
           <%= form.password_field :password_confirmation,
             hint: t('devise.registrations.edit.leave_blank_if_you_dont_want_to_change_it'),
@@ -51,8 +51,9 @@
             class: "form-control"
           %>
         </div>
-        <div class="form-inputs">
-          <%= f.input :photo, as: :file %>
+        <div class="form-inputs mb-3">
+          <%= form.label :photo, class: "form-label" %>
+          <%= form.file_field :photo, class: "form-control" %>
         </div>
         <div class="form-inputs">
           <%= form.label :role %>
