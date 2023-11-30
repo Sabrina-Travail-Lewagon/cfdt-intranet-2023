@@ -40,6 +40,11 @@ class UserPolicy < ApplicationPolicy
     user.cse? || user.admin? || user.rh?
   end
 
+  # admin a accès à gestion des articles
+  def gestion_article?
+    user.admin?
+  end
+
   class Scope < Scope
     def resolve
       scope.all

@@ -33,6 +33,11 @@
           <%= link_to 'Mes articles', admin_mes_articles_path %>
         </li>
         <% end %>
+        <% if policy(current_user).gestion_article? %>
+          <li class="dashboard-item <%= 'active' if current_page?(admin_tous_les_articles_path) %>">
+            <%= link_to 'Gestion des Articles', admin_tous_les_articles_path %>
+          </li>
+        <% end %>
         <% if policy(Category).allowed_roles? %>
         <li class="dashboard-item <%= 'active' if current_page?(admin_categories_path) %>">
           <%= link_to 'Gestion des catégories', admin_categories_path %>
