@@ -6,6 +6,8 @@ class Admin::CategoriesController < ApplicationController
   def index
     @user = current_user
     # @categories = policy_scope(Category).order('created_at DESC')
+    add_breadcrumb('Dashboard', admin_root_path)
+    add_breadcrumb('Gestion des catégories', admin_categories_path)
     @pagy, @categories = pagy(policy_scope(Category).order('created_at DESC'), items: 5)
   end
 
@@ -13,6 +15,8 @@ class Admin::CategoriesController < ApplicationController
     @user = current_user
     @category = Category.new
     authorize @category # Vérifie l'autorisation via Pundit
+    add_breadcrumb('Dashboard', admin_root_path)
+    add_breadcrumb('Créer une catégorie', new_admin_category_path)
   end
 
   def create
@@ -27,6 +31,8 @@ class Admin::CategoriesController < ApplicationController
 
   def edit
     # On récupère l'id avec before_action
+    add_breadcrumb('Dashboard', admin_root_path)
+    add_breadcrumb('Modifier une catégorie', edit_admin_category_path)
   end
 
   def update
