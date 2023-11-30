@@ -10,7 +10,6 @@
         </div>
         <div class="mb-3">
         <p>Image actuelle :</p>
-
         <% if @category.image.attached? %>
           <div class="btn-home <%= @category.nom.parameterize %>" style="background-color: <%= @category.background_color %>;">
           <%= cl_image_tag @category.image.key, class: "img-fluid"%>
