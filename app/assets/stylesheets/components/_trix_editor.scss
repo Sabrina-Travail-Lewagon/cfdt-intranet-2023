@@ -7,3 +7,8 @@ trix-editor .attachment--preview img {
 .trix-content .attachment--preview .attachment__caption {
   display: none!important;
 }
+
+.trix-content {
+  line-height: 1.5;
+  margin-top: 1rem;
+}

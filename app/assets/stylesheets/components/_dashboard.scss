@@ -19,14 +19,6 @@
   margin: 0 5rem;
 }
 
-// .dashboard-sidebar {
-//   flex: 0.2; /* 20% de la largeur */
-//   display: grid;
-//   grid-template-columns: repeat(2, 1fr); /* 2 colonnes de taille égale */
-//   gap: 30px; /* espace entre les éléments de grille */
-//   margin: 40px;
-// }
-
 .btn-sidebar .img-category {
   width: 80%; /* ensures the image takes up the full container width */
   height: auto; /* maintains the aspect ratio */
@@ -47,15 +39,6 @@
 .dashboard-sidebar a{
   text-decoration: none;
 }
-
-// .main-content {
-//   flex: 0.8; /* 80% de la largeur */
-//   // flex: 2; /* prend 2/3 de l'espace */
-//   /* autres styles pour le contenu principal */
-//   padding: 12px;
-//   display: flex;
-//   margin: 0 5rem;
-//}
 
 .dashboard-bar {
   width: 250px;
@@ -126,4 +109,18 @@
 .btn-dashboard-bar-child ul li.active {
   background-color: #FF6B00; /* Couleur de fond pour l'élément actif (vous pouvez l'ajouter dynamiquement via Rails) */
   color: white; /* Couleur du texte pour l'élément actif */
+}
+
+.article-category {
+  height: 20px;
+  width: 50%;
+  padding: .5rem .5rem;
+  gap: 10px;
+  color: #fff;
+  color: var(--bs-vert);
+  font-family: Inter;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
 }

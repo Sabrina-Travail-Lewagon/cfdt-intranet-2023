@@ -1,0 +1,52 @@
+<div class="container mt-4">
+  <div class="float-lg-start mx-2">
+    <%= link_to  admin_root_path do %>
+        <%= image_tag("Home.png") %>
+    <% end %>
+  </div>
+  <div class="row">
+
+    <div class="card-articles">
+    <span class="py-2">
+      <h2>Gestion des articles</h2>
+    </span>
+      <% if @articles.empty? %>
+        <p>Il n'y a pas encore d'articles.</p>
+      <% else %>
+        <% @articles.each do |article| %>
+          <div class="article-card">
+            <div class="article-actions">
+                <!-- Bouton Editer -->
+                <%= link_to edit_admin_article_path(article) do %>
+                  <i class="fa-solid fa-pen-to-square"></i>
+                <% end %>
+                <!-- Bouton Voir -->
+                <%= link_to admin_article_path(article) do %>
+                  <i class="fa-solid fa-eye"></i>
+                <% end %>
+                <!-- Bouton Supprimer-->
+                <%= link_to admin_article_path(article),
+                      data: {turbo_method: :delete, turbo_confirm: "Êtes-vous sûr de vouloir supprimer cet article?", :method=>'delete'} do %>
+                      <i class="fa-solid fa-trash-can me-3 text-danger"></i>
+                    <% end %>
+              </div>
+              <h1><%= article.title %> </h1>
+              <span class="article article-category">Catégorie : <%= article.category.nom %></span>
+              <p><%= article.rich_body %> </p>
+              <div class="attachment">
+                <% if article.documents.attached? %>
+                  <% article.documents.each do |document| %>
+                    <%= link_to document.filename.to_s, rails_blob_path(document, disposition: "inline"), target: "_blank", class: "btn btn-secondary" %>
+                  <% end %>
+                  <p><%= pluralize(article.documents.count, 'pièce.s jointe.s') %></p>
+                <% end %>
+            </div>
+          </div>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+  <div class="pagination mt-4">
+    <%== pagy_bootstrap_nav(@pagy) %>
+  </div>
+</div>
