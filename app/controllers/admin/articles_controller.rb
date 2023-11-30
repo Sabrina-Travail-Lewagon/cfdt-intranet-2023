@@ -22,6 +22,17 @@ class Admin::ArticlesController < ApplicationController
     add_breadcrumb('Mes articles', admin_mes_articles_path)
   end
 
+  # Méthode pour afficher tous les articles pour les admins
+  def tous_les_articles
+    if current_user.admin?
+      @pagy, @articles = pagy(Article.order('created_at DESC'))
+      add_breadcrumb('Dashboard', admin_root_path)
+      add_breadcrumb('Tous les Articles', admin_tous_les_articles_path)
+    else
+      redirect_to admin_root_path, alert: "Vous n'êtes pas autorisé à accéder à cette page."
+    end
+  end
+
   def new
     @user = current_user
     @article = Article.new
