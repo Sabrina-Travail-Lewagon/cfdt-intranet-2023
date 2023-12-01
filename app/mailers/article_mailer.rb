@@ -10,4 +10,16 @@ class ArticleMailer < ApplicationMailer
 
     mail to: "to@example.org"
   end
+
+  def new_article_email(article, user)
+    @article = article
+
+    mail(
+      subject: "Nouvel article disponible !",
+      to: @user.email,
+      from: 'webmaster@cfdt-services.fr',
+      track_opens: 'true',
+      message_stream: 'rails'
+    )
+  end
 end
