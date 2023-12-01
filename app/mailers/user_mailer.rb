@@ -15,6 +15,7 @@ class UserMailer < ApplicationMailer
       to: @user.email,
       from: 'mouedines@cfdt-services.fr',
       track_opens: 'true',
-      message_stream: 'rails')
+      message_stream: 'rails'
+    )
   end
 end

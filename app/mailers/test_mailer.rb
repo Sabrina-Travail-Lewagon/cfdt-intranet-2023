@@ -4,10 +4,10 @@ class TestMailer < ApplicationMailer
 
   def hello
     mail(
-      subject: 'Hello from Postmark',
+      subject: 'Message d\'Intranet CFDT',
       to: 'mouedines@cfdt-services.fr',
       from: 'mouedines@cfdt-services.fr',
-      html_body: '<strong>Hello</strong> dear Postmark user.',
+      html_body: '<strong>Bonjour</strong> cher utilisateur.',
       track_opens: 'true',
       message_stream: 'broadcast')
   end
