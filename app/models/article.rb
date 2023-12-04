@@ -36,7 +36,7 @@ class Article < ApplicationRecord
 
   def send_new_article_email
     User.find_each do |user|
-      ArticleMailer.new_article_email(self, user).deliver_later
+      ArticleMailer.new_article_email(self, user).deliver_now
     end
   end
 end
