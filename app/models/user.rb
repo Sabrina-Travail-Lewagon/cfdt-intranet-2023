@@ -17,7 +17,7 @@ class User < ApplicationRecord
   has_many :articles
   has_many :comments
   # Partie J'aime
-  has_many :likes
+  has_many :likes, dependent: :destroy # Quand on supprime un user, likes seront supprimés
   has_many :liked_articles, through: :likes, source: :article
 
   private
