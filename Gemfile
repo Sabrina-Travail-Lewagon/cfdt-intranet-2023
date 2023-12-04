@@ -65,7 +65,9 @@ gem 'pagy' # Ajout de la pagination
 gem "pg_search"
 gem 'truncate_html'
 gem 'letter_opener', group: :development
+gem 'mailcatcher', group: :development
 gem 'postmark-rails'
+gem 'bootstrap-email'
 
 
 group :development, :test do

@@ -5,5 +5,11 @@ class ArticleMailerPreview < ActionMailer::Preview
   def create
     ArticleMailer.create
   end
+  def new_article_email
+    # Créez ici des instances d'article et d'utilisateur pour la prévisualisation
+    article = Article.first || Article.new(title: "Titre de test", content: "Contenu de test")
+    user = User.first || User.new(email: "test@example.com")
 
+    ArticleMailer.new_article_email(article, user)
+  end
 end

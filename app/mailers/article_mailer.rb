@@ -14,9 +14,9 @@ class ArticleMailer < ApplicationMailer
   def new_article_email(article, user)
     @article = article
 
-    mail(
+    bootstrap_mail(
       subject: "Nouvel article disponible !",
-      to: @user.email,
+      to: @article.user.email,
       from: 'webmaster@cfdt-services.fr',
       track_opens: 'true',
       message_stream: 'rails'
