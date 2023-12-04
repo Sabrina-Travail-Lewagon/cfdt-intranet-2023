@@ -1,5 +1,5 @@
 class UserMailer < ApplicationMailer
-
+  layout 'bootstrap-mailer'
   # Subject can be set in your I18n file at config/locales/en.yml
   # with the following lookup:
   #
@@ -8,12 +8,12 @@ class UserMailer < ApplicationMailer
   def welcome
 
     @user = params[:user]
-
+    @token = params[:token]
     # mail to: @user.email, subject: "Bonjour #{@user.first_name}"
-    mail(
+    bootstrap_mail(
       subject: "Bonjour #{@user.first_name}",
       to: @user.email,
-      from: 'mouedines@cfdt-services.fr',
+      from: 'webmaster@cfdt-services.fr',
       track_opens: 'true',
       message_stream: 'rails'
     )

@@ -27,6 +27,8 @@ class User < ApplicationRecord
   end
 
   def send_welcome_email
-    UserMailer.with(user: self).welcome.deliver_now
+    token = self.set_reset_password_token
+    UserMailer.with(user: self, token: token).welcome.deliver_now
   end
+
 end
