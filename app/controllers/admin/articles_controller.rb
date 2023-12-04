@@ -44,7 +44,6 @@ class Admin::ArticlesController < ApplicationController
       @categories = policy_scope(Category)
     end
 
-
     # @categories = policy_scope(Category)
     authorize @article
     add_breadcrumb('Dashboard', admin_root_path)
@@ -57,6 +56,7 @@ class Admin::ArticlesController < ApplicationController
     @article.user = current_user # Pour éviter l'erreur l'user n'existe pas
     authorize @article # Vérifie l'autorisation via Pundit
     if @article.save
+      send_new_article_email
       redirect_to admin_article_path(@article), notice: 'Article créé!'
       # redirect_to url_for([:admin, @article]), notice: 'Article créé!'
     else
@@ -136,6 +136,12 @@ class Admin::ArticlesController < ApplicationController
     unless current_user.admin? || current_user.rh? || current_user.cse? || current_user.user?
       # Si l'utilisateur n'est pas un admin ou un RH, redirigez-le avec un message d'erreur
       redirect_to root_path, alert: "Vous n'avez pas les autorisations nécessaires pour accéder à cette page."
+    end
+  end
+
+  def send_new_article_email
+    User.find_each do |user|
+      ArticleMailer.new_article_email(@article, user).deliver_now
     end
   end
 

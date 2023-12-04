@@ -1,5 +1,4 @@
 class Article < ApplicationRecord
-  after_create :send_new_article_email
   belongs_to :user
   belongs_to :category
   include PgSearch::Model
@@ -34,9 +33,9 @@ class Article < ApplicationRecord
 
   private
 
-  def send_new_article_email
-    User.find_each do |user|
-      ArticleMailer.new_article_email(self, user).deliver_now
-    end
-  end
+  # def send_new_article_email
+  #   User.find_each do |user|
+  #     ArticleMailer.new_article_email(self, user).deliver_now
+  #   end
+  # end
 end
