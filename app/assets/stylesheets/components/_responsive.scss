@@ -24,6 +24,24 @@
   }
 
   /* Autres styles spécifiques aux téléphones */
+  .dashboard-sidebar{
+    display: none;
+  }
+  .card-articles {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .article-header {
+    display: flex;
+    align-items: flex-start;
+    width: 100%;
+    flex-direction: column;
+  }
+
+  .card-comment-section {
+    margin-left: O;
+  }
 }
 
 /* Tablettes (entre 576px et 767px) */
@@ -63,7 +81,7 @@
     flex-direction: column;
     align-items: center;
   }
-    .category-name {
+  .category-name {
     margin-top: 5px!important;
     font-family: Inter;
     font-size: 16px!important;
@@ -74,8 +92,10 @@
 
   .main-content {
   width: 70%;
-  padding: 6px!important;
+  padding: 10px!important;
   display: flex;
+  margin-left: 0 !important;
+  margin-right: 0 !important;
   margin: 0 5rem;
   }
 }
@@ -105,7 +125,7 @@
     gap: 10px!important;
     margin: 30px!important;
     }
-    .btn-sidebar {
+  .btn-sidebar {
       width: 13vh!important;
       height: auto;
       border-radius: 15px!important;
@@ -128,6 +148,8 @@
     width: 70%;
     padding: 6px!important;
     display: flex;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
     margin: 0 5rem;
     }
 }
