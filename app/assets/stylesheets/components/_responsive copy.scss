@@ -14,14 +14,12 @@
   .article p {
     font-size: 0.9em;
   }
-}
-// Téléphones
-@media only screen and (max-width: 600px) {
   .login {
     width: 350px!important;
     height: 235px!important;
   }
 }
+
 // Small devices (landscape phones, 576px and up)
 @media (min-width: 576px) and (max-width: 767px) {
 
