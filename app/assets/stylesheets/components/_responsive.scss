@@ -1,12 +1,20 @@
-// Smallest device
-@media (max-width: 575px) {
+/* Téléphones (Petits appareils, jusqu'à 600px) */
+@media only screen and (max-width: 600px) {
+  .login {
+    width: 90%; /* Utilisation d'un pourcentage pour la largeur */
+    height: auto; /* Hauteur automatique pour une meilleure adaptation */
+    margin: 0 auto; /* Centrer le login */
+  }
+
   .cards {
     grid-template-columns: 1fr;
+    justify-items: center;
   }
   .card-publications {
     grid-column: 1 / 2;
     width: calc(100% - 3.125rem);
     overflow: auto;
+    margin-bottom: 3rem;
   }
   .article h2 {
     font-size: 1.2em;
@@ -14,22 +22,23 @@
   .article p {
     font-size: 0.9em;
   }
+
+  /* Autres styles spécifiques aux téléphones */
 }
 
-// Small devices (landscape phones, 576px and up)
-@media (min-width: 576px) and (max-width: 767px) {
-  .login {
-    width: 350px!important;
-    height: 235px!important;
-  }
+/* Tablettes (entre 576px et 767px) */
+@media only screen and (min-width: 576px) and (max-width: 767px) {
   .cards {
     grid-template-columns: 1fr;
   }
+
   .card-publications {
     grid-column: 1 / 2;
-    width: calc(100% - 3.125rem);
-    overflow: auto;
+    width: 90%; /* Ajustement en pourcentage */
+    margin: 0 auto; /* Centrer la carte */
   }
+
+  /* Ajustements pour les textes et les autres éléments */
   .article h2 {
     font-size: 1.2em;
   }
@@ -71,11 +80,13 @@
   }
 }
 
-// Medium devices (tablets, 768px and up)
-@media (min-width: 768px) and (max-width: 991px) {
+/* Tablettes / Petits écrans de bureau (768px à 991px) */
+@media only screen and (min-width: 768px) and (max-width: 991px) {
   .cards {
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1fr 1fr; /* 2 colonnes pour les tablettes et petits écrans */
   }
+
+  /* Ajustements pour les textes et les autres éléments */
   .card-publications {
     grid-column: 1 / 3;
     width: calc(100% - 3.125rem);
@@ -87,13 +98,80 @@
   .article p {
     font-size: 1em;
   }
+  .dashboard-sidebar {
+    width: 30%;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px!important;
+    margin: 30px!important;
+    }
+    .btn-sidebar {
+      width: 13vh!important;
+      height: auto;
+      border-radius: 15px!important;
+      box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+      padding: 10px!important;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+      .category-name {
+      margin-top: 5px!important;
+      font-family: Inter;
+      font-size: 16px!important;
+      font-style: normal;
+      font-weight: 700;
+      line-height: normal;
+    }
+
+    .main-content {
+    width: 70%;
+    padding: 6px!important;
+    display: flex;
+    margin: 0 5rem;
+    }
 }
 
-// Large devices (desktops, 992px and up)
-@media (min-width: 992px) and (max-width: 1199px) {
+/* Écrans de bureau moyens (992px à 1199px) */
+@media only screen and (min-width: 992px) and (max-width: 1199px) {
   .cards {
-    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr; /* 3 colonnes pour les écrans moyens */
   }
+
+  .dashboard-sidebar {
+    width: 30%;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px!important;
+    margin: 30px!important;
+    }
+    .btn-sidebar {
+      width: 13vh!important;
+      height: auto;
+      border-radius: 15px!important;
+      box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+      padding: 10px!important;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+      .category-name {
+      margin-top: 5px!important;
+      font-family: Inter;
+      font-size: 16px!important;
+      font-style: normal;
+      font-weight: 700;
+      line-height: normal;
+    }
+
+    .main-content {
+    width: 70%;
+    padding: 6px!important;
+    display: flex;
+    margin: 0 5rem;
+    }
+
+  /* Ajustements pour les textes et les autres éléments */
   .card-publications {
     grid-column: 1 / 4;
     width: calc(100% - 2 * 3.125rem);
@@ -106,18 +184,22 @@
   }
 }
 
-// Extra large devices (large desktops, 1200px and up)
-@media (min-width: 1200px) {
+/* Grands écrans de bureau (1200px et plus) */
+@media only screen and (min-width: 1200px) {
   .cards {
     grid-template-columns: 1fr 1fr 1fr 1fr;
-    justify-content: center; /* Centre les éléments horizontalement */
-    align-items: center; /* Centre les éléments verticalement */
+    justify-content: center; /* Centrage horizontal */
+    align-items: center; /* Centrage vertical */
+    margin-bottom: 3rem;
   }
+
   .card-publications {
-    grid-column: 3 / 5;
-    width: 550px;
-    overflow: auto;
+    grid-column: span 2; /* Étendre sur 2 colonnes */
+    width: 80%; /* Largeur adaptée */
+    margin: 0 auto; /* Centrer dans la grille */
   }
+
+  /* Ajustements pour les textes et les autres éléments */
   .article h2 {
     font-size: 1.8em;
   }
