@@ -16,7 +16,7 @@ class ArticleMailer < ApplicationMailer
     @user = user # Utilisateurs destinataires
 
     bootstrap_mail(
-      subject: "Nouvel article disponible !",
+      subject: "Intranet CFDT Services - Nouvel article disponible !",
       to: @user.email,
       from: 'webmaster@cfdt-services.fr',
       track_opens: 'true',
