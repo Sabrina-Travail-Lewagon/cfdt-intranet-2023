@@ -18,6 +18,10 @@
 
 // Small devices (landscape phones, 576px and up)
 @media (min-width: 576px) and (max-width: 767px) {
+  .login {
+    width: 350px!important;
+    height: 235px!important;
+  }
   .cards {
     grid-template-columns: 1fr;
   }
