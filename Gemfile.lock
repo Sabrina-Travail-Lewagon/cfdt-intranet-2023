@@ -92,6 +92,7 @@ GEM
       nokogiri (~> 1.6)
       premailer (~> 1.7)
       sassc (~> 2.1)
+    browser (5.3.1)
     builder (3.2.4)
     capybara (3.39.2)
       addressable
@@ -354,6 +355,7 @@ DEPENDENCIES
   bootsnap
   bootstrap (~> 5.2)
   bootstrap-email
+  browser
   capybara
   cloudinary
   debug
