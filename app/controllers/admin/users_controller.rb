@@ -1,5 +1,6 @@
 class Admin::UsersController < ApplicationController
   before_action :authenticate_user!  # Devise helper pour s'assurer que l'utilisateur est connecté
+  before_action :restrict_access_on_mobile
   before_action :set_user, only: [:show, :edit, :update, :destroy]
   before_action :set_breadcrumbs, only: [:show, :edit]
   before_action :authorize_user, except: [:new, :create, :index]  # autoriser uniquement pour les actions spécifiées
@@ -19,7 +20,6 @@ class Admin::UsersController < ApplicationController
 
   def edit
   end
-
 
   def update
     # S'assure que l'utilisateur ne met à jour que son propre compte
@@ -91,6 +91,11 @@ class Admin::UsersController < ApplicationController
 
   def user_params
     params.require(:user).permit(:first_name, :last_name, :email, :password, :password_confirmation, :role, :photo)
+  end
+
+  # Restriction de l'accès sur mobile
+  def restrict_access_on_mobile
+    redirect_to root_path, alert: "L'accès admin n'est pas disponible sur les téléphones" if device_type == :mobile
   end
 
 end

@@ -17,4 +17,6 @@ class Admin::ApplicationController < ApplicationController
       { name: 'Dashboard', path: admin_root_path }
     ]
   end
+
+
 end

@@ -1,6 +1,7 @@
 class Admin::ArticlesController < ApplicationController
   before_action :set_article, only: [:edit, :destroy, :update]
   before_action :authenticate_admin!
+  before_action :restrict_access_on_mobile
   layout "admin-bar"
 
   def index
@@ -143,6 +144,11 @@ class Admin::ArticlesController < ApplicationController
     User.find_each do |user|
       ArticleMailer.new_article_email(@article, user).deliver_now
     end
+  end
+
+  # Restriction de l'accès sur mobile
+  def restrict_access_on_mobile
+    redirect_to root_path, alert: "L'accès admin n'est pas disponible sur les téléphones" if device_type == :mobile
   end
 
 end

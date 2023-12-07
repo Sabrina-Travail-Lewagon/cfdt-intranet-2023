@@ -1,6 +1,8 @@
 class ApplicationController < ActionController::Base
   include Pagy::Backend
   before_action :authenticate_user!
+  helper_method :device_type
+
   before_action :configure_permitted_parameters, if: :devise_controller?
   before_action :set_breadcrumbs
 
@@ -48,5 +50,13 @@ class ApplicationController < ActionController::Base
 
   def add_breadcrumb(name, path)
     @breadcrumbs << { name: name, path: path }
+  end
+
+  def device_type
+    if browser.device.mobile?
+      :mobile
+    else
+      :desktop_or_tablet
+    end
   end
 end

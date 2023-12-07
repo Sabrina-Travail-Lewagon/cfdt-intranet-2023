@@ -1,5 +1,7 @@
 class Admin::CategoriesController < ApplicationController
   before_action :authenticate_admin!
+  before_action :restrict_access_on_mobile
+
   before_action :find_category, only: [:show, :edit, :update, :destroy]
   layout "admin-bar"
 
@@ -71,5 +73,9 @@ class Admin::CategoriesController < ApplicationController
     @category = Category.find(params[:id])
     @user = current_user
     authorize @category
+  end
+
+  def restrict_access_on_mobile
+    redirect_to root_path, alert: "L'accès admin n'est pas disponible sur les téléphones" if device_type == :mobile
   end
 end
