@@ -1,7 +1,6 @@
 .dashboard-wrapper {
   display: flex;
-  flex-direction: row;
-  min-height: 100vh;
+  align-items: flex-start; /* aligne les éléments au début de leur cellule de grille */
   margin: 0;
 }
 
@@ -11,17 +10,14 @@
   grid-template-columns: repeat(2, 1fr); /* 2 colonnes de taille égale */
   gap: 30px; /* espace entre les éléments de grille */
   margin: 40px;
-  flex-grow: 1; /* Permet à la sidebar de grandir pour remplir l'espace disponible */
 }
 
 .main-content {
-  width: 70%; /* Largeur ajustée */
+  width: 70%; /* ou la largeur restante pour le contenu principal */
   padding: 12px;
   display: flex;
   margin: 0 5rem;
-  flex-grow: 1; /* S'étend pour occuper l'espace disponible */
 }
-
 
 .btn-sidebar .img-category {
   width: 80%; /* ensures the image takes up the full container width */
@@ -34,6 +30,7 @@
   object-fit: cover; /* s'assure que l'image couvre entièrement la cellule sans être étirée */
 }
 
+
 .dashboard-sidebar img.img-category-la-federation{
   width: 11rem;
   height: auto;
@@ -45,15 +42,14 @@
 
 .dashboard-bar {
   width: 250px;
+  height: 100vh; /* Pour que la barre prenne toute la hauteur de la fenêtre */
   padding: 15px 0;
-  background-color: #FFFDFD;
-  border-right: 1px solid #E0E0E0;
-  padding-top: 50px;
-  box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+  background-color: #FFFDFD; /* Couleur de fond gris clair */
+  border-right: 1px solid #E0E0E0; /* Bordure droite pour délimiter la barre */
+  padding-top: 50px; /* Espace en haut pour décaler le contenu vers le bas */
+  box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1); /* Ombre subtile à droite de la barre */
   box-sizing: border-box;
-  overflow-y: auto; /* Permet le défilement si nécessaire */
-  height: auto; /* S'adapte à la hauteur du contenu */
-  flex-shrink: 0; /* Empêche la barre de rétrécir */
+  overflow-y: auto; /* Permet le défilement vertical si nécessaire */
 }
 
 .btn-dashboard-bar {
@@ -74,6 +70,7 @@
   display: flex;
   align-items: center;
   padding: 10px 20px;
+  // border-radius: 10px;
   cursor: pointer;
   transition: background-color 0.2s;
 }
@@ -85,6 +82,7 @@
     color:#fff;
   }
 }
+
 
 .dashboard-item:hover {
   background-color: #E75C21;
