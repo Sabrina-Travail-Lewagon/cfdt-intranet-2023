@@ -2,40 +2,51 @@
 <div class="container mt-4">
   <div class="row">
     <h1>Liste des utilisateurs</h1>
-    <table class="table">
-      <thead>
-        <tr>
-          <th>Photo</th>
-          <th>Prénom</th>
-          <th>Nom</th>
-          <th>Email</th>
-          <th>Rôle</th>
-          <th>Actions</th>
-        </tr>
-      </thead>
-      <tbody>
-        <% @users.each do |user| %>
+    <div class="table-responsive">
+      <table class="table">
+        <thead>
           <tr>
-            <td>
-              <% if user.photo.attached? %>
-                <%= cl_image_tag user.photo.key, transformation: { width: 50, height: 50, crop: "fill" }, alt: "Photo de #{user.first_name} #{user.last_name}" %>
-              <% else %>
-                Pas de photo
-              <% end %>
-            </td>
-            <td><%= user.first_name %></td>
-            <td><%= user.last_name %></td>
-            <td><%= user.email %></td>
-            <td><%= user.role %></td>
-            <td>
-              <%= link_to 'Voir', admin_user_path(user), class: 'btn btn-info btn-sm' %>
-              <%= link_to 'Modifier', edit_admin_user_path(user), class: 'btn btn-primary btn-sm' %>
-              <%= link_to 'Supprimer', admin_user_path(user), data: {turbo_method: :delete, turbo_confirm: "Etes vous sure ?", :method=>'delete'}, class: 'btn btn-danger btn-sm' %>
-            </td>
+            <th>Photo</th>
+            <th>Prénom</th>
+            <th>Nom</th>
+            <th>Email</th>
+            <th>Rôle</th>
+            <th>Actions</th>
           </tr>
-        <% end %>
-      </tbody>
-    </table>
+        </thead>
+        <tbody>
+          <% @users.each do |user| %>
+            <tr>
+              <td>
+                <% if user.photo.attached? %>
+                  <%= cl_image_tag user.photo.key, transformation: { width: 50, height: 50, crop: "fill" }, alt: "Photo de #{user.first_name} #{user.last_name}" %>
+                <% else %>
+                  Pas de photo
+                <% end %>
+              </td>
+              <td><%= user.first_name %></td>
+              <td><%= user.last_name %></td>
+              <td><%= user.email %></td>
+              <td><%= user.role %></td>
+              <td class="btn-action text-center">
+                <%= link_to admin_user_path(user) do %>
+                    <i class="fa-solid fa-eye me-3 text-info"></i>
+                <% end %>
+                <% if policy(user).edit? %>
+                  <%= link_to edit_admin_user_path(user) do %>
+                    <i class="fas fa-file-edit me-3 text-info"></i>
+                  <% end %>
+                  <%= link_to admin_user_path(user),
+                        data: {turbo_method: :delete, turbo_confirm: "Etes vous sure ?", :method=>'delete'} do %>
+                        <i class="fa-solid fa-trash-can me-3 text-danger"></i>
+                  <% end %>
+                <% end %>
+              </td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
     <div class="actions">
       <%= link_to 'Créer un nouvel utilisateur', new_admin_user_path, class: 'btn btn-success' %>
     </div>

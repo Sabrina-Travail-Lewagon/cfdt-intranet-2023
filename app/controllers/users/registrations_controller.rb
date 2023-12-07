@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 class Users::RegistrationsController < Devise::RegistrationsController
+  before_action :restrict_access_on_mobile
   before_action :set_breadcrumbs, only: [:edit, :update]
   # before_action :configure_sign_up_params, only: [:create]
   # before_action :configure_account_update_params, only: [:update]
@@ -67,5 +68,9 @@ class Users::RegistrationsController < Devise::RegistrationsController
 	    {name: 'Dashboard', path: admin_root_path},
 	    {name: 'Mon compte', path: edit_user_registration_path}
 	  ]
+  end
+  # Restriction de l'accès sur mobile
+  def restrict_access_on_mobile
+    redirect_to root_path, alert: "L'accès admin n'est pas disponible sur les téléphones" if device_type == :mobile
   end
 end

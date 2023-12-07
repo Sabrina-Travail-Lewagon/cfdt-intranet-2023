@@ -248,3 +248,8 @@ input.btn{
 .countviews-button i {
   color: $bleu; /* couleur du cœur pour indiquer un "like" */
 }
+
+/* Boutons voir/Modifier/supp admin users */
+.btn-action a{
+  text-decoration: none;
+}
