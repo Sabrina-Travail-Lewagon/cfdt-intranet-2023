@@ -3,6 +3,7 @@ class CspReportsController < ApplicationController
   skip_before_action :authenticate_user!, only: [:create]
   # Sauter la vérification de l'authenticité du token CSRF
   skip_before_action :verify_authenticity_token, only: [:create]
+  # Pour passer la vérification Pundit :
   skip_after_action :verify_authorized, only: [:create]
 
   def create
