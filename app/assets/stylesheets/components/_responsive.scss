@@ -6,6 +6,20 @@
     margin: 0 auto; /* Centrer le login */
   }
 
+  .form_login {
+    gap: 10px;
+    margin-top: 20px;
+  }
+
+  .form_login_header {
+    padding: 8px 0px;
+    gap: 1px;
+  }
+
+  .form_login_header .fa-lock {
+    font-size: 45px;
+  }
+
   .cards {
     grid-template-columns: 1fr;
     justify-items: center;
