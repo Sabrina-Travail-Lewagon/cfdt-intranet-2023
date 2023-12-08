@@ -8,8 +8,9 @@
           <div class="article-header">
               <!-- Ici on ajoute le lien sur le titre -->
             <%= link_to article.title, article_path(article), class: "article-title" %>
-            <!-- Compteur de vues -->
-              <div class="card-countviews-section">
+              <!-- Compteur de vues -->
+              <div class="counters-vues">
+                <div class="card-countviews-section">
                   <% if user_signed_in? %>
                     <% if (article.views_count || 0) > 0 %>
                       <%= button_to article_path(article), method: :get, class: 'countviews-button' do %>
@@ -23,7 +24,6 @@
                     <span class="countviews-count"><%= article.views_count || 0 %></span>
                   <% end %>
               </div>
-            <!-- Affichez le compteur de likes ici -->
               <!-- Section like en haut -->
               <div class="card-like-section">
                 <% if user_signed_in? %>
@@ -40,6 +40,7 @@
                   <span class="like-count"><%= article.likes.count %></span>
                 <% end %>
               </div>
+              <!-- Section Nb Commentaires -->
               <div class="card-comment-section">
                   <% if user_signed_in? %>
                     <% comment = current_user.comments.find_by(article: article) %>
@@ -55,6 +56,8 @@
                     <span class="comment-count"><%= article.comments.count %></span>
                   <% end %>
               </div>
+              </div>
+
           </div>
           <p>
             <%= truncate_html(article.rich_body.to_s, length: 250, omission: '...') %>

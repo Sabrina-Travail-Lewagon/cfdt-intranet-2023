@@ -295,6 +295,11 @@ i.fa-sharp.fa-solid.fa-trash {
   font-size: 0.8rem;
 }
 
+// Partie compteurs de vues
+.counters-vues{
+  display: flex;
+}
+
 // Partie Like
 .card-like-section {
   flex-shrink: 0; /* empêche la section des likes de se réduire */
