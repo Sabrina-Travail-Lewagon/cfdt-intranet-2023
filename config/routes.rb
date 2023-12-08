@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   devise_for :users, skip: [:registrations]
+  post 'csp_violation_report', to: 'csp_reports#create'
   as :user do
     get 'users/edit', to: 'users/registrations#edit', as: 'edit_user_registration'
     put 'users', to: 'users/registrations#update', as: 'user_registration'

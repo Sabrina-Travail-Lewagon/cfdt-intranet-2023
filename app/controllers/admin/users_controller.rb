@@ -101,7 +101,7 @@ class Admin::UsersController < ApplicationController
 	    # Pour les utilisateurs non-admin/RH, restreindre les paramètres modifiables
 	    params.require(:user).permit(:first_name, :last_name, :email, :password, :password_confirmation, :photo)
 	  end
-end
+  end
 
   # Restriction de l'accès sur mobile
   def restrict_access_on_mobile
