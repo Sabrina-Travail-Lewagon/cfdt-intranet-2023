@@ -4,7 +4,7 @@ class Article < ApplicationRecord
   include PgSearch::Model
 
   pg_search_scope :search_by_title_and_content,
-    against: [:title],
+    against: [:title, :pdf_filenames],
     associated_against: {
       rich_text_rich_body: [:body]  # Utilisez :rich_text ici pour correspondre à la configuration par défaut d'Action Text
     },
@@ -30,9 +30,19 @@ class Article < ApplicationRecord
   def like_count
     likes.count
   end
+  before_save :extract_and_store_pdf_filenames
+  after_save :extract_and_store_pdf_filenames
+  after_update :extract_and_store_pdf_filenames
 
   private
 
+  def extract_and_store_pdf_filenames
+    if documents.any?
+      self.pdf_filenames = documents.filter { |doc| doc.content_type == 'application/pdf' }
+                                    .map(&:filename)
+                                    .join("; ")
+    end
+  end
   # def send_new_article_email
   #   User.find_each do |user|
   #     ArticleMailer.new_article_email(self, user).deliver_now
