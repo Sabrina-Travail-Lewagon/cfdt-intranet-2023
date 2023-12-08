@@ -28,32 +28,30 @@
           <li class="nav-item">
             <%= link_to "Accueil", root_path, class: "nav-link" %>
           </li>
+          <% if browser.device.mobile?  %>
+              <!-- Menu sur mobile -->
+              <li class="nav-item">
+                <%= link_to "Se déconnecter", destroy_user_session_path, method: :delete, class: "nav-link" %>
+              </li>
+            <% else %>
           <!-- Dropdown pour tablette et écran d'ordinateur -->
-          <li class="nav-item dropdown d-block d-sd-none ">
-              <a href="#" class="avatar d-none d-sm-block" id="navbarDropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          <li class="nav-item dropdown">
+              <a href="#" class="avatar" id="navbarDropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 <% if current_user.photo.attached? %>
                     <%= cl_image_tag current_user.photo.key, transformation: { width: 100, height: 100, crop: "fill" }, class: "avatar", alt: "dropdown menu" %>
                   <% else %>
                     <%= image_tag "default-avatar-user-.jpg", class: "avatar", alt: "dropdown menu" %>
                 <% end %>
               </a>
-            </a>
-            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-              <% if policy(current_user).access_dashboard? %>
-                <li class="nav-item dropdown d-none d-sm-block"><%= link_to "Tableau de bord", admin_root_path, class: "dropdown-item" %></li>
-              <% end %>
-              <li><%= link_to "Se déconnecter", destroy_user_session_path, method: :delete, class: "dropdown-item" %></li>
-            </ul>
+              <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                <% if policy(current_user).access_dashboard? %>
+                  <li class="nav-item dropdown"><%= link_to "Tableau de bord", admin_root_path, class: "dropdown-item" %></li>
+                <% end %>
+                  <li><%= link_to "Se déconnecter", destroy_user_session_path, method: :delete, class: "dropdown-item" %></li>
+              </ul>
+            <% end %>
           </li>
-          <!-- Menu sur mobile -->
-          <ul class="navbar-nav me-auto d-sm-block">
-              <% if policy(current_user).access_dashboard? %>
-                <li class="nav-item dropdown d-none d-lm-block"><%= link_to "Tableau de bord", admin_root_path, class: "dropdown-item" %></li>
-              <% end %>
-              <li><%= link_to "Se déconnecter", destroy_user_session_path, method: :delete, class: "dropdown-item d-sm-block d-sm-none .d-md-block" %></li>
-          </ul>
         </ul>
-      <% else %>
         <!-- Liens pour les utilisateurs non connectés -->
       <% end %>
     </div>
