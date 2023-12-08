@@ -22,7 +22,7 @@ class UserPolicy < ApplicationPolicy
   # Mais si vous voulez limiter la mise à jour à certains champs pour les utilisateurs non admin/RH,
   # cela devra être géré dans le contrôleur.
   def update?
-    true
+    user == record || admin_or_rh?
   end
 
   # Seuls les administrateurs et les RH peuvent supprimer un utilisateur

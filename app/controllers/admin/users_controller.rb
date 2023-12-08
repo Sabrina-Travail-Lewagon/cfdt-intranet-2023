@@ -23,10 +23,11 @@ class Admin::UsersController < ApplicationController
 
   def update
     # S'assure que l'utilisateur ne met à jour que son propre compte
-    unless current_user == @user
-      redirect_to admin_user_path(current_user), alert: 'Vous ne pouvez mettre à jour que votre propre compte.'
-      return
-    end
+    # unless current_user == @user
+    #   redirect_to admin_user_path(current_user), alert: 'Vous ne pouvez mettre à jour que votre propre compte.'
+    #   return
+    # end
+    authorize @user, :update?
 
     # Avant de mettre à jour l'utilisateur, vérification si le mot de passe et la confirmation du mot de passe sont vides
     if params[:user][:password].blank? && params[:user][:password_confirmation].blank?
@@ -89,9 +90,18 @@ class Admin::UsersController < ApplicationController
     authorize @user
   end
 
+  # def user_params
+  #   params.require(:user).permit(:first_name, :last_name, :email, :password, :password_confirmation, :role, :photo)
+  # end
+
   def user_params
-    params.require(:user).permit(:first_name, :last_name, :email, :password, :password_confirmation, :role, :photo)
-  end
+	  if current_user.admin? || current_user.rh?
+	    params.require(:user).permit(:first_name, :last_name, :email, :password, :password_confirmation, :role, :photo)
+	  else
+	    # Pour les utilisateurs non-admin/RH, restreindre les paramètres modifiables
+	    params.require(:user).permit(:first_name, :last_name, :email, :password, :password_confirmation, :photo)
+	  end
+end
 
   # Restriction de l'accès sur mobile
   def restrict_access_on_mobile
