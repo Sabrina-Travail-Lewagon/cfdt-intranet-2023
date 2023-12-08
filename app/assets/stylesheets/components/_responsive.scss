@@ -78,17 +78,23 @@
   grid-template-columns: repeat(2, 1fr);
   gap: 10px!important;
   margin: 30px!important;
+  align-content: start;
   }
   .btn-sidebar {
-    width: 13vh!important;
+    width: 10vh!important;
     height: auto;
     border-radius: 15px!important;
     box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
-    padding: 10px!important;
+    padding: 5px!important;
     display: flex;
     flex-direction: column;
     align-items: center;
   }
+
+  .btn-sidebar-child {
+    overflow: unset;
+  }
+
   .category-name {
     margin-top: 5px!important;
     font-family: Inter;
@@ -130,23 +136,29 @@
     width: 30%;
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    gap: 10px!important;
-    margin: 30px!important;
+    gap: 10px;
+    margin: 30px;
+    align-content: start;
     }
   .btn-sidebar {
-      width: 13vh!important;
+      width: 10vh;
       height: auto;
-      border-radius: 15px!important;
+      border-radius: 15px;
       box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
-      padding: 10px!important;
+      padding: 5px;
       display: flex;
       flex-direction: column;
       align-items: center;
-    }
-      .category-name {
-      margin-top: 5px!important;
+  }
+
+  .btn-sidebar-child {
+    overflow: unset;
+  }
+
+  .category-name {
+      margin-top: 5px;
       font-family: Inter;
-      font-size: 16px!important;
+      font-size: 15px;
       font-style: normal;
       font-weight: 700;
       line-height: normal;
@@ -175,31 +187,32 @@
     width: 30%;
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    gap: 10px!important;
-    margin: 30px!important;
+    gap: 10px;
+    margin: 30px;
+    align-content: start;
     }
-    .btn-sidebar {
-      width: 13vh!important;
-      height: auto;
-      border-radius: 15px!important;
-      box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
-      padding: 10px!important;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-    }
-      .category-name {
-      margin-top: 5px!important;
-      font-family: Inter;
-      font-size: 16px!important;
-      font-style: normal;
-      font-weight: 700;
-      line-height: normal;
-    }
+  .btn-sidebar {
+    width: 18vh;
+    height: auto;
+    border-radius: 15px;
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .category-name {
+    margin-top: 5px!important;
+    font-family: Inter;
+    font-size: 16px!important;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+  }
 
     .main-content {
     width: 70%;
-    padding: 6px!important;
+    padding: 6px;
     display: flex;
     margin: 0 5rem;
     }
