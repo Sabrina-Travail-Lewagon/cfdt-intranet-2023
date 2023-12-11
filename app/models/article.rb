@@ -13,6 +13,8 @@ class Article < ApplicationRecord
     }
   # un article doit toujours être associé à un utilisateur lors de sa création ou de sa mise à jour:
   validates :user, presence: true
+  # Un article doit avoir un titre
+  validates :title, presence: true, length: { minimum: 5 }
   # Ajout activeStorage aux articles pour pouvoir faciliter
   # suppression images sur Cloudinary
   # has_many_attached :images, service: :cloudinary, dependent: :purge
