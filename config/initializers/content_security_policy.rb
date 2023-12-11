@@ -42,7 +42,7 @@ Rails.application.config.content_security_policy do |policy|
   policy.style_src :self, :unsafe_inline, 'https://fonts.googleapis.com'
   policy.font_src :self, :data, 'https://fonts.gstatic.com'
 
-  # Include other source directives as needed
+  # Permettre de contacter l'api cloudinary, sinon marche pas
   policy.connect_src :self, 'https://api.cloudinary.com', 'https://res.cloudinary.com'
 
   # Uncomment report_uri if you want to ensure that violations are reported
