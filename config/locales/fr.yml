@@ -18,3 +18,23 @@ fr:
     messages:
       empty: "Le commentaire ne peut pas être vide."
       too_short: "Le commentaire doit contenir au moins %{count} caractères."
+fr:
+  simple_form:
+    error_notification:
+      default_message: "Merci de vérifier les problèmes ci-dessous :"
+  errors:
+    format: "%{attribute} %{message}"
+    messages:
+      blank: "ne peut pas être vide"
+fr:
+  activerecord:
+    attributes:
+      article:
+        title: "Titre"
+    errors:
+      models:
+        article:
+          attributes:
+            title:
+              blank: "ne peut pas être vide"
+              too_short: "est trop court (au moins %{count} caractères)"

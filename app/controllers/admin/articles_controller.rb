@@ -39,7 +39,7 @@ class Admin::ArticlesController < ApplicationController
     @article = Article.new
     if current_user.cse?
       @categories = policy_scope(Category).where(nom: 'infos CSE') # Assurez-vous que 'CSE' est le nom correct de votre catégorie
-    elsif current_user.rh?
+    elsif current_user.rh? || current_user.admin?
       @categories = policy_scope(Category).where.not(nom: 'infos CSE') # Assurez-vous que 'CSE' est le nom correct de votre catégorie
     else
       @categories = policy_scope(Category)
@@ -62,6 +62,7 @@ class Admin::ArticlesController < ApplicationController
       # redirect_to url_for([:admin, @article]), notice: 'Article créé!'
     else
       flash.now[:alert] = "Impossible de créer l'article."
+      @categories = policy_scope(Category)
       render :new, status: :unprocessable_entity
     end
   end
