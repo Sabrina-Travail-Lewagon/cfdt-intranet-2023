@@ -68,6 +68,7 @@ gem 'mailcatcher', group: :development
 gem 'postmark-rails'
 gem 'bootstrap-email'
 gem 'browser' # Vérifie type support mobile, etc
+gem 'sanitize'
 
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
