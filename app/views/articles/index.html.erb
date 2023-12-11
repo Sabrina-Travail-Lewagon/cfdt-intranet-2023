@@ -6,9 +6,9 @@
       <% else %>
         <% @articles.each do |article| %>
           <div class="article-header">
-              <!-- Ici on ajoute le lien sur le titre -->
+            <%# Ici on ajoute le lien sur le titre %>
             <%= link_to article.title, article_path(article), class: "article-title" %>
-              <!-- Compteur de vues -->
+              <%# Compteur de vues %>
               <div class="counters-vues">
                 <div class="card-countviews-section">
                   <% if user_signed_in? %>
@@ -24,7 +24,7 @@
                     <span class="countviews-count"><%= article.views_count || 0 %></span>
                   <% end %>
               </div>
-              <!-- Section like en haut -->
+              <%# Section like en haut %>
               <div class="card-like-section">
                 <% if user_signed_in? %>
                   <% like = current_user.likes.find_by(article: article) %>
@@ -40,7 +40,7 @@
                   <span class="like-count"><%= article.likes.count %></span>
                 <% end %>
               </div>
-              <!-- Section Nb Commentaires -->
+              <%# Section Nb Commentaires %>
               <div class="card-comment-section">
                   <% if user_signed_in? %>
                     <% comment = current_user.comments.find_by(article: article) %>

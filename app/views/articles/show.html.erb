@@ -12,8 +12,7 @@
       </div>
     </div>
 
-    <%# <hr>
-    <>Catégories : <%= @article.category.nom %>
+    <%# %Catégories : <%= @article.category.nom %>
     <div class="article-title">
       <h2><%= @article.title %></h2>
     </div>
@@ -31,7 +30,7 @@
       <% end %>
     </div>
 
-    <!-- Affichage des erreurs commentaires -->
+    <%# Affichage des erreurs commentaires %>
     <% if @comment&.errors&.any? %>
       <div class="alert alert-info error_explanation">
         <h2><%= pluralize(@comment.errors.count, "erreur.s") %> empêche.nt ce commentaire d'être sauvegardé :</h2>
@@ -43,7 +42,7 @@
       </div>
     <% end %>
 
-    <!-- Formulaire pour un nouveau commentaire -->
+    <%# Formulaire pour un nouveau commentaire %>
     <div class="cards-commentaire">
       <div class="card-body">
         <h5 class="card-title">Écrivez votre commentaire</h5>
@@ -57,7 +56,7 @@
         <% end %>
       </div>
     </div>
-    <!-- Affichage des commentaires existants -->
+    <%# Affichage des commentaires existants %>
     <div class="commentaire-section mt-4">
       <% @comments.each do |comment| %>
         <div class="commentaire-card">
@@ -80,10 +79,7 @@
         </div>
       <% end %>
     </div>
-
-
-
-    <!-- Navigation -->
+    <%# Navigation %>
     <div class="mt-4">
       <% if browser.device.mobile?  %>
         <%= link_to 'Accueil', root_path %>

@@ -13,7 +13,7 @@
         <% if @category.image.attached? %>
           <div class="btn-home <%= @category.nom.parameterize %>" style="background-color: <%= @category.background_color %>;">
           <%= cl_image_tag @category.image.key, class: "img-fluid"%>
-          <!-- Ajoutez la classe 'img-fluid' ou toute autre classe CSS selon votre besoin -->
+          <%# Ajoutez la classe 'img-fluid' ou toute autre classe CSS selon votre besoin %>
           </div>
         <% else %>
           <p>Pas d'image attachée</p>
@@ -24,7 +24,7 @@
           <%= f.file_field :image, class:"form-control" %>
         </div>
         <div class="mb-3">
-          <!-- Ajout d'un sélecteur de couleur -->
+          <%# Ajout d'un sélecteur de couleur %>
           <%= f.label :background_color, "Couleur de fond sur l'Accueil", class:"mt-3" %>
           <%= f.color_field :background_color %>
         </div>

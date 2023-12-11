@@ -5,7 +5,6 @@
     <% end %>
   </div>
   <div class="row">
-
     <div class="card-articles">
     <span class="py-2">
       <h2>Mes articles</h2>
@@ -16,15 +15,15 @@
         <% @articles.each do |article| %>
           <div class="article-card">
           <div class="article-actions">
-              <!-- Bouton Editer -->
+              <%# Bouton Editer %>
               <%= link_to edit_admin_article_path(article) do %>
                 <i class="fa-solid fa-pen-to-square"></i>
               <% end %>
-              <!-- Bouton Voir -->
+              <%# Bouton Voir %>
               <%= link_to admin_article_path(article) do %>
                 <i class="fa-solid fa-eye"></i>
               <% end %>
-              <!-- Bouton Supprimer-->
+              <%# Bouton Supprimer %>
               <%= link_to admin_article_path(article),
                     data: {turbo_method: :delete, turbo_confirm: "Êtes-vous sûr de vouloir supprimer cet article?", :method=>'delete'} do %>
                     <i class="fa-solid fa-trash-can me-3 text-danger"></i>

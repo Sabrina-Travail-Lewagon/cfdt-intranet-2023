@@ -22,19 +22,19 @@
       </div>
       <% end %>
       <% if user_signed_in? %>
-        <!-- Liens pour les utilisateurs connectés -->
+        <%# Liens pour les utilisateurs connectés %>
         <ul class="navbar-nav me-auto">
-          <!-- Lien Accueil toujours visible -->
+          <%# Lien Accueil toujours visible %>
           <li class="nav-item">
             <%= link_to "Accueil", root_path, class: "nav-link" %>
           </li>
           <% if browser.device.mobile?  %>
-              <!-- Menu sur mobile -->
+              <%# Menu sur mobile %>
               <li class="nav-item">
                 <%= link_to "Se déconnecter", destroy_user_session_path, method: :delete, class: "nav-link" %>
               </li>
             <% else %>
-          <!-- Dropdown pour tablette et écran d'ordinateur -->
+          <%# Dropdown pour tablette et écran d'ordinateur %>
           <li class="nav-item dropdown">
               <a href="#" class="avatar" id="navbarDropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 <% if current_user.photo.attached? %>
@@ -52,7 +52,6 @@
             <% end %>
           </li>
         </ul>
-        <!-- Liens pour les utilisateurs non connectés -->
       <% end %>
     </div>
   </div>

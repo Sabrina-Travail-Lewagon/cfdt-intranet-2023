@@ -18,9 +18,7 @@
         <% end %>
         <% if policy(User.new).create? %>
         <li class="dashboard-item <%= 'active' if current_page?(new_admin_user_path) %>">
-
             <%= link_to 'Créer un nouvel utilisateur', new_admin_user_path %>
-
         </li>
         <% end %>
         <% if policy(current_user).write_article? %>
