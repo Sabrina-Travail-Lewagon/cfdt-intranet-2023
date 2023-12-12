@@ -9,7 +9,7 @@
           Dashboard
         </li>
         <li class="dashboard-item <%= 'active' if request.fullpath.start_with?('/users/edit') %>">
-          <%= link_to "Mon compte", edit_user_registration_path(current_user) %>
+          <%= link_to "Mon compte", admin_edit_user_registration_path(current_user) %>
         </li>
         <% if policy(User.new).create? %>
         <li class="dashboard-item <%= 'active' if current_page?(admin_users_path) %>">

@@ -1,0 +1,39 @@
+<div class="dashboard-wrapper ">
+  <%# Menu à gauche %>
+  <div>
+    <%= render 'shared/admin-bar' %>
+  </div>
+  <div class="container mt-4">
+    <h2>Modifier mon compte</h2>
+    <%= simple_form_for(resource, as: resource_name, url: user_registration_path, html: { method: :put }) do |f| %>
+      <%= f.error_notification %>
+      <div class="form-inputs">
+        <%= f.input :email, required: true, autofocus: true %>
+
+        <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+          <p>Currently waiting confirmation for: <%= resource.unconfirmed_email %></p>
+        <% end %>
+        <%= f.input :password, label: "Nouveau mot de passe",
+                    hint: t('devise.registrations.edit.leave_blank_if_you_dont_want_to_change_it'),
+                    required: false,
+                    input_html: { autocomplete: "nouveau mot de passe" } %>
+        <%= f.input :password_confirmation, label: "Confirmation du mot de passe",
+                    required: false,
+                    input_html: { autocomplete: "nouveau mot de passe" } %>
+        <%= f.input :current_password, label: "mot de passe actuel",
+                    hint: t('devise.registrations.edit.we_need_your_current_password_to_confirm_your_changes'),
+                    required: true,
+                    input_html: { autocomplete: "mot de passe actuel" } %>
+        <%= f.input :photo, as: :file %>
+      </div>
+
+      <div class="form-actions mb-4">
+        <%= f.button :submit, "Modifier", class: "btn btn-primary" %>
+      </div>
+    <% end %>
+
+    <span class="mt-4">
+      <%= link_to "Retour", :back, class: "btn btn-primary" %>
+    </span>
+  </div>
+</div>

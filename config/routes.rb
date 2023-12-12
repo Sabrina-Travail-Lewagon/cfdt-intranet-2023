@@ -19,14 +19,17 @@ Rails.application.routes.draw do
   # end
   # Partie dashboard
   namespace :admin do
-    root to: redirect('/users/edit') # Redirige vers edit_user_registration_path
+    root to: redirect('/admin/users/edit') # Redirige vers edit_user_registration_path
+    # gestion de la modification du profil utilisateur
+    get 'users/edit', to: 'registrations#edit', as: 'edit_user_registration'
+    patch 'users', to: 'registrations#update'
     # Route pour admin pour modif/supp n'importe quel article
     get 'articles/tous_les_articles', to: 'articles#tous_les_articles', as: 'tous_les_articles'
     # root to: 'home#accueil'
     get 'articles/mes_articles', to: 'articles#mes_articles', as: 'mes_articles'
     resources :articles
     resources :categories
-    resources :users, only: [:new, :create, :update, :index, :show, :edit, :destroy]
+    resources :users, only: [:new, :create, :index, :show, :destroy, :edit, :update]
   end
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
