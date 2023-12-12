@@ -43,10 +43,24 @@ class Admin::UsersController < ApplicationController
 
 
   def destroy
-    if @user.destroy
+    # if @user.destroy
+    #   redirect_to admin_users_url, notice: 'L\'utilisateur a été supprimé'
+    # else
+    #   redirect_to admin_users_url, alert: 'Erreur lors de la suppression de l\'utilisateur'
+    # end
+    begin
+      @user.destroy
       redirect_to admin_users_url, notice: 'L\'utilisateur a été supprimé'
-    else
-      redirect_to admin_users_url, alert: 'Erreur lors de la suppression de l\'utilisateur'
+    rescue ActiveRecord::NotNullViolation
+      # Message d'erreur personnalisé pour NotNullViolation
+      redirect_to admin_users_url, alert: 'Cet utilisateur ne peut pas être supprimé car il est associé à d\'autres enregistrements.'
+    rescue ActiveRecord::InvalidForeignKey
+      # Message d'erreur personnalisé pour ForeignKeyViolation
+      redirect_to admin_users_url, alert: 'Cet utilisateur ne peut pas être supprimé car il possède des articles qui lui sont liés.'
+    rescue StandardError => e
+      # Gestion d'autres erreurs inattendues
+      redirect_to admin_users_url, alert: "Erreur inattendue lors de la suppression de l'utilisateur: #{e.message}"
+    enddirect_to admin_users_url, alert: "Erreur lors de la suppression de l'utilisateur: #{e.message}"
     end
   end
 

@@ -31,7 +31,12 @@
         <%= f.button :submit, "Modifier", class: "btn btn-primary" %>
       </div>
     <% end %>
-
+    <% if policy(User.new).destroy? %>
+    <div class="my-4">
+      <h3>Effacer mon compte</h3>
+      <div class="lh-base">Insatisfait ? <%= button_to "Supprimer mon compte", registration_path(resource_name), data: { confirm: "Êtes vous sûre?", turbo_confirm: "Êtes vous sûre?" }, method: :delete, class: "btn btn-primary" %></div>
+    </div>
+    <% end %>
     <span class="mt-4">
       <%= link_to "Retour", :back, class: "btn btn-primary" %>
     </span>
