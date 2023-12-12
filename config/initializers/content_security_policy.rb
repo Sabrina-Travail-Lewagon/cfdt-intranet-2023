@@ -30,7 +30,7 @@ Rails.application.config.content_security_policy do |policy|
   policy.default_src :self
 
   # Allow images from 'self' and Cloudinary
-  policy.img_src :self, :data, 'http://res.cloudinary.com/dooup7bi2/image/upload/', 'blob:'
+  policy.img_src :self, :data, 'https://res.cloudinary.com/dooup7bi2/image/upload/', 'blob:'
   # Allow blob URLs for PDFs
   policy.object_src :self, 'blob:'
 
