@@ -19,7 +19,11 @@ Rails.application.routes.draw do
   # end
   # Partie dashboard
   namespace :admin do
-    root to: redirect('/users/edit') # Redirige vers edit_user_registration_path
+    # root to: redirect('admin/users/edit') # Redirige vers edit_user_registration_path
+    root to: redirect('/admin/profile/edit')
+    get 'profile/edit', to: 'users#edit_profile', as: 'edit_profile'
+    # get 'users/edit', to: 'users/registrations#edit', as: 'edit_user_registration'
+    # put 'users', to: 'users/registrations#update', as: 'admin_user_registration'
     # Route pour admin pour modif/supp n'importe quel article
     get 'articles/tous_les_articles', to: 'articles#tous_les_articles', as: 'tous_les_articles'
     # root to: 'home#accueil'

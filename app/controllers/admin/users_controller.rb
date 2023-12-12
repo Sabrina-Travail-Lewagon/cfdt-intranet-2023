@@ -2,7 +2,7 @@ class Admin::UsersController < ApplicationController
   before_action :authenticate_user!  # Devise helper pour s'assurer que l'utilisateur est connecté
   before_action :restrict_access_on_mobile
   before_action :set_user, only: [:show, :edit, :update, :destroy]
-  before_action :set_breadcrumbs, only: [:show, :edit]
+  before_action :set_breadcrumbs, only: [:show, :edit, :edit_profile]
   before_action :authorize_user, except: [:new, :create, :index]  # autoriser uniquement pour les actions spécifiées
   layout "admin-bar"
 
@@ -13,6 +13,12 @@ class Admin::UsersController < ApplicationController
       {name: 'Dashboard', path: admin_root_path},
       {name: 'Liste des utilisateurs', path: admin_users_path}
     ]
+  end
+
+  def edit_profile
+    @user = current_user
+    authorize @user, :edit_profile?
+    # Logique pour éditer le profil de l'utilisateur actuellement connecté
   end
 
   def show
@@ -87,7 +93,8 @@ class Admin::UsersController < ApplicationController
 
   # Séparer l'autorisation pour éviter des répétitions
   def authorize_user
-    authorize @user
+    # authorize @user
+    authorize @user if @user.present?
   end
 
   # def user_params

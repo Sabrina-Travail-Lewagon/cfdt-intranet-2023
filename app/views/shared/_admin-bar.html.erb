@@ -8,8 +8,8 @@
           </svg>
           Dashboard
         </li>
-        <li class="dashboard-item <%= 'active' if request.fullpath.start_with?('/users/edit') %>">
-          <%= link_to "Mon compte", edit_user_registration_path(current_user) %>
+        <li class="dashboard-item <%= 'active' if request.fullpath.start_with?('admin/users/edit') %>">
+          <%= link_to "Mon compte",  edit_admin_user_path(current_user) %>
         </li>
         <% if policy(User.new).create? %>
         <li class="dashboard-item <%= 'active' if current_page?(admin_users_path) %>">

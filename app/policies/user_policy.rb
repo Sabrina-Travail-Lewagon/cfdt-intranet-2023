@@ -25,6 +25,10 @@ class UserPolicy < ApplicationPolicy
     user == record || admin_or_rh?
   end
 
+  def edit_profile?
+    user == record || admin_or_rh?
+  end
+
   # Seuls les administrateurs et les RH peuvent supprimer un utilisateur
   def destroy?
     admin_or_rh?

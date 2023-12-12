@@ -38,8 +38,8 @@ class ApplicationController < ActionController::Base
   end
 
   def RecordNotFound
-    flash[:alert] = "La catégorie demandée n'a pas été trouvée."
-    redirect_to categories_path
+    flash[:alert] = "L'enregistrement demandée n'a pas été trouvée."
+    redirect_to admin_root_path
   end
 
   def set_breadcrumbs

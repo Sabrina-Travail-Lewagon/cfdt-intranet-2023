@@ -1,0 +1,6 @@
+fr:
+  simple_form:
+    labels:
+      user:
+        password: "Mot de passe"
+        # Autres labels de votre formulaire
