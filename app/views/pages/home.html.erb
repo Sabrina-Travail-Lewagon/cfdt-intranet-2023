@@ -36,7 +36,7 @@
                 <p><%= article.created_at.strftime("%d %b") %></p>
               </div>
               <div class="col-details">
-                <h2><%= link_to article.title, article_path(article) %></h2>
+                <h2><%= link_to truncate_html(article.title.to_s, length: 40, omission: '...'), article_path(article) %></h2>
                 <p><%= l(article.created_at, format: "%A, %d %B, %H:%M") %></p>
                 <span class="article-category">Catégorie : <%= article.category&.nom || "Non catégorisé" %></span>
               </div>

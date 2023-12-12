@@ -257,6 +257,7 @@
     grid-column: span 2; /* Étendre sur 2 colonnes */
     width: 80%; /* Largeur adaptée */
     margin: 0 auto; /* Centrer dans la grille */
+    overflow: auto;
   }
 
   /* Ajustements pour les textes et les autres éléments */
