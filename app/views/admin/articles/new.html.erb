@@ -39,6 +39,11 @@
 	        <i class="fas fa-arrow-left"></i> Retour
 	      <% end %>
 	    </div>
-	    <div>
+      <!-- Boutons pour tester les erreurs -->
+      <div class="mt-3">
+        <%= link_to "Tester Erreur 404", "/bad_request", class: "btn btn-warning" %>
+        <%= link_to "Tester Erreur 500", "/internal_server_error", class: "btn btn-danger" %>
+        <%= link_to "Tester Erreur 404", "/chemin_inexistant", class: "btn btn-warning" %>
+      </div>
 	  </div>
 </div>
