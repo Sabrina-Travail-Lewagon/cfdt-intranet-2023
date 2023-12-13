@@ -69,3 +69,14 @@
   font-weight:400;
   line-height:normal
 }
+.attachment__caption{
+  display: none!important;
+}
+.space-y-3 .trix-content figcaption.attachment__caption{
+  display: none;
+}
+.btn.btn-primary{
+  background-color: #E75c21!important;
+  padding: 8px 12px;
+  border: 1px solid #E75c21!important;
+}
