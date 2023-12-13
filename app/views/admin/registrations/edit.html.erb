@@ -1,9 +1,4 @@
-<div class="dashboard-wrapper ">
-  <%# Menu à gauche %>
-  <div>
-    <%= render 'shared/admin-bar' %>
-  </div>
-  <div class="container mt-4">
+<div class="container mt-4">
     <h2>Modifier mon compte</h2>
     <%= simple_form_for(resource, as: resource_name, url: user_registration_path, html: { method: :put }) do |f| %>
       <%= f.error_notification %>

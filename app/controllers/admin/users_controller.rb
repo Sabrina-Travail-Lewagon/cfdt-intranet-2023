@@ -13,6 +13,7 @@ class Admin::UsersController < ApplicationController
       {name: 'Dashboard', path: admin_root_path},
       {name: 'Liste des utilisateurs', path: admin_users_path}
     ]
+    @pagy, @users = pagy(policy_scope(User).order('created_at DESC'), items: 5)
   end
 
   def show

@@ -1,5 +1,7 @@
 class Admin::RegistrationsController < Devise::RegistrationsController
   before_action :restrict_access_on_mobile
+  layout "admin-bar"
+
   def devise_mapping
     @devise_mapping ||= Devise.mappings[:user]  # Assurez-vous que :user correspond à votre modèle Devise
   end

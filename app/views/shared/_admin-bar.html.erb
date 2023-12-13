@@ -13,7 +13,7 @@
         </li>
         <% if policy(User.new).create? %>
         <li class="dashboard-item <%= 'active' if current_page?(admin_users_path) %>">
-          <%= link_to "Liste des Utilisateurs", admin_users_path %>
+          <%= link_to "Gestion des Utilisateurs", admin_users_path %>
         </li>
         <% end %>
         <% if policy(User.new).create? %>
