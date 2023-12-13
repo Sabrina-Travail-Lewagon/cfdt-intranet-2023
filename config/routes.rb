@@ -41,8 +41,6 @@ Rails.application.routes.draw do
  match '/503', to: 'errors#service_unavailable', via: :all, as: 'service_unavailable'
  match '*unmatched_route', to: 'errors#resource_not_found', via: :all
 
-
-
   # Defines the root path route ("/")
   # root "articles#index"
 end
