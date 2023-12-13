@@ -1,31 +1,32 @@
-<div class="container mt-4">
+<div class="container login">
   <div class="row">
-    <h2>Modifier son mot de passe</h2>
+    <div class="form_login">
+      <h2>Modifier son mot de passe</h2>
 
-    <%= simple_form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :put }) do |f| %>
-      <%= f.error_notification %>
+      <%= simple_form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :put }) do |f| %>
+        <%= f.error_notification %>
 
-      <%= f.input :reset_password_token, as: :hidden %>
-      <%= f.full_error :reset_password_token %>
+        <%= f.input :reset_password_token, as: :hidden %>
+        <%= f.full_error :reset_password_token %>
 
-      <div class="form-inputs">
-        <%= f.input :password,
-                    label: "Nouveau mot de passe",
-                    required: true,
-                    autofocus: true,
-                    hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length),
-                    input_html: { autocomplete: "new-password" } %>
-        <%= f.input :password_confirmation,
-                    label: "Confirmer son nouveau mot de passe",
-                    required: true,
-                    input_html: { autocomplete: "new-password" } %>
-      </div>
+        <div class="form-inputs">
+          <%= f.input :password,
+                      label: "Nouveau mot de passe",
+                      required: true,
+                      autofocus: true,
+                      hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length),
+                      input_html: { autocomplete: "new-password" } %>
+          <%= f.input :password_confirmation,
+                      label: "Confirmer son nouveau mot de passe",
+                      required: true,
+                      input_html: { autocomplete: "new-password" } %>
+        </div>
 
-      <div class="form-actions mb-4">
-        <%= f.button :submit, "Définir mon mot de passe", class: "btn btn-primary" %>
-      </div>
-    <% end %>
+        <div class="form-actions mb-4">
+          <%= f.button :submit, "Définir mon mot de passe", class: "btn btn-primary" %>
+        </div>
+      <% end %>
 
-    <%= render "devise/shared/links" %>
-      </div>
+      <%= render "devise/shared/links" %>
+    </div>
 </div>
