@@ -23,7 +23,7 @@ class Article < ApplicationRecord
   # toutes les entrées correspondantes dans article_categories seront également supprimées
   has_rich_text :rich_body
   # Ajout de pièces jointes aux article
-  has_many_attached :documents, service: :local, dependent: :purge_later
+  has_many_attached :documents, dependent: :purge_later
   has_many :comments, dependent: :destroy
 
   has_many :likes, dependent: :destroy

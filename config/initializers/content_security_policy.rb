@@ -47,8 +47,8 @@ Rails.application.config.content_security_policy do |policy|
 
   # Uncomment report_uri if you want to ensure that violations are reported
   # policy.report_uri "/csp-violation-report-endpoint"
-  # policy.report_uri "/csp_violation_report"
+  policy.report_uri "/csp_violation_report"
 end
 
 # Uncomment if you want to use Content Security Policy in report-only mode for testing
-# Rails.application.config.content_security_policy_report_only = true
+Rails.application.config.content_security_policy_report_only = true
