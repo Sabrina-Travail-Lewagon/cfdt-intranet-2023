@@ -52,7 +52,7 @@
   box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
   box-sizing: border-box;
   overflow-y: auto; /* Permet le défilement si nécessaire */
-  height: auto; /* S'adapte à la hauteur du contenu */
+  height: 100vh; /* S'adapte à la hauteur du contenu */
   flex-shrink: 0; /* Empêche la barre de rétrécir */
 }
 
