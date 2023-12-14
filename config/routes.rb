@@ -30,17 +30,6 @@ Rails.application.routes.draw do
     resources :users, only: [:new, :create, :index, :show, :destroy, :edit, :update]
   end
 
- # Routes pour les erreurs
- match '/400', to: 'errors#bad_request', via: :all, as: 'bad_request'
- match '/401', to: 'errors#not_authorized', via: :all, as: 'unauthorized'
- match '/403', to: 'errors#not_authorized', via: :all, as: 'forbidden'
- match '/404', to: 'errors#resource_not_found', via: :all, as: 'not_found'
- match '/406', to: 'errors#not_acceptable', via: :all, as: 'not_acceptable'
- match '/422', to: 'errors#not_acceptable', via: :all, as: 'unprocessable_entity'
- match '/500', to: 'errors#internal_server_error', via: :all, as: 'internal_server_error'
- match '/503', to: 'errors#service_unavailable', via: :all, as: 'service_unavailable'
- match '*unmatched_route', to: 'errors#resource_not_found', via: :all
-
   # Defines the root path route ("/")
   # root "articles#index"
 end
