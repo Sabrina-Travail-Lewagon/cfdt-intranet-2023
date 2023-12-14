@@ -62,7 +62,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_12_08_115802) do
     t.datetime "updated_at", null: false
     t.bigint "category_id"
     t.integer "views_count", default: 0
-    t.text "extracted_text"
     t.string "pdf_filenames"
     t.index ["category_id"], name: "index_articles_on_category_id"
     t.index ["user_id"], name: "index_articles_on_user_id"
