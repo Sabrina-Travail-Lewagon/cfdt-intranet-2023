@@ -38,9 +38,9 @@ class Admin::ArticlesController < ApplicationController
     @user = current_user
     @article = Article.new
     if current_user.cse?
-      @categories = policy_scope(Category).where(nom: 'infos CSE') # Assurez-vous que 'CSE' est le nom correct de votre catégorie
+      @categories = policy_scope(Category).where(nom: 'Infos CSE') # Assurez-vous que 'CSE' est le nom correct de votre catégorie
     elsif current_user.rh? || current_user.admin?
-      @categories = policy_scope(Category).where.not(nom: 'infos CSE') # Assurez-vous que 'CSE' est le nom correct de votre catégorie
+      @categories = policy_scope(Category).where.not(nom: 'Infos CSE') # Assurez-vous que 'CSE' est le nom correct de votre catégorie
     else
       @categories = policy_scope(Category)
     end
@@ -118,9 +118,9 @@ class Admin::ArticlesController < ApplicationController
     @article = Article.find(params[:id])
     authorize @article
     if current_user.cse?
-      @categories = policy_scope(Category).where(nom: 'infos CSE')
+      @categories = policy_scope(Category).where(nom: 'Infos CSE')
     elsif current_user.rh?
-      @categories = policy_scope(Category).where.not(nom: 'infos CSE')
+      @categories = policy_scope(Category).where.not(nom: 'Infos CSE')
     else
       @categories = policy_scope(Category)
     end
