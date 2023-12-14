@@ -18,6 +18,7 @@ module CfdtIntranet2023
     config.i18n.default_locale = :fr
 
     config.action_mailer.default_options = { from: 'no-reply@intranet.cfdt-services.fr' }
+    config.exception_app = self.routes
     # Configuration for the application, engines, and railties goes here.
     # These settings can be overridden in specific environments using the files
     # in config/environments, which are processed later.

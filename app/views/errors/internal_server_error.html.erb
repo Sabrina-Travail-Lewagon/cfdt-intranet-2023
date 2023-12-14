@@ -1,0 +1,16 @@
+<div class="container">
+  <div class="row">
+    <div class="col-xs-10 col-sm-6 offset-xs-1 offset-sm-3">
+      <div class='card my-5 text-center'>
+      <h1 class="fw-bold fs-1"><%= response.status %> <%= action_name.humanize %></h1>
+      <p>Quelque chose s'est mal passé !</p>
+      <br>
+      <%= link_to 'Retour Accueil', root_url, class: 'text-success' %>
+      <hr>
+      <div class="text-center">
+        <%= image_tag "#{response.status}.png", class: "w-50" %>
+      </div>
+    </div>
+    </div>
+  </div>
+</div>

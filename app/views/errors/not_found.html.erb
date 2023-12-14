@@ -1,0 +1,20 @@
+<div class="container">
+  <div class="row">
+    <div class="col-xs-10 col-sm-6 offset-xs-1 offset-sm-3">
+      <div class='card my-5 text-center'>
+      <h1 class="fw-bold fs-1 mt-4"><%= response.status %> <%= action_name.humanize %></h1>
+      <p>Cette page n'existe pas</p>
+      <br>
+        Vous avez peut-être mal saisi l'adresse ou la page a peut-être bougé.
+      <br>
+      <%= link_to 'Retour Accueil', root_url, class: 'text-success' %>
+      <hr>
+      <div class="text-center">
+        <%= image_tag "#{response.status}.png", class: "w-50" %>
+      </div>
+
+    </div>
+    </div>
+
+  </div>
+</div>
