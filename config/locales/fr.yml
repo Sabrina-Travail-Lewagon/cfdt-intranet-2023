@@ -18,6 +18,12 @@ fr:
     messages:
       empty: "Le commentaire ne peut pas être vide."
       too_short: "Le commentaire doit contenir au moins %{count} caractères."
+    internal_server_error:
+      message: "Ce n'est pas de votre faute. Quelque chose a mal tourné de notre côté."
+    not_found:
+      message: "Désolé, nous n'avons pas pu trouver cette page."
+    unprocessable_entity:
+      message: "Désolé, nous n'avons pas pu traiter cette demande."
   simple_form:
     error_notification:
       default_message: "Merci de vérifier les problèmes ci-dessous :"
