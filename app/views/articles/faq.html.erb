@@ -1,11 +1,14 @@
 <div class="container mt-4">
   <div class="row">
     <% @articles.each do |article| %>
-    <div class="article-title">
-      <h2><%= article.title %></h2>
-    </div>
-    <div class="article-content">
-      <p><%= raw article.rich_body %></p>
+    <button class="btn btn-primary" data-bs-toggle="collapse" href="#collapseArticle<%= article.id %>" role="button" aria-expanded="false" aria-controls="collapseArticle<%= article.id %>">
+        <%= article.title %>
+    </button>
+    <%# Contenu du collapse %>
+    <div class="collapse" id="collapseArticle<%= article.id %>">
+      <div class="card card-body">
+        <%= raw article.rich_body %>
+      </div>
     </div>
   </div>
   <% end %>
