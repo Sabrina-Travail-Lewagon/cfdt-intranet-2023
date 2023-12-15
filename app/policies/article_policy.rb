@@ -14,6 +14,10 @@ class ArticlePolicy < ApplicationPolicy
     true
   end
 
+  def faq?
+    true
+  end
+
   def create?
     allowed_roles?
   end

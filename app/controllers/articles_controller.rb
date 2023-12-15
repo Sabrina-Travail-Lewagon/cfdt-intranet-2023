@@ -1,7 +1,7 @@
 class ArticlesController < ApplicationController
   before_action :set_article, only: [:show, :edit, :destroy, :update]
   before_action :authenticate_user!
-  after_action :verify_authorized
+  after_action :verify_authorized, except: :faq
   layout "standard"
 
   def index
@@ -67,6 +67,20 @@ class ArticlesController < ApplicationController
   def destroy
     @article.destroy
     redirect_to articles_path, notice: 'Article a bien été supprimé.'
+  end
+
+  def faq
+    @categories = policy_scope(Category)
+    faq_category = Category.find_by(nom: 'FAQ') # Assurez-vous que 'FAQ' est le nom exact de la catégorie
+    scope = policy_scope(Article) # On définit une base de scope pour tous les cas.
+    if faq_category
+      @pagy, @articles = pagy(scope.where(category: faq_category).order('created_at DESC'))
+    else
+      # Gérer le cas où la catégorie FAQ n'existe pas
+      @articles = []
+      flash.now[:alert] = "Catégorie FAQ introuvable."
+    end
+    add_breadcrumb('FAQ', faq_articles_path)
   end
 
   private
