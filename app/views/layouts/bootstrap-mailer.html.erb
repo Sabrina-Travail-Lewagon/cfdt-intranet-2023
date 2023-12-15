@@ -7,6 +7,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="format-detection" content="telephone=no, date=no, address=no, email=no">
     <%= stylesheet_link_tag 'application-mailer', media: "all" %>
+    <style>
+      .attachment__caption {
+        display: none !important;
+      }
+    </style>
+
   </head>
   <body>
     <%= yield %>
