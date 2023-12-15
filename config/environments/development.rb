@@ -14,11 +14,22 @@ Rails.application.configure do
   #   authentication:       'plain',
   #   enable_starttls_auto: true
   # }
+  # Paramétrage ElasticEmail :
+  #   config.action_mailer.smtp_settings = {
+  #   address:              'smtp.elasticemail.com',
+  #   port:                 2525,
+  #   user_name:            'webmaster@cfdt-services.fr',
+  #   password:             '04691D11328FBC0FC81DC4202273F29AC561',
+  #   authentication:       'plain',
+  #   openssl_verify_mode:  'none',
+  #   enable_starttls_auto: true
+  # }
   # config mailcatcher
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.smtp_settings = { :address => '127.0.0.1', :port => 1025 }
   config.action_mailer.raise_delivery_errors = false
   config.action_mailer.asset_host = "http://localhost:3000"
+
   # config letter_opener
   # config.action_mailer.delivery_method = :letter_opener
   # config.action_mailer.perform_deliveries = true
