@@ -5,6 +5,8 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
   validates :first_name, presence: true
   validates :last_name, presence: true
+  validates :email, uniqueness: true
+
   # validation inclusion, garantit que le role spécifié est une des valeurs autorisés
   # validates :role, inclusion: { in: ROLES }
   # before_validation définira automatiquement le rôle par défaut sur user avant de valider l'utilisateur.

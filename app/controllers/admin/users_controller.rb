@@ -2,17 +2,12 @@ class Admin::UsersController < ApplicationController
   before_action :authenticate_user!  # Devise helper pour s'assurer que l'utilisateur est connecté
   before_action :restrict_access_on_mobile
   before_action :set_user, only: [:show, :edit, :update, :destroy]
-  before_action :set_breadcrumbs, only: [:show, :edit]
+  before_action :set_breadcrumbs, only: [:show, :edit, :create, :index]
   before_action :authorize_user, except: [:new, :create, :index]  # autoriser uniquement pour les actions spécifiées
   layout "admin-bar"
 
   def index
     @users = policy_scope(User)  # Utilise Pundit pour filtrer les utilisateurs que l'on peut voir
-    @breadcrumbs = [
-      {name: 'Accueil', path: root_path},
-      {name: 'Dashboard', path: admin_root_path},
-      {name: 'Liste des utilisateurs', path: admin_users_path}
-    ]
     @pagy, @users = pagy(policy_scope(User).order('created_at DESC'), items: 5)
   end
 
@@ -79,9 +74,11 @@ class Admin::UsersController < ApplicationController
     @user = User.new(user_params)
     authorize @user  # Utilise Pundit pour vérifier que l'utilisateur actuel peut créer un utilisateur
     if @user.save
+      @user.errors.full_messages
       redirect_to admin_user_path(@user), notice: 'L\'utilisateur a été créé!'
     else
-      render :new
+      set_breadcrumbs
+      render :new, status: :unprocessable_entity
     end
   end
 
@@ -92,12 +89,34 @@ class Admin::UsersController < ApplicationController
     authorize @user
   end
 
+
   def set_breadcrumbs
-    @breadcrumbs = [
-      {name: 'Accueil', path: root_path},
-      {name: 'Dashboard', path: admin_root_path},
-      {name: 'Mon compte', path: edit_user_registration_path}
-    ]
+    case action_name
+    when 'index'
+      @breadcrumbs = [
+        { name: 'Accueil', path: root_path },
+        { name: 'Dashboard', path: admin_root_path },
+        { name: 'Liste des utilisateurs', path: admin_users_path }
+      ]
+    when 'show'
+      @breadcrumbs = [
+        { name: 'Accueil', path: root_path },
+        { name: 'Dashboard', path: admin_root_path },
+        { name: 'Mon compte', path: edit_user_registration_path }
+      ]
+    when 'edit'
+      @breadcrumbs = [
+        { name: 'Accueil', path: root_path },
+        { name: 'Dashboard', path: admin_root_path },
+        { name: 'Modifier le compte', path: edit_user_registration_path }
+      ]
+    when 'new', 'create'
+      @breadcrumbs = [
+        { name: 'Accueil', path: root_path },
+        { name: 'Dashboard', path: admin_root_path },
+        { name: 'Créer un utilisateur', path: new_admin_user_path }
+      ]
+    end
   end
 
   # Séparer l'autorisation pour éviter des répétitions
