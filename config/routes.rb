@@ -27,7 +27,12 @@ Rails.application.routes.draw do
     get 'articles/tous_les_articles', to: 'articles#tous_les_articles', as: 'tous_les_articles'
     # root to: 'home#accueil'
     get 'articles/mes_articles', to: 'articles#mes_articles', as: 'mes_articles'
-    resources :articles
+    # resources :articles
+    resources :articles do
+      collection do
+        get :faq
+      end
+    end
     resources :categories
     resources :users, only: [:new, :create, :index, :show, :destroy, :edit, :update]
   end

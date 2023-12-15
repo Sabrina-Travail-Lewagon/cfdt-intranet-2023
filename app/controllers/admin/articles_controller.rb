@@ -122,7 +122,7 @@ class Admin::ArticlesController < ApplicationController
       flash.now[:alert] = "Catégorie FAQ introuvable."
     end
     add_breadcrumb('Dashboard', admin_root_path)
-    add_breadcrumb('FAQ', admin_faq_path)
+    add_breadcrumb('FAQ', faq_admin_articles_path)
   end
 
 
