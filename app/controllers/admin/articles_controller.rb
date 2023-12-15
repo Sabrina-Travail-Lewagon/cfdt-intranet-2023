@@ -112,6 +112,20 @@ class Admin::ArticlesController < ApplicationController
     redirect_to  admin_mes_articles_path, notice: 'L\'article a bien été supprimé.'
   end
 
+  def faq
+    faq_category = Category.find_by(nom: 'FAQ') # Assurez-vous que 'FAQ' est le nom exact de la catégorie
+    if faq_category
+      @pagy, @articles = pagy(Article.where(category: faq_category).order('created_at DESC'))
+    else
+      # Gérer le cas où la catégorie FAQ n'existe pas
+      @articles = []
+      flash.now[:alert] = "Catégorie FAQ introuvable."
+    end
+    add_breadcrumb('Dashboard', admin_root_path)
+    add_breadcrumb('FAQ', admin_faq_path)
+  end
+
+
   private
 
   def set_article
