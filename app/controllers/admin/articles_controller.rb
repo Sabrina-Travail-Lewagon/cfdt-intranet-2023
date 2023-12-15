@@ -39,7 +39,7 @@ class Admin::ArticlesController < ApplicationController
     @article = Article.new
     if current_user.cse?
       @categories = policy_scope(Category).where(nom: 'Infos CSE') # Assurez-vous que 'CSE' est le nom correct de votre catégorie
-    elsif current_user.rh? || current_user.admin?
+    elsif current_user.rh?
       @categories = policy_scope(Category).where.not(nom: 'Infos CSE') # Assurez-vous que 'CSE' est le nom correct de votre catégorie
     else
       @categories = policy_scope(Category)
