@@ -47,11 +47,16 @@ class Admin::CategoriesController < ApplicationController
   end
 
   def destroy
+    begin
     # On récupère l'id avec before_action
     # On supprime l'enregistrement avec l'id dans la BdD
     @category.destroy
     # On redirige vers la page index
     redirect_to admin_categories_path, status: :see_other, :notice => "Catégorie supprimée!"
+    rescue ActiveRecord::InvalidForeignKey
+      # Redirigez l'utilisateur avec un message d'erreur
+      redirect_to admin_categories_path, alert: "Cette catégorie ne peut pas être supprimée car elle est référencée dans des articles."
+    end
   end
 
   private
