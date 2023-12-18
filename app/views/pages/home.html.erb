@@ -12,38 +12,53 @@
 
     <div class="cards">
       <% @categories.each do |category| %>
-        <%# Ou ceci aussi est bon, ce sera la route qui sera différente %>
-        <%# link_to category_articles_path(category) do %>
-        <%= link_to articles_path(category_id: category.id) do %>
-          <div class="btn-home <%= category.nom.parameterize %>" style="background-color: <%= category.background_color %>;">
-            <div class="btn-home-child <%= category.nom.parameterize %>">
-              <%= cl_image_tag category.image.key, class: "img-category" %>
-              <div class="category-name">
-                <b class="category-name"><%= category.nom %></b>
+        <% if category.nom == "FAQ" %>
+          <%= link_to faq_articles_path do %>
+          <div class="btn-sidebar faq" style="background-color: #7E3794;">
+            <div class="btn-sidebar-child faq">
+              <%= image_tag "faq.png", class: "img-category" %>
+                <div class="category-name">
+                  <b class="category-name">FAQ</b>
+                </div>
               </div>
             </div>
-          </div>
         <% end %>
-      <% end %>
-      <%= link_to ("https://dscfdt.bodet-software.com"), target: '_blank'  do %>
-      <div class="btn-home kelio" style="background-color: #ffed00;">
-            <div class="btn-home-child kelio">
-              <%= image_tag "kelio.png", class: "img-category" %>
-              <div class="category-name">
-                <b class="category-name">Kelio</b>
+        <% elsif category.nom == "Kelio" %>
+          <%= link_to ("https://dscfdt.bodet-software.com"), target: '_blank'  do %>
+          <div class="btn-home kelio" style="background-color: #ffed00;">
+                <div class="btn-home-child kelio">
+                  <%= image_tag "kelio.png", class: "img-category" %>
+                  <div class="category-name">
+                    <b class="category-name"><%= category.nom %></b>
+                  </div>
+                </div>
+              </div>
+          <% end %>
+        <% elsif category.nom == "Workflow" %>
+          <%= link_to ("http://workflow.cfdt-services.fr/siteworkflow"), target: '_blank' do %>
+          <div class="btn-home federation" style="background-color: #e75c21;">
+                <div class="btn-home-child federation">
+                  <%= image_tag "federation.png", class: "img-category" %>
+                  <div class="category-name">
+                    <b class="category-name"><%= category.nom %></b>
+                  </div>
+                </div>
+              </div>
+          <% end %>
+        <% else %>
+          <%= link_to articles_path(category_id: category.id) do %>
+            <div class="btn-sidebar <%= category.nom.parameterize %>">
+              <div class="btn-sidebar-child <%= category.nom.parameterize %>">
+                <% if category.image.attached? %>
+                  <%= cl_image_tag category.image.key, class: "img-category" %>
+                <% end %>
+                <div class="category-name">
+                  <b class="category-name"><%= category.nom %></b>
+                </div>
               </div>
             </div>
-          </div>
-      <% end %>
-      <%= link_to ("http://workflow.cfdt-services.fr/siteworkflow"), target: '_blank' do %>
-      <div class="btn-home federation" style="background-color: #e75c21;">
-            <div class="btn-home-child federation">
-              <%= image_tag "federation.png", class: "img-category" %>
-              <div class="category-name">
-                <b class="category-name">Workflow</b>
-              </div>
-            </div>
-          </div>
+          <% end %>
+        <% end %>
       <% end %>
      <div class="card-publications">
         <div class="card-publications-titre">
