@@ -6,7 +6,8 @@ class Article < ApplicationRecord
   pg_search_scope :search_by_title_and_content,
     against: [:title, :pdf_filenames],
     associated_against: {
-      rich_text_rich_body: [:body]  # Utilisez :rich_text ici pour correspondre à la configuration par défaut d'Action Text
+      rich_text_rich_body: [:body],  # Utilisez :rich_text ici pour correspondre à la configuration par défaut d'Action Text
+      category: [:nom]  # Ajout de la recherche sur le titre de la catégorie
     },
     using: {
       tsearch: { prefix: true }
