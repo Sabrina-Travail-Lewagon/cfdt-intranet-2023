@@ -16,7 +16,9 @@
           <%= link_to faq_articles_path do %>
           <div class="btn-sidebar faq" style="background-color: #7E3794;">
             <div class="btn-sidebar-child faq">
-              <%= image_tag "faq.png", class: "img-category" %>
+              <% if category.image.attached? %>
+                <%= cl_image_tag category.image.key, class: "img-category" %>
+              <% end %>
                 <div class="category-name">
                   <b class="category-name">FAQ</b>
                 </div>
