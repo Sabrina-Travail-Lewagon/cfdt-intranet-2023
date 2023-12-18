@@ -34,6 +34,8 @@ Rails.application.config.content_security_policy do |policy|
   # Allow blob URLs for PDFs
   policy.object_src :none, 'blob:'
 
+  # Ajouter require-trusted-types-for
+  policy.require_trusted_types_for :script
   # Scripts and styles for the text editor
   # You might need to add specific hashes or nonces if your text editor uses inline scripts or styles
   policy.script_src :self
