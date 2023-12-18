@@ -27,7 +27,7 @@
           <%= link_to ("https://dscfdt.bodet-software.com"), target: '_blank'  do %>
           <div class="btn-home kelio" style="background-color: #ffed00;">
                 <div class="btn-home-child kelio">
-                  <%= image_tag "kelio.png", class: "img-category" %>
+                  <%= cl_image_tag category.image.key, class: "img-category" %>
                   <div class="category-name">
                     <b class="category-name"><%= category.nom %></b>
                   </div>
@@ -36,9 +36,9 @@
           <% end %>
         <% elsif category.nom == "Workflow" %>
           <%= link_to ("http://workflow.cfdt-services.fr/siteworkflow"), target: '_blank' do %>
-          <div class="btn-home federation" style="background-color: #e75c21;">
-                <div class="btn-home-child federation">
-                  <%= image_tag "federation.png", class: "img-category" %>
+          <div class="btn-home <%= category.nom.parameterize %>" style="background-color: #e75c21;">
+                <div class="btn-home-child <%= category.nom.parameterize %>">
+                  <%= cl_image_tag category.image.key, class: "img-category" %>
                   <div class="category-name">
                     <b class="category-name"><%= category.nom %></b>
                   </div>
