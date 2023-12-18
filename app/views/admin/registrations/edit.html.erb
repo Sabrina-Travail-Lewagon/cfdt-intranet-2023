@@ -22,12 +22,10 @@
         <%= f.input :photo, as: :file %>
       </div>
 
-      <div class="form-actions mb-4">
+      <div class="form-actions my-4">
         <%= f.button :submit, "Modifier", class: "btn btn-primary" %>
+          <%= button_tag "Annuler les modifications", type: "reset", class: "btn btn-info text-white" %>
       </div>
     <% end %>
-    <span class="mt-4">
-      <%= link_to "Retour", :back, class: "btn btn-primary" %>
-    </span>
   </div>
 </div>
