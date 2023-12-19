@@ -19,9 +19,11 @@
     <div class="attachment">
       <% if @article.documents.attached? %>
         <% @article.documents.each do |document| %>
-          <%= link_to document.filename.to_s, rails_blob_path(document, disposition: "inline"), target: "_blank", class: "btn btn-secondary" %>
+          <%= link_to rails_blob_path(document, disposition: "inline"), target: "_blank", class: "attachment" do %>
+            <i class="fas fa-file"></i><%= document.filename.to_s %>
+          <% end %>
         <% end %>
-        <p><%= pluralize(@article.documents.count, 'pièce jointe') %></p>
+        <p><%= t('helpers.pluralize.piece_jointe', count: @article.documents.count) %></p>
       <% end %>
     </div>
     <div>
