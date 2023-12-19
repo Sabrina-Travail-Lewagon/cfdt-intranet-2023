@@ -42,3 +42,8 @@ fr:
             title:
               blank: "ne peut pas être vide"
               too_short: "est trop court (au moins %{count} caractères)"
+  helpers:
+    pluralize:
+      piece_jointe:
+        one: "%{count} pièce jointe"
+        other: "%{count} pièces jointes"

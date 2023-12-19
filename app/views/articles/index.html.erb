@@ -62,7 +62,6 @@
           <p>
             <%= truncate_html(article.rich_body.to_s, length: 250, omission: '...') %>
           </p>
-          <p>
             <%= link_to 'Lire la suite', article_path(article), class: 'btn btn-primary readmore' if article.rich_body.to_s.length > 250 %>
           </p>
           <div class="attachment">
@@ -72,7 +71,7 @@
                   <i class="fas fa-file"></i><%= document.filename.to_s %>
                 <% end %>
               <% end %>
-              <p><%= pluralize(article.documents.count, 'pièce.s jointe.s') %></p>
+                  <p><%= t('helpers.pluralize.piece_jointe', count: article.documents.count) %></p>
             <% end %>
           </div>
         <% end %>
