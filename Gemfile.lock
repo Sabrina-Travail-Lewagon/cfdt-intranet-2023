@@ -321,8 +321,8 @@ GEM
     thor (1.3.0)
     tilt (2.3.0)
     timeout (0.4.1)
-    trix (0.10.1)
-      rails
+    tinymce-rails (6.8.2)
+      railties (>= 3.1.1)
     truncate_html (0.9.3)
     turbo-rails (1.5.0)
       actionpack (>= 6.0.0)
@@ -349,7 +349,6 @@ PLATFORMS
   x86_64-linux
 
 DEPENDENCIES
-  actiontext
   activestorage-cloudinary-service
   autoprefixer-rails
   bootsnap
@@ -380,7 +379,7 @@ DEPENDENCIES
   simple_form!
   sprockets-rails
   stimulus-rails
-  trix
+  tinymce-rails
   truncate_html
   turbo-rails
   tzinfo-data

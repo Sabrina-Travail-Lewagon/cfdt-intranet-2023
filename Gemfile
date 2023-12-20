@@ -58,8 +58,8 @@ gem "simple_form", github: "heartcombo/simple_form"
 gem "cloudinary"
 gem 'activestorage-cloudinary-service'
 gem "pundit"
-gem "trix"
-gem "actiontext"
+# gem "trix"
+# gem "actiontext"
 gem 'rails-i18n' # Pour avoir la langue française, les dates
 gem 'pagy' # Ajout de la pagination
 gem "pg_search"
@@ -68,6 +68,7 @@ gem 'mailcatcher', group: :development
 gem 'postmark-rails'
 gem 'bootstrap-email'
 gem 'browser' # Vérifie type support mobile, etc
+gem 'tinymce-rails'
 
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
