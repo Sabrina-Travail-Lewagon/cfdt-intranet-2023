@@ -1,0 +1,26 @@
+	menubar: "insert view format table tools"
+	toolbar:
+	  - bold italic | link | alignleft aligncenter alignright | undo redo | forecolor backcolor | bullist numlist outdent indent | table | uploadimage | code | image | cloudinaryimage
+	plugins:
+	  - table
+	  - fullscreen
+	  - image
+	  - code
+	  - searchreplace
+	  - wordcount
+	  - visualblocks
+	  - visualchars
+	  - link
+	  - charmap
+	  - directionality
+	  - nonbreaking
+	  - media
+	  - advlist
+	  - autolink
+	  - lists
+	  - cloudinaryimage
+	images_upload_url: '/uploader/image'
+	cloudinary: {
+	  apiKey: '198541366227656',
+	  cloudName: 'dooup7bi2',
+}
