@@ -18,9 +18,3 @@
 	  - advlist
 	  - autolink
 	  - lists
-	  - cloudinaryimage
-	images_upload_url: '/uploader/image'
-	cloudinary: {
-	  apiKey: '198541366227656',
-	  cloudName: 'dooup7bi2',
-}
