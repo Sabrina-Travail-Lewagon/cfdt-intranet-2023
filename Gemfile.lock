@@ -323,6 +323,11 @@ GEM
     timeout (0.4.1)
     tinymce-rails (6.8.2)
       railties (>= 3.1.1)
+<<<<<<< HEAD
+=======
+    trix (0.10.1)
+      rails
+>>>>>>> 414f3b0d72deb460da1dba26465864353edcf11b
     truncate_html (0.9.3)
     turbo-rails (1.5.0)
       actionpack (>= 6.0.0)
@@ -380,6 +385,10 @@ DEPENDENCIES
   sprockets-rails
   stimulus-rails
   tinymce-rails
+<<<<<<< HEAD
+=======
+  trix
+>>>>>>> 414f3b0d72deb460da1dba26465864353edcf11b
   truncate_html
   turbo-rails
   tzinfo-data

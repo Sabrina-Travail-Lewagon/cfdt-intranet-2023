@@ -8,6 +8,10 @@
                       required: true,
                       autofocus: true,
                       label: "Titre" %>
+          <div class="form-inputs">
+              <%= f.text_area :content, :class => "tinymce", :rows => 40, :cols => 120 %>
+              <%= tinymce %>
+          </div>
           <%= f.input :category_id,
                       required: true,
                       autofocus: true,
