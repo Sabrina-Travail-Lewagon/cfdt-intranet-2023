@@ -24,10 +24,10 @@
 #   # config.content_security_policy_report_only = true
 # end
 # config/initializers/content_security_policy.rb
-
+# Rails.application.config.content_security_policy_nonce_generator = -> request { SecureRandom.base64(16) }
 Rails.application.config.content_security_policy do |policy|
   # Default 'self' for everything else
-  policy.default_src :self
+  # policy.default_src :self
 
   # Allow images from 'self' and Cloudinary
   policy.img_src :self, :data, 'https://res.cloudinary.com/dooup7bi2/image/upload/', 'blob:'
@@ -38,7 +38,8 @@ Rails.application.config.content_security_policy do |policy|
   # policy.require_trusted_types_for :script
   # Scripts and styles for the text editor
   # You might need to add specific hashes or nonces if your text editor uses inline scripts or styles
-  policy.script_src :self
+  # policy.script_src :self, :https, -> { "'nonce-' + request.content_security_policy_nonce" }, :unsafe_inline, 'https://cdn.tiny.cloud/1/4xtli9n7fygv47gzz4oyw7nwd6porb60kf9q2nzbnm8p0kou/tinymce/6/tinymce.min.js'
+  # policy.script_src :self, :https
 
   # Update style-src to include Google Fonts
   policy.style_src :self, :unsafe_inline, 'https://fonts.googleapis.com'

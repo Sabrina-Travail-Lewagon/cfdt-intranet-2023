@@ -1,16 +1,21 @@
+menubar: "insert view format table tools"
 toolbar:
-  - styleselect | bold italic | undo redo
-  - image | link
+  - bold italic | link | undo redo | forecolor backcolor | bullist numlist outdent indent | table | uploadimage | code
 plugins:
+  - table
+  - fullscreen
   - image
+  - code
+  - searchreplace
+  - wordcount
+  - visualblocks
+  - visualchars
   - link
-default: &default
-  plugins:
-    - image
-    - link
-
-alternate:
-  <<: *default
-  toolbar: styleselect | bold italic | undo redo | table
-  plugins:
-    - table
+  - charmap
+  - directionality
+  - nonbreaking
+  - media
+  - advlist
+  - autolink
+  - lists
+images_upload_url: '/uploader/image'

@@ -14,10 +14,11 @@
     <%= javascript_include_tag "application", "data-turbo-track": "reload", defer: true %>
     <%= render 'shared/ios_pwa_links' %>
     <%= tinymce_assets %>
-	    <script src="https://cdn.tiny.cloud/1/4xtli9n7fygv47gzz4oyw7nwd6porb60kf9q2nzbnm8p0kou/tinymce/6/tinymce.min.js" referrerpolicy="origin"></script>
-	    <script>
-	      tinymce.init({
-	        selector: '.tinymce',
+	    <script nonce="<%= content_security_policy_nonce %>">
+        document.addEventListener('turbo:load', () => {
+          tinymce.remove(); // Supprime les instances existantes de TinyMCE
+          tinymce.init({
+          selector: '.tinymce',
 	        height: 500,
 	        menubar: false,
 	        theme : "advanced",
@@ -29,8 +30,8 @@
 	        toolbar: 'undo redo | casechange blocks | bold italic backcolor | ' +
 	          'alignleft aligncenter alignright alignjustify | ' +
 	          'bullist numlist checklist outdent indent | removeformat | a11ycheck code table help' +
-	          'image' + 'cloudinaryimage' +
-	      });
+	          'image'
+        });
 	    </script>
 
   </head>
@@ -38,7 +39,6 @@
   <body><%= render "shared/navbar" %>
     <%= render "shared/breadcrumb" %>
     <%= render "shared/flashes" %>
-
     <%= yield %>
   </body>
 </html>

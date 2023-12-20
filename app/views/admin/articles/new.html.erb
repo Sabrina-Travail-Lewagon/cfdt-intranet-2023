@@ -9,7 +9,7 @@
                       autofocus: true,
                       label: "Titre" %>
           <div class="form-inputs">
-              <%= f.text_area :content, :class => "tinymce", :rows => 40, :cols => 120 %>
+              <%= f.text_area :rich_body, :class => "tinymce", :rows => 40, :cols => 120 %>
               <%= tinymce %>
           </div>
           <%= f.input :category_id,
@@ -30,9 +30,6 @@
                         class: 'form-control'
                       }
           %>
-          <%= f.input :rich_body do %>
-            <%= f.rich_text_area :rich_body, class: 'form-control' %>
-          <% end %>
 
           <%= f.button :submit, "Publier", class: "btn btn-primary" %>
         </div>
