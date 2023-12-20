@@ -1,4 +1,4 @@
 .trix-content img {
-  max-width: 500px; /* Définir une largeur maximale plutôt qu'une largeur fixe */
+  max-width: 800px; /* Définir une largeur maximale plutôt qu'une largeur fixe */
   height: auto; /* Garantir que la hauteur est ajustée proportionnellement */
 }
