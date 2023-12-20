@@ -1,14 +1,18 @@
+.trix-content {
+  line-height: 1.5;
+  margin-top: 1rem;
+}
+
+.trix-content img {
+  max-width: 500px; /* Définir une largeur maximale plutôt qu'une largeur fixe */
+  height: auto; /* Garantir que la hauteur est ajustée proportionnellement */
+}
 
 trix-editor .attachment--preview img {
   resize: both;
   overflow: auto;
 }
-// Pour supprimer la légende de l'image
-.trix-content .attachment--preview .attachment__caption {
-  display: none!important;
-}
 
-.trix-content {
-  line-height: 1.5;
-  margin-top: 1rem;
+.trix-content .attachment--preview .attachment__caption {
+  display: none !important;
 }
