@@ -26,7 +26,7 @@
                         class: 'form-control'
                       }
           %>
-          <%= f.input :rich_body do %>
+          <%= f.input :rich_body, label: "Contenu de l'article", input_html: { class: 'form-control' } do %>
             <%= f.rich_text_area :rich_body, class: 'form-control' %>
           <% end %>
 
